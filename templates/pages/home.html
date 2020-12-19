@@ -1,0 +1,11 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container pt-4 p-0">
+  {% include 'components/picture_news.html' %}
+  <div class="d-flex align-items-center">
+    <strong>Loading...</strong>
+    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+  </div>
+</div>
+{% endblock content %}

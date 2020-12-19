@@ -1,0 +1,19 @@
+# dotenv
+.env
+# Byte-compiled / optimized / DLL files
+__pycache__
+
+# mypy
+.mypy_cache/
+
+.DS_Store
+*.sqlite3
+media/
+*.pyc
+*.db
+*.pid
+
+news.code-workspace
+
+Pipfile
+Pipfile.lock
