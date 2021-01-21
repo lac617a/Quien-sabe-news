@@ -1,14 +1,70 @@
 <!-- FOOTER -->
-<footer>
+{% load static %}
+<footer class="footer-wrapper container p-0">
   <!-- FOOT NAVIGATION -->
-  <!-- //FOOT NAVIGATION -->
-  <section class="t3-copiright">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 copyright">Copyright</div>
-        <div class="col-md-6 footerbase-2 hidden-xs">Acerca</div>
+  <div class="container bg-footer1 pt-3 rounded-top">
+    <div class="row">
+      <div class="col-xs-6 col-lg-4 col-sm-4" name="Section(Left)">
+        <div class="widget Text">
+          <div class="widget-title">
+            <h6 class="footer__title">INFORMACIÓN RELEVANTE</h6>
+          </div>
+          <div class="widget-content">
+            <small><p>Este sitio web no almacena archivos, este blog es solo para uso informativo.</p></small>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-lg-4 col-sm-4" name="Section(Center)">
+        <div class="widget Text">
+          <div class="widget-title">
+            <h6 class="footer__title">VISTAS A LA PÁGINA TOTALES</h6>
+          </div>
+          <div class="widget-content text-center">
+            <small><h3>5463</h3></small>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-lg-4 col-sm-4" name="Section(Right)">
+        <div class="widget Text">
+          <div class="widget-title">
+            <h6 class="footer__title">POPULAR POSTS</h6>
+          </div>
+          <div class="content__item-aside">
+            <h6 class="h6">
+              <a class="content__nav-link" href="#">
+                <div class="row">
+                  <div class="col col-lg-6">
+                    <img class="zoom-sm" src="{% static 'img/tnews.png' %}" alt="">
+                  </div>
+                  <div class="col col-lg-6">
+                    <span class="content__nav-title">Aun no contamos con el mejor contenido</span>
+                  </div>
+                </div>
+              </a>
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+  <!-- //FOOT NAVIGATION -->
+  <div class="t3-copiright bg-footer2 text-white">
+    <div class="container">
+      <div class="d-flex justify-content-between">
+        <div class="copyright">
+          <div class="custom">
+            <h6 class="post-title">Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://yoydev3.herokuapp.com/" target="_blank" rel="noopener noreferrer">rookie-thunder.com</a> </h6>
+          </div>
+        </div>
+        <div class="copyright">
+          <div class="d-flex">
+            <div class="p-2 bd-highlight"><h6 class="post-title"><a href="/">Inicio</a></h6></div>
+            <div class="p-2 bd-highlight"><h6 class="post-title"><a href="/acerca/">Acerca</a></h6></div>
+            <div class="p-2 bd-highlight"><h6 class="post-title"><a href="/permiso-y-privacidad/">Permiso y privacidad</a></h6></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </footer>
 <!-- //FOOTER -->

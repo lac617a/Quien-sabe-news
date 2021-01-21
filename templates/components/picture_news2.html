@@ -1,0 +1,92 @@
+<!-- pictureNews2 -->
+{% load static %}
+<div class="row">
+  <!-- PICTURE NEWS LEFT -->
+  <div class="col-xs-6 col-lg-9 col-sm-12 wrapper__pictureNews">
+    <!-- ESTADOS UNIDOS -->
+    <a href="/estados-unidos-en-la-mira/" class="btn btn-danger w-100">
+      <i class="fas fa-globe"></i>
+      <h5 class="fw-bold">Estados unidos en la mira</h5>
+    </a>
+    {% load news_extras %}
+    {% get_united_state_news as united_state %}
+    {% for news in united_state %}
+    <div class="bt-center boxroun mt-3">
+      <img class="float-start zoom" src="{{news.image.url}}" alt="{{news.image}}">
+        <div class="overlay"></div>
+        <div class="bt-title-cat-intro-eranews">
+          <a class="bt-category eranews homestyle2" href="/estados-unidos-en-la-mira/">E.E.U.U</a>
+          <br>
+          <a class="bt-title eranews homestyle2" href="{% url 'News:slug_general' news.id news.slug|slugify %}"><h1 class="h3">{{news.title}}</h1></a>
+          <div class="d-flex justify-content-between">
+            <div class="bt-extra">
+              <span><i class="fas fa-clock"></i>{{news.published|date:"SHORT_DATE_FORMAT"}}</span>
+              <span><i class="fas fa-eye"></i>2312</span>
+              <span><i class="fas fa-tag"></i>{{news.sub_categories}}</span>
+            </div>
+            <div class="bt-share">
+              <i class="fas fa-share-alt share-all"></i>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <!-- Entretenimiento -->
+    <a href="Entretenimiento/" class="btn btn-danger mt-3" style="width: 100%;">
+      <i class="fas fa-globe"></i>
+      <h5 class="fw-bold">Entretenimiento</h5>
+    </a>
+    <div class="bt-center boxroun mt-3 ">
+      {% get_entertainment_news as entertainment %}
+      {% for news in entertainment %}
+      <img class="float-start card-img zoom" src="{{news.get_image_url}}" alt="{{news.image}}">
+      <div class="overlay"></div>
+      <div class="bt-title-cat-intro-eranews">
+        <a class="bt-category eranews homestyle2" href="#">Entretenimiento</a>
+        <br>
+        <a class="bt-title eranews homestyle2" href="{% url 'News:slug_general' news.id news.slug|slugify %}"><h1 class="h3">{{news.title}}</h1></a>
+        <div class="d-flex justify-content-between">
+          <div class="bt-extra">
+            <span><i class="fas fa-clock"></i>{{news.published|date:"SHORT_DATE_FORMAT"}}</span>
+            <span><i class="fas fa-eye"></i>2312</span>
+            <span><i class="fas fa-globe"></i>{{news.sub_categories}}</span>
+          </div>
+          <div class="bt-share">
+            <i class="fas fa-share-alt share-all"></i>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- PICTURE NEWS RIGHT -->
+  <div class="col-xs-6 col-lg-3 col-sm-12 pt-1">
+    <!-- LO QUE PASA EN VENEZUELA -->
+    <a href="lo-que-pasa-en-venezuela/" class="btn btn-danger mb-3" style="width: 100%;">
+      <i class="fas fa-globe-americas"></i>
+      <h5>¿Qué pasa en Venezuela?</h5>
+    </a>
+    {% get_venezuela as news_category %}
+    {% for new in news_category %}
+    <div class="col-lg-12">
+      <div class="information">
+        <div class="section-time">
+          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}" class="section">
+            <i class="fas fa-tag"></i>
+            {{new.sub_categories}}
+          </a>
+          <span class="update-date"><i class="fas fa-clock"></i>{{new.published|date:'Y-m-d H:i'}}</span>
+        </div>
+        <h3 class="title-sm">
+          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}">
+            {{new.title}}
+          </a>
+        </h3>
+        <div class="lead">
+          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}">{{new.sub_title|safe}}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

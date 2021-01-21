@@ -1,0 +1,90 @@
+<aside>
+  <div class="row position-relative">
+    <div class="col-lg-12 position-relative">
+      <div class="content-title">
+        <h2>
+          <span>
+            <span>
+              <span class="title-aside one">Principales noticias</span>
+            </span>
+          </span>
+        </h2>
+      </div>
+      <ul class="content-aside">
+        {% load news_extras %}
+        {% get_main_news as main_news %}
+        {% for news in main_news %}
+          <li class="content__item-aside">
+            <h6>
+              <a class="content__nav-link" href="{% url 'News:slug_general' news.id news.slug|slugify %}">{{news.title}}</a>
+              <br><small class="text-muted">{{news.published}}</small>
+            </h6>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-lg-12 position-relative">
+      <div class="content-title">
+        <h2>
+          <span>
+            <span>
+              <span class="title-aside two">No te lo pierdas</span>
+            </span>
+          </span>
+        </h2>
+      </div>
+      <ul class="content-aside">
+        {% get_the_best_news as main_news %}
+        {% for news in main_news %}
+          <li class="content__item-aside">
+            <h6>
+              <a class="content__nav-link" href="{% url 'News:slug_general' news.id news.slug|slugify %}">
+                <div class="row">
+                  <div class="col col-lg-12">
+                    <img class="zoom-sm rounded" src="{{news.get_image_url}}" alt="">
+                  </div>
+                  <div class="col col-lg-12">
+                    <span class="content__nav-title">{{news.title}}</span>
+                    <small class="text-muted">{{news.published}}</small>
+                  </div>
+                </div>
+              </a>
+            </h6>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-lg-12 position-relative">
+      <div class="content-title">
+        <h2>
+          <span>
+            <span>
+              <span class="title-aside three">Más leídas</span>
+            </span>
+          </span>
+        </h2>
+      </div>
+      <ol class="content-aside">
+      {% get_main_news as main_news %}
+      {% for news in main_news %}
+        <li class="content__item-aside">
+          <div class="row">
+            <h6 class="h6">
+              <a class="content__nav-link" href="{% url 'News:slug_general' news.id news.slug|slugify %}">
+                <div class="content__aside-counter">
+                {% if news.id %}
+                  <span>{{forloop.counter}}</span>
+                {% endif %}
+                </div>
+                <div class="content__aside-nav-link">
+                  {{news.title}}
+                </div>
+              </a>
+            </h6>
+          </div>
+        </li>
+      {% endfor %}
+      </ol>
+    </div>
+  </div>
+</aside>

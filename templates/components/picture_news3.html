@@ -1,0 +1,61 @@
+<!-- pictureNews3 -->
+{% load static %}
+<div class="row">
+  <div class="col-xs-6 col-sm-12 col-lg-3 pt-1 mt-3">
+    <a href="internacional/" class="btn btn-danger mb-3" style="width: 100%;">
+      <i class="fas fa-globe"></i>
+      <h5>Internacionales</h5>
+    </a>
+    {% load news_extras %}
+    {% get_international as news_category %}
+    {% for new in news_category %}
+    <div class="col-lg-12 mt-2">
+      <div class="information">
+        <div class="section-time">
+          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}" class="section">
+            <i class="fas fa-tag"></i>
+            {{new.categories}}
+          </a>
+          <span class="update-date"><i class="fas fa-clock"></i>{{new.published|date:'Y-m-d H:i'}}</span>
+        </div>
+        <h3 class="title-sm">
+          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}">
+            {{new.title}}
+          </a>
+        </h3>
+        <div class="lead">
+          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}">{{new.sub_title|safe}}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <!-- SPORT -->
+  <div class="col-xs-6 col-lg-9 col-sm-12 mt-3 wrapper__pictureNews">
+    <a href="lo-que-pasa-en-el-mundo/" class="btn btn-danger mb-3" style="width: 100%;">
+      <i class="fas fa-globe"></i>
+      <h5>Lo mejor del deporte</h5>
+    </a>
+    <div class="bt-center boxroun">
+      {% for news in news_sport %}
+      <img class="float-start zoom" src="{{news.image.url}}" alt="{{news.image}}">
+      <div class="overlay"></div>
+      <div class="bt-title-cat-intro-eranews">
+        <a class="bt-category eranews homestyle2" href="#">deporte</a>
+        <br>
+        <a class="bt-title eranews homestyle2" href="{% url 'News:slug_general' news.id news.slug|slugify %}"><h1 class="h3">{{news.title}}</h1></a>
+        <div class="d-flex justify-content-between">
+          <div class="bt-extra">
+            <span><i class="fas fa-clock"></i>{{news.published|date:'Y-m-d H:i'|add:' horas'}}</span>
+            <span><i class="fas fa-eye"></i>2312</span>
+            <span><i class="fas fa-tag"></i>{{news.sub_categories}}</span>
+          </div>
+          <div class="bt-share">
+            <i class="fas fa-share-alt share-all"></i>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

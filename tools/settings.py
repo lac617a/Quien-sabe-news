@@ -42,7 +42,41 @@ INSTALLED_APPS = [
     'rest_framework',
     # App
     'news',
+    'ckeditor',
+    'hitcount',
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height':'500px',
+        # tab key conversion space number
+        'tabSpaces': 2,
+        # Toolbar Style
+        'toolbar': None,
+        # Toolbar buttons
+        'toolbar_Custom': [
+            ['Format'],
+            ['Smiley', 'CodeSnippet'],
+            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
+            ['TextColor', 'BGColor'],
+            ['Link', 'Unlink'],
+            ['NumberedList', 'BulletedList'],
+            ['Maximize'],
+            ['Image','imageTextAlternative'],
+        ],
+        # Add Code Block Plug-ins
+        'extraPlugins': ','.join(['codesnippet']),
+        'codeSnippet_languages': {
+            'bash': 'Bash',
+            'css': 'CSS',
+            'django': 'Django',
+            'html': 'HTML',
+            'javascript': 'JavaScript',
+            'php': 'PHP',
+            'python': 'Python',
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +86,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tools.urls'
@@ -108,15 +143,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-co'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -124,3 +159,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+
+# WhiteNoise
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# HitCount
+SESSION_SAVE_EVERY_REQUEST = True
+# HITCOUNT_KEEP_HIT_ACTIVE = {'minutes': 60}
+# HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
+# HITCOUNT_KEEP_HIT_IN_DATABASE = {'seconds': 10}

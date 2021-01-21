@@ -1,37 +1,283 @@
 <!-- MAIN NAVIGATION -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current="page" href="#">Inicio</a>
+{% load static %}
+<div class="container__navbar justify-content-center d-flex mt-3"id="navbar__nav">
+  <div class="wrapper__navbar" >
+    <nav class="navbar__navbar"">
+      <ul class="navbar__nav">
+        <li class="navbar__nav-item">
+          <div class="tab-grp">
+            <a class="navbar__nav-link" href="#">
+              <strong>Colombia</strong>
+            </a>
+            <span class="hasChildsIcon"></span>
+            <div class="child-nav cf mouseleave-2" style="display: none;">
+              <div class="portlet-boundary">
+                <div id="main-content" class="iter-portal-size" role="main">
+                  <div class="portlet-layout">
+                    <div class="portlet-column column-nav">
+                      <ul class="navbar__sub-nav">
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Cali</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Cucuta</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Bogota</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Bucaramanga</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Barranquilla</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Medellin</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Otras ciudades</a></li>
+                      </ul>
+                    </div>
+                    <div class="portlet-column column-noticia-img">
+                      <div class="teaser-viewer-portlet">
+                        <div class="navegacion-central-teaser">
+                          <figure class="content-noticias">
+                            <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 48%; background-color: #000000;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="540" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <div class="navbar__overlay"></div>
+                            </div>
+                            <figcaption class="descripcion-noticia-img">
+                              <a href="#">
+                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <p>
+                                  <span class="bullet-categoria-noticias"></span>
+                                  E.E.U.U / 10:32 PM
+                                </p>
+                              </a>
+                            </figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/blog/' %}active{% endif %}" href="#">Blog</a>
+        <li class="navbar__nav-item">
+          <div class="tab-grp">
+            <a class="navbar__nav-link" href="#">
+              <strong>Internacionales</strong>
+            </a>
+            <span class="hasChildsIcon"></span>
+            <div class="child-nav cf mouseleave" style="display: none;">
+              <div class="portlet-boundary">
+                <div id="main-content" class="iter-portal-size" role="main">
+                  <div class="portlet-layout">
+                    <div class="column-nav">
+                      <ul class="navbar__sub-nav">
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">America latina</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Estados unidos</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Venezuela</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Europa</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Medio oriente</a></li>
+                      </ul>
+                    </div>
+                    <div class="column-noticia-img">
+                      <div class="teaser-viewer-portlet">
+                        <div class="navegacion-central-teaser">
+                          <figure class="content-noticias">
+                            <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 40%; background-color: #000000;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="500" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <div class="navbar__overlay"></div>
+                            </div>
+                            <figcaption class="descripcion-noticia-img">
+                              <a href="#">
+                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <p>
+                                  <span class="bullet-categoria-noticias"></span>
+                                  E.E.U.U / 10:32 PM
+                                </p>
+                              </a>
+                            </figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/portafolio/' %}active{% endif %}" href="#">Portafolio</a>
+        <li class="navbar__nav-item">
+          <div class="tab-grp">
+            <a class="navbar__nav-link" href="#">
+              <strong>Deporte</strong>
+            </a>
+            <span class="hasChildsIcon"></span>
+            <div class="child-nav cf mouseleave-2" style="display: none;">
+              <div class="portlet-boundary">
+                <div id="main-content" class="iter-portal-size" role="main">
+                  <div class="portlet-layout">
+                    <div class="portlet-column column-nav">
+                      <ul class="navbar__sub-nav">
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Fútbol</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Fútbol Europeo</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Fútbol Colombiano</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Ciclismo</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Fórmula 1</a></li>
+                      </ul>
+                    </div>
+                    <div class="portlet-column column-noticia-img">
+                      <div class="teaser-viewer-portlet">
+                        <div class="navegacion-central-teaser">
+                          <figure class="content-noticias">
+                            <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 40%; background-color: #000000;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="540" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <div class="navbar__overlay"></div>
+                            </div>
+                            <figcaption class="descripcion-noticia-img">
+                              <a href="#">
+                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <p>
+                                  <span class="bullet-categoria-noticias"></span>
+                                  E.E.U.U / 10:32 PM
+                                </p>
+                              </a>
+                            </figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/noticias-random/' %}active{% endif %}" href="#">Noticias random</a>
+        <li class="navbar__nav-item">
+          <div class="tab-grp">
+            <a class="navbar__nav-link" href="#">
+              <strong>Tendencia</strong>
+            </a>
+            <span class="hasChildsIcon"></span>
+            <div class="child-nav cf mouseleave-3" style="display: none;">
+              <div class="portlet-boundary">
+                <div id="main-content" class="iter-portal-size" role="main">
+                  <div class="portlet-layout">
+                    <div class="column-nav">
+                      <ul class="navbar__sub-nav">
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Mascotas</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Ciencia</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Motores</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Turismo</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Medio Ambiente</a></li>
+                      </ul>
+                    </div>
+                    <div class="column-noticia-img">
+                      <div class="teaser-viewer-portlet">
+                        <div class="navegacion-central-teaser">
+                          <figure class="content-noticias">
+                            <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 40%; background-color: #000000;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="540" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <div class="navbar__overlay"></div>
+                            </div>
+                            <figcaption class="descripcion-noticia-img">
+                              <a href="#">
+                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <p>
+                                  <span class="bullet-categoria-noticias"></span>
+                                  E.E.U.U / 10:32 PM
+                                </p>
+                              </a>
+                            </figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/menu-de-videos' %}active{% endif %}" href="#">Menu de videos</a>
+        <li class="navbar__nav-item">
+          <div class="tab-grp">
+            <a class="navbar__nav-link" href="#">
+              <strong>Tecnologia</strong>
+            </a>
+            <span class="hasChildsIcon"></span>
+            <div class="child-nav cf mouseleave-4" style="display: none;">
+              <div class="portlet-boundary">
+                <div id="main-content" class="iter-portal-size" role="main">
+                  <div class="portlet-layout">
+                    <div class="column-nav">
+                      <ul class="navbar__sub-nav">
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">videosjuegos</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">aplicaciones</a></li>
+                      </ul>
+                    </div>
+                    <div class="column-noticia-img">
+                      <div class="teaser-viewer-portlet">
+                        <div class="navegacion-central-teaser">
+                          <figure class="content-noticias">
+                            <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 40%; background-color: #000000;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="540" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <div class="navbar__overlay"></div>
+                            </div>
+                            <figcaption class="descripcion-noticia-img">
+                              <a href="#">
+                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <p>
+                                  <span class="bullet-categoria-noticias"></span>
+                                  E.E.U.U / 10:32 PM
+                                </p>
+                              </a>
+                            </figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="navbar__nav-item">
+          <div class="tab-grp">
+            <a class="navbar__nav-link" href="#">
+              <strong>Entretenimiento</strong>
+            </a>
+            <span class="hasChildsIcon"></span>
+            <div class="child-nav cf mouseleave" style="display: none;">
+              <div class="portlet-boundary">
+                <div id="main-content" class="iter-portal-size" role="main">
+                  <div class="portlet-layout">
+                    <div class="column-nav">
+                      <ul class="navbar__sub-nav">
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Farandula</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Moda</a></li>
+                        <li class="navbar__sub-item"><a class="navbar__sub-link" href="#">Television</a></li>
+                      </ul>
+                    </div>
+                    <div class="column-noticia-img">
+                      <div class="teaser-viewer-portlet">
+                        <div class="navegacion-central-teaser">
+                          <figure class="content-noticias">
+                            <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 40%; background-color: #000000;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="500" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <div class="navbar__overlay"></div>
+                            </div>
+                            <figcaption class="descripcion-noticia-img">
+                              <a href="#">
+                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <p>
+                                  <span class="bullet-categoria-noticias"></span>
+                                  E.E.U.U / 10:32 PM
+                                </p>
+                              </a>
+                            </figcaption>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
-</nav>
-
-<!-- //MAIN NAVIGATION -->
+</div>
