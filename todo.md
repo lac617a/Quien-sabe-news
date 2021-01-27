@@ -47,3 +47,9 @@
   * Farandula
   * Moda
   * Television
+
+## Error 404: página no encontrada
+
+En est falta hacer
+
+Vaya que Extrano, Hemos intentado recuperar el enlace de la pagina, pero creo que ocurrio un pequeno Erro 404 cuando la estabamos analizando, asi como esa persona no analizo los bellos momento que paso a tu lado.

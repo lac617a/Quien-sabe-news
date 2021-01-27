@@ -10,9 +10,10 @@
       <img class="float-start zoom" src="{{new.get_image_url}}" alt={{new.image}}">
       <div class="overlay"></div>
       <div class="bt-title-cat-intro-eranews">
-        <a class="bt-category eranews homestyle2" href="{% url 'News:slug_general' new.id new.slug|slugify %}">noticias de última hora</a>
+        {% url 'News:slug_general' new.sub_categories|slugify new.slug|slugify as url %}
+        <a class="bt-category eranews homestyle2" href="{{url}}">noticias de última hora</a>
         <br>
-        <a class="bt-title eranews homestyle2" title="{{new.title}}" href="{% url 'News:slug_general' new.id new.slug|slugify %}"><h1 class="h3">{{new.title|linebreaks}}</h1></a>
+        <a class="bt-title eranews homestyle2" title="{{new.title}}" href="{{url}}"><h1 class="h3">{{new.title|linebreaks}}</h1></a>
         <div class="d-flex justify-content-between">
           <div class="bt-extra">
             <span><i class="fas fa-clock"></i>{{new.published|date:"SHORT_DATE_FORMAT"}}</span>
@@ -41,7 +42,7 @@
         <div class="bt-title-cat-intro-eranews">
           <a class="bt-category eranews homestyle2" href="/recent-news/">Reciente</a>
           <br>
-          <a class="bt-title eranews homestyle2" title="{{new.title}}" href="{% url 'News:slug_general' new.id new.slug|slugify %}"><small>{{new.title}}</small></a>
+          <a class="bt-title eranews homestyle2" title="{{new.title}}" href="{% url 'News:slug_general' new.sub_categories|slugify new.slug|slugify %}"><small>{{new.title}}</small></a>
           <div class="bt-extra">
             <small>
               <span><i class="fas fa-clock"></i>{{new.published|date:"SHORT_DATE_FORMAT"}}</span>
@@ -63,7 +64,7 @@
         <div class="bt-title-cat-intro-eranews">
           <a class="bt-category eranews homestyle2" href="/recent-news/">Reciente</a>
           <br>
-          <a class="bt-title eranews homestyle2" title="{{new.title}}" href="{% url 'News:slug_general' new.id new.slug|slugify %}"><small>{{new.title}}</small></a>
+          <a class="bt-title eranews homestyle2" title="{{new.title}}" href="{% url 'News:slug_general' new.sub_categories|slugify new.slug|slugify%}"><small>{{new.title}}</small></a>
           <div class="bt-extra">
             <small>
               <span><i class="fas fa-clock"></i>{{new.published|date:"SHORT_DATE_FORMAT"}}</span>
@@ -83,7 +84,7 @@
         <div class="bt-title-cat-intro-eranews">
           <a class="bt-category eranews homestyle2" href="/recent-news/">Reciente</a>
           <br>
-          <a class="bt-title eranews homestyle2" title="{{new.title}}" href="{% url 'News:slug_general' new.id new.slug|slugify %}"><small>{{new.title}}</small></a>
+          <a class="bt-title eranews homestyle2" title="{{new.title}}" href="{% url 'News:slug_general' new.sub_categories|slugify new.slug|slugify %}"><small>{{new.title}}</small></a>
           <div class="bt-extra">
             <small>
               <span><i class="fas fa-clock"></i>{{new.published|date:"SHORT_DATE_FORMAT"}}</span>

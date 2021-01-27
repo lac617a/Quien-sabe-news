@@ -3,9 +3,25 @@ from django.http import Http404
 from news.models import NewNews
 
 register = template.Library()
+"""
+ALL CATEGORIES
+"""
+@register.simple_tag
+def get_news_sport_news():
+  """
+  Un Objecto de nuestro deporte
+  """
+  object_filter = NewNews.objects.filter(sub_categories=5)[:1]
+  try:
+    return object_filter
+  except NewNews.DoesNotExist:
+    raise Http404
 
 @register.simple_tag
 def get_main_news():
+  """
+  Pequena llamada a 3 objecto de las principales noticias
+  """
   object_filter = NewNews.objects.all()[:3]
   try:
     return object_filter
@@ -14,7 +30,21 @@ def get_main_news():
 
 @register.simple_tag
 def get_the_best_news():
-  object_filter = NewNews.objects.filter(categories=3).order_by('?')[:9]
+  """
+  Cierta llamada a 9 objecto de la categoria internacional aleatoriamente
+  """
+  object_filter = NewNews.objects.filter(categories='Internacional').order_by('?')[:9]
+  try:
+    return object_filter
+  except NewNews.DoesNotExist:
+    raise Http404
+
+@register.simple_tag
+def get_colombia_news():
+  """
+  Cierta llamada a un objecto de la categoria colombiano.
+  """
+  object_filter = NewNews.objects.filter(categories__exact=u'Colombia')[:1]
   try:
     return object_filter
   except NewNews.DoesNotExist:
@@ -25,6 +55,7 @@ Simple llamada a la db de forma rebanada, para todas las nuevas noticias.
 """
 @register.simple_tag
 def get_element_news():
+  """LLamada simple al primer objecto de nuestro db """
   object_filter = NewNews.objects.all()[:1]
   try:
     return object_filter
@@ -69,7 +100,7 @@ def get_international():
 
 @register.simple_tag
 def get_venezuela():
-  object_filter = NewNews.objects.filter(sub_categories=1)[:3] # Get all Venezuela range 2
+  object_filter = NewNews.objects.filter(sub_categories=1)[:3] # Get all Venezuela range 3
   try:
     return object_filter
   except NewNews.DoesNotExiste:

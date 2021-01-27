@@ -16,12 +16,13 @@
         {% for news in main_news %}
           <li class="content__item-aside">
             <h6>
-              <a class="content__nav-link" href="{% url 'News:slug_general' news.id news.slug|slugify %}">{{news.title}}</a>
+              <a class="content__nav-link" href="{% url 'News:slug_general' news.sub_categories|slugify news.slug|slugify %}">{{news.title}}</a>
               <br><small class="text-muted">{{news.published}}</small>
             </h6>
           </li>
         {% endfor %}
       </ul>
+      {% include 'components/advertising.html' %}
     </div>
     <div class="col-lg-12 position-relative">
       <div class="content-title">
@@ -38,7 +39,7 @@
         {% for news in main_news %}
           <li class="content__item-aside">
             <h6>
-              <a class="content__nav-link" href="{% url 'News:slug_general' news.id news.slug|slugify %}">
+              <a class="content__nav-link" href="{% url 'News:slug_general' news.sub_categories|slugify news.slug|slugify %}">
                 <div class="row">
                   <div class="col col-lg-12">
                     <img class="zoom-sm rounded" src="{{news.get_image_url}}" alt="">
@@ -70,7 +71,7 @@
         <li class="content__item-aside">
           <div class="row">
             <h6 class="h6">
-              <a class="content__nav-link" href="{% url 'News:slug_general' news.id news.slug|slugify %}">
+              <a class="content__nav-link" href="{% url 'News:slug_general' news.sub_categories|slugify news.slug|slugify %}">
                 <div class="content__aside-counter">
                 {% if news.id %}
                   <span>{{forloop.counter}}</span>

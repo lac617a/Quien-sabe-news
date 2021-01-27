@@ -1,0 +1,62 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light t3-header navbar-mobile"
+  id="navbar-mobile"
+  style="background-position: center"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      {% load static %}
+      <img
+        class="logo__img"
+        src="{% static 'img/tnews.png' %}"
+        style="width: 100px !important"
+        alt="Tnews"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" title="Colombia" href="/colombia/"
+            ><strong>Colombia</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Internacional" href="/internacional/"
+            ><strong>Internacional</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Deporte" href="/deporte/"
+            ><strong>Deporte</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Tendencia" href="/tendencia/"
+            ><strong>Tendencia</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Tecnologia" href="/tecnologia/"
+            ><strong>Tecnologia</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Entretenimiento" href="/entretenimiento/"
+            ><strong>Entretenimiento</strong></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -66,7 +66,7 @@ class NewNews(models.Model):
     help_text='Dado caso que Exista un Sub contenido'
     )
   published = models.DateTimeField(default=now,verbose_name='Fecha de publicación')
-  slug = models.SlugField(unique=True, max_length=100,blank=True)
+  slug = models.SlugField(unique=True, max_length=255,blank=True)
   is_popular = models.BooleanField(verbose_name='Contenido popular',help_text='¿Seguro que el contenido es popular?',default=False)
   hit_count_generic = GenericRelation(HitCount,object_id_field='object_pk',related_query_name='hit_count_generic_releation')
   update = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de edición')

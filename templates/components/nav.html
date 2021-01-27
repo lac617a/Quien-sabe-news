@@ -1,8 +1,8 @@
 <!-- MAIN NAVIGATION -->
 {% load static %}
-<div class="container__navbar justify-content-center d-flex mt-3"id="navbar__nav">
+<div class="container__navbar justify-content-center d-flex mt-3">
   <div class="wrapper__navbar" >
-    <nav class="navbar__navbar"">
+    <nav class="navbar__navbar">
       <ul class="navbar__nav">
         <li class="navbar__nav-item">
           <div class="tab-grp">
@@ -28,21 +28,25 @@
                     <div class="portlet-column column-noticia-img">
                       <div class="teaser-viewer-portlet">
                         <div class="navegacion-central-teaser">
+                          {% load news_extras %}
+                          {% get_colombia_news as colombia %}
+                          {% for item in colombia %}
                           <figure class="content-noticias">
                             <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 48%; background-color: #000000;border-bottom-right-radius: 5px;">
-                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="540" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{{item.get_image_url}}" alt="" width="540" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
                               <div class="navbar__overlay"></div>
                             </div>
                             <figcaption class="descripcion-noticia-img">
                               <a href="#">
-                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <h3><span class="priority-content">{{item.title}}</span></h3>
                                 <p>
-                                  <span class="bullet-categoria-noticias"></span>
-                                  E.E.U.U / 10:32 PM
+                                  <span class="bullet-categoria-noticias" style="background-color: #1ac2ec;"></span>
+                                  {{item.published|date:'Y-m-d H:i'}}
                                 </p>
                               </a>
                             </figcaption>
                           </figure>
+                          {% endfor %}
                         </div>
                       </div>
                     </div>
@@ -55,7 +59,7 @@
         <li class="navbar__nav-item">
           <div class="tab-grp">
             <a class="navbar__nav-link" href="#">
-              <strong>Internacionales</strong>
+              <strong>Internacional</strong>
             </a>
             <span class="hasChildsIcon"></span>
             <div class="child-nav cf mouseleave" style="display: none;">
@@ -74,21 +78,25 @@
                     <div class="column-noticia-img">
                       <div class="teaser-viewer-portlet">
                         <div class="navegacion-central-teaser">
+                          {% load news_extras %}
+                          {% get_international as international %}
+                          {% for item in international %}
                           <figure class="content-noticias">
                             <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 40%; background-color: #000000;border-bottom-right-radius: 5px;">
-                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="500" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{{item.get_image_url}}" alt="" width="500" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
                               <div class="navbar__overlay"></div>
                             </div>
                             <figcaption class="descripcion-noticia-img">
                               <a href="#">
-                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <h3><span class="priority-content">{{item.title}}</span></h3>
                                 <p>
-                                  <span class="bullet-categoria-noticias"></span>
-                                  E.E.U.U / 10:32 PM
+                                  <span class="bullet-categoria-noticias" style="background-color: #9C1F42;"></span>
+                                  {{item.published|date:'Y-m-d H:i'}}
                                 </p>
                               </a>
                             </figcaption>
                           </figure>
+                          {% endfor %}
                         </div>
                       </div>
                     </div>
@@ -120,21 +128,25 @@
                     <div class="portlet-column column-noticia-img">
                       <div class="teaser-viewer-portlet">
                         <div class="navegacion-central-teaser">
+                          {% load news_extras %}
+                          {% get_news_sport_news as news_sport %}
+                          {% for item in news_sport %}
                           <figure class="content-noticias">
                             <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 40%; background-color: #000000;border-bottom-right-radius: 5px;">
-                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="540" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{{item.get_image_url}}" alt="" width="540" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
                               <div class="navbar__overlay"></div>
                             </div>
                             <figcaption class="descripcion-noticia-img">
                               <a href="#">
-                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <h3><span class="priority-content">{{item.title}}</span></h3>
                                 <p>
-                                  <span class="bullet-categoria-noticias"></span>
-                                  E.E.U.U / 10:32 PM
+                                  <span class="bullet-categoria-noticias" style="background-color:  #1ac22c;"></span>
+                                  {{item.published|date:'Y-m-d H:i'}}
                                 </p>
                               </a>
                             </figcaption>
                           </figure>
+                          {% endfor %}
                         </div>
                       </div>
                     </div>
@@ -175,7 +187,7 @@
                               <a href="#">
                                 <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
                                 <p>
-                                  <span class="bullet-categoria-noticias"></span>
+                                  <span class="bullet-categoria-noticias" style="background-color: #DB5C72;"></span>
                                   E.E.U.U / 10:32 PM
                                 </p>
                               </a>
@@ -218,7 +230,7 @@
                               <a href="#">
                                 <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
                                 <p>
-                                  <span class="bullet-categoria-noticias"></span>
+                                  <span class="bullet-categoria-noticias" style="background-color: #dd21dd;"></span>
                                   E.E.U.U / 10:32 PM
                                 </p>
                               </a>
@@ -253,21 +265,24 @@
                     <div class="column-noticia-img">
                       <div class="teaser-viewer-portlet">
                         <div class="navegacion-central-teaser">
+                          {% get_entertainment_news as entertainment %}
+                          {% for item in entertainment %}
                           <figure class="content-noticias">
                             <div frame="Menu_Desplegable" style="position: relative; width: 100%; padding-top: 40%; background-color: #000000;border-bottom-right-radius: 5px;">
-                              <img class="lazyloaded" src="{% static 'img/covid.jpeg' %}" alt="" width="500" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
+                              <img class="lazyloaded" src="{{item.get_image_url}}" alt="" width="500" style="bottom: 0;left: 0;top: 0;right: 0;height: auto;width: 100%;max-height: 100%;max-width: 100%;display: block;position: absolute;margin: auto;border-bottom-right-radius: 5px;">
                               <div class="navbar__overlay"></div>
                             </div>
                             <figcaption class="descripcion-noticia-img">
                               <a href="#">
-                                <h3><span class="priority-content">Tom Cruise insultó a empleados por incumplir normas anticovid</span></h3>
+                                <h3><span class="priority-content">{{item.title}}</span></h3>
                                 <p>
-                                  <span class="bullet-categoria-noticias"></span>
-                                  E.E.U.U / 10:32 PM
+                                  <span class="bullet-categoria-noticias" style="background-color: #e60034;"></span>
+                                  {{item.published|date:'Y-m-d H:i'}}
                                 </p>
                               </a>
                             </figcaption>
                           </figure>
+                          {% endfor %}
                         </div>
                       </div>
                     </div>

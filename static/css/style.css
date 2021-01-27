@@ -9,15 +9,6 @@
   align-items: center;
   background-color: #fff;
 }
-.t3-header{
-  background-image: url(/static/img/footer.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  margin-bottom: 1rem;
-  padding: 0 !important;
-}
 .spinner{
   width: 100px;
   height: 100px;
@@ -45,11 +36,14 @@
   display: block;
 }
 .border-show{border: 1px solid red;}
-a{
+.wrapper__main{
+  margin-top: 2rem;
+}
+.wrapper__main a{
   text-decoration: none;
   cursor: pointer;
 }
-a:hover{
+.wrapper__main a:hover{
   color: #e60034;
   transition: all 0.3s linear 0s;
 }
@@ -171,7 +165,7 @@ a:hover{
 
 /* ------------------
         REDES
- -------------------- */
+  ------------------- */
 #redes{
   position: absolute;
   top: 100px;
@@ -265,8 +259,10 @@ a:hover{
 }
 
 .image__figcation{
-  margin: .5rem 0 0;
+  position: relative;
+  background: #eee;
   padding:0 0.6rem;
+  border-left: #1c1c1c 1px sol;
 }
 
 .content__aside-counter{
@@ -279,8 +275,9 @@ a:hover{
 
 .image__container-sub-title{
   line-height: 15px;
+  margin: 1rem 0;
+  border-left: #111c1c 2px solid;
 }
-
 
 /* aside */
 
@@ -324,7 +321,7 @@ a:hover{
 }
 
 .content__nav-title{
-  margin-top: .5rem;
+  margin: .5rem 0 .3rem 0;
   display: block;
 }
 .information {
@@ -404,9 +401,7 @@ a:hover{
   margin: 0 auto;
 }
 
-.information .title-sm a:hover {
-  color: #666;
-}
+.information .title-sm a:hover {color: #666;}
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (max-width:768px){
@@ -444,6 +439,18 @@ a:hover{
 
 /*Extra small devices (phones, 425px and down) */
 @media only screen and (max-width: 425px){
+  .wrapper__main{
+    margin-top: 4rem;
+  }
+  .logo{
+    padding-top: 2rem;
+  }
+  .network{
+    margin: 0 5% 10px;
+  }
+  .logo__img{
+    width: 150px;
+  }
   .wrapper__pictureNews{
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -490,8 +497,8 @@ a:hover{
     padding: 0 12px;
   }
   .content__nav-title{
-    margin: 0;
-    font-size: 24px;
+    margin: 0 0 .3rem 0;
+    font-size: 1.2em;
   }
   .bg-activate-boot{
     position: fixed;

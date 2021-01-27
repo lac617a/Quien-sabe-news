@@ -12,19 +12,19 @@
     <div class="col-lg-12 mt-2">
       <div class="information">
         <div class="section-time">
-          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}" class="section">
+          <a href="{% url 'News:slug_general' new.sub_categories new.slug|slugify %}" class="section">
             <i class="fas fa-tag"></i>
-            {{new.categories}}
+            {{new.sub_categories}}
           </a>
           <span class="update-date"><i class="fas fa-clock"></i>{{new.published|date:'Y-m-d H:i'}}</span>
         </div>
         <h3 class="title-sm">
-          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}">
+          <a href="{% url 'News:slug_general' new.sub_categories new.slug|slugify %}">
             {{new.title}}
           </a>
         </h3>
         <div class="lead">
-          <a href="{% url 'News:slug_general' new.id new.slug|slugify %}">{{new.sub_title|safe}}</a>
+          <a href="{% url 'News:slug_general' new.sub_categories new.slug|slugify %}">{{new.sub_title|safe}}</a>
         </div>
       </div>
     </div>
@@ -37,18 +37,19 @@
       <h5>Lo mejor del deporte</h5>
     </a>
     <div class="bt-center boxroun">
-      {% for news in news_sport %}
-      <img class="float-start zoom" src="{{news.image.url}}" alt="{{news.image}}">
+      {% get_news_sport_news as news_sport %}
+      {% for new in news_sport %}
+      <img class="float-start zoom" src="{{new.image.url}}" alt="{{new.image}}">
       <div class="overlay"></div>
       <div class="bt-title-cat-intro-eranews">
-        <a class="bt-category eranews homestyle2" href="#">deporte</a>
+        <a class="bt-category eranews homestyle2" href="Deporte">deporte</a>
         <br>
-        <a class="bt-title eranews homestyle2" href="{% url 'News:slug_general' news.id news.slug|slugify %}"><h1 class="h3">{{news.title}}</h1></a>
+        <a class="bt-title eranews homestyle2" href="{% url 'News:slug_general' new.sub_categories|slugify new.slug|slugify %}"><h1 class="h3">{{new.title}}</h1></a>
         <div class="d-flex justify-content-between">
           <div class="bt-extra">
-            <span><i class="fas fa-clock"></i>{{news.published|date:'Y-m-d H:i'|add:' horas'}}</span>
+            <span><i class="fas fa-clock"></i>{{new.published|date:'Y-m-d H:i'|add:' horas'}}</span>
             <span><i class="fas fa-eye"></i>2312</span>
-            <span><i class="fas fa-tag"></i>{{news.sub_categories}}</span>
+            <span><i class="fas fa-tag"></i>{{new.sub_categories}}</span>
           </div>
           <div class="bt-share">
             <i class="fas fa-share-alt share-all"></i>

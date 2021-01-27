@@ -37,19 +37,24 @@ document.addEventListener('DOMContentLoaded',()=>{
   wrapper.classList.add('activate')
 })
 
-// Controlador de logo
-const $logo_img = document.getElementById('t3-header')
-// Controlador del navbar
-const $navbar = document.getElementById('navbar__nav')
+//Controlador de logo
+//Controlador del navbar
+const $navbar_float = document.getElementById('navbar__nav-float')
+const $navbar_mobile = document.getElementById('navbar-mobile')
 
 window.onscroll = function(){
-  const currentScroll = document.documentElement.scrollTop
-  if(currentScroll > 130){
-    $logo_img.style.height = '179px'
-    $navbar.classList.add('bg-activate')
+  const currentScroll = document.documentElement.scrollTop  //200 height to scroll
+  if(currentScroll >= 150){
+    $navbar_mobile.classList.add('navbar__mobile-activate')
+    $navbar_float.classList.add('bg-activate')
+    $navbar_float.style.display = 'block'
+    if(currentScroll >= 190)
+    $navbar_float.style.transform = 'translateY(45px)'
   }
   else{
-    $logo_img.style.height = '123px'
-    $navbar.classList.remove('bg-activate')
+    $navbar_float.classList.remove('bg-activate')
+    $navbar_float.style.transform = 'translateY(-45px)'
+    $navbar_float.style.display = 'none'
+
   }
 }
