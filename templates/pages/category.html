@@ -1,0 +1,16 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<div class="container bg-wrapper wrapper__main rounded pt-3">
+  <div class="row">
+    <div class="col-xs-6 col-lg-8 col-sm-12 p-0">
+    {% block category %}
+    {% endblock category %}
+    {% include 'components/share.html' %}
+    </div>
+    <div class="col-lg-4 col-sm-12">
+      {% include 'pages/breaking-news/aside.html' %}
+    </div>
+  </div>
+</div>
+{% include 'components/footer.html' %}
+{% endblock content %}

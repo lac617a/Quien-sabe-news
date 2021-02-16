@@ -1,57 +1,62 @@
-from django.views import generic
+from django.shortcuts import render,redirect,get_object_or_404
+from .models import NewNews,Category,PermissionsAndPrivacy
+from django.http import Http404,JsonResponse,HttpResponse
+from django.views.generic.list import ListView
 from hitcount.views import HitCountDetailView
-from django.shortcuts import render
-from django.http import Http404, HttpResponse
-from .models import NewNews
+from django.utils.http import is_safe_url
+from django.conf import settings
+from slugify import slugify
 
 # Create your views here.
 
-def get_id_db(id):
-  get_id = NewNews.objects.get(pk=id)
-  try:
-    return get_id
-  except NewNews.DoesNotExist:
-    raise Http404
-
-# def post_list_view(request):
-#   news_category = NewNews.objects.filter(categories=3)[:2]
-#   news_united_state = NewNews.objects.filter(categories=4)[:1]
-#   context = {"news_category":news_category,"news_united_state":news_united_state}
-#   return render(request,'pages/home.html',context=context)
-
-class PostListView(generic.ListView):
-  model = NewNews
-  context_object_name = 'news_breakings'
-  template_name = 'pages/home.html'
-
-  def get_queryset(self,*args,**kwargs):
-    qs = super(PostListView,self).get_queryset(*args,**kwargs)
-    qs = qs.all()[:3]
-    return qs
-
-# class Slug_view_detail(generic.DetailView):
-#   """Detail News."""
-#   template_name = 'pages/breaking-news/breaking-news.html'
-#   model = NewNews
-#   context_object_name = 'breaking_news'
-#   slug_field = 'slug'
-#   slug_url_kwarg = 'slug_news'
-
-def slug_view_detail(request,slug_news,*args,**kwargs):
-  qs = NewNews.objects.filter(slug__iexact=slug_news)
-  context = {}
-  if qs.exists(): # Devuelve True si NewNews contiene algún resultado y False si no.
-    qs = qs.first() # Devuelve el primer objeto que coincide con el conjunto de consultas.
-  else:
-    return render(request,'pages/breaking-news/breaking-news.html',context=context, status=404)
-  context['breaking_news'] = qs
-  return render(request,'pages/breaking-news/breaking-news.html',context=context, status=200)
+ALLOWED_HOSTS = settings.ALLOWED_HOSTS
 
 def all_recents_news_view(request,*args,**kwargs):
   return render(request,'pages/recents/all-recents.html',status=200)
 
-# class PostCountHitDetailView(post_list_view, HitCountDetailView):
-#     """
-#     Generic hitcount class based view that will also perform the hitcount logic.
-#     """
-#     count_hit = True
+def terms_and_conditions(request,*args,**kwargs):
+  obj = PermissionsAndPrivacy.objects.all()
+  return render(request,'pages/terms-and-conditions.html',context={'obj':obj})
+
+def update_site_web(request,*args,**kwargs):
+  pass
+class PostListView(ListView):
+  model = NewNews
+  context_object_name = 'news_breakings'
+  template_name = 'pages/home.html'
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context.update({
+      'popular_hit':NewNews.objects.order_by('-hit_count_generic__hits')[:1]
+    })
+    return context
+
+def get_news_category(request,*args,**kwargs):
+  next_url = request.GET.get('next') or None
+  item = request.GET.get('search')
+  context = {}
+  status = 200
+  c = Category.objects.all().values('categories')
+  if item != '':
+    if item[::] in 'africa':
+        item = 'África'
+    obj = [x['categories'] for x in c if item[0].capitalize() in x['categories'][0]]
+    for i in obj:
+      regular_expressions = slugify(i)
+      if item in regular_expressions:
+        item = i
+  category = Category.objects.filter(categories__iexact=item)
+  if category.exists():
+    first = category.first()
+    context['categories'] = NewNews.objects.filter(categories_id=first.id)
+  if context == {}:
+    if next_url != None and is_safe_url(next_url,ALLOWED_HOSTS):
+      return redirect(next_url)
+  return render(request,'components/form-seeker.html', context,status=status)
+
+def search_objects(request,*args,**kwargs):
+  qs = NewNews.objects.all()
+  context = [x.serialize() for x in Category.objects.all()]
+  data = {'response':context}
+  return JsonResponse(data)

@@ -1,62 +1,62 @@
 <!-- pictureNews3 -->
-{% load static %}
-<div class="row">
-  <div class="col-xs-6 col-sm-12 col-lg-3 pt-1 mt-3">
-    <a href="internacional/" class="btn btn-danger mb-3" style="width: 100%;">
-      <i class="fas fa-globe"></i>
-      <h5>Internacionales</h5>
-    </a>
-    {% load news_extras %}
-    {% get_international as news_category %}
-    {% for new in news_category %}
-    <div class="col-lg-12 mt-2">
-      <div class="information">
-        <div class="section-time">
-          <a href="{% url 'News:slug_general' new.sub_categories new.slug|slugify %}" class="section">
-            <i class="fas fa-tag"></i>
-            {{new.sub_categories}}
-          </a>
-          <span class="update-date"><i class="fas fa-clock"></i>{{new.published|date:'Y-m-d H:i'}}</span>
-        </div>
-        <h3 class="title-sm">
-          <a href="{% url 'News:slug_general' new.sub_categories new.slug|slugify %}">
-            {{new.title}}
-          </a>
-        </h3>
-        <div class="lead">
-          <a href="{% url 'News:slug_general' new.sub_categories new.slug|slugify %}">{{new.sub_title|safe}}</a>
-        </div>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  <!-- SPORT -->
-  <div class="col-xs-6 col-lg-9 col-sm-12 mt-3 wrapper__pictureNews">
-    <a href="lo-que-pasa-en-el-mundo/" class="btn btn-danger mb-3" style="width: 100%;">
-      <i class="fas fa-globe"></i>
-      <h5>Lo mejor del deporte</h5>
-    </a>
-    <div class="bt-center boxroun">
-      {% get_news_sport_news as news_sport %}
-      {% for new in news_sport %}
-      <img class="float-start zoom" src="{{new.image.url}}" alt="{{new.image}}">
-      <div class="overlay"></div>
-      <div class="bt-title-cat-intro-eranews">
-        <a class="bt-category eranews homestyle2" href="Deporte">deporte</a>
-        <br>
-        <a class="bt-title eranews homestyle2" href="{% url 'News:slug_general' new.sub_categories|slugify new.slug|slugify %}"><h1 class="h3">{{new.title}}</h1></a>
-        <div class="d-flex justify-content-between">
-          <div class="bt-extra">
-            <span><i class="fas fa-clock"></i>{{new.published|date:'Y-m-d H:i'|add:' horas'}}</span>
-            <span><i class="fas fa-eye"></i>2312</span>
-            <span><i class="fas fa-tag"></i>{{new.sub_categories}}</span>
+<div class="col-lg-12">
+  <div class="row">
+    <div class="col-xs-6 col-sm-12 col-lg-3 pt-1 mt-3">
+      <a href="internacional/" class="btn btn-danger mb-3" style="width: 100%;">
+        <i class="fas fa-globe"></i>
+        <h5>Internacionales</h5>
+      </a>
+      {% load news_extras %}
+      {% load hitcount_tags %}
+      {% get_category_all 'Internacional' as internacional %}
+      {% for new in internacional %}
+      <div class="col-lg-12 mt-2">
+        <div class="information" {% if forloop.last %} style="border-bottom: 1px solid #1c1c1c;" {% endif %}>
+          <div class="categoria-noticia">
+            <span class="bullet-categoria-noticia" style="background-color: #9C1F42;"></span>
+            <a href="{{new.get_absolute_url}}" class="section"><i class="fas fa-tag"></i>{{new.categories}}</a>
+            <span class="update-date"><i class="fas fa-clock"></i>{{new.published|date:'t-N P'}}</span>
           </div>
-          <div class="bt-share">
-            <i class="fas fa-share-alt share-all"></i>
+          <h3 class="title-sm">
+            <a href="{{new.get_absolute_url}}">
+              {{new.header}}
+            </a>
+          </h3>
+          <div class="lead">
+            <a href="{{new.get_absolute_url}}">{{new.sub_title|safe}}</a>
           </div>
         </div>
       </div>
       {% endfor %}
+    </div>
+    <!-- SPORT -->
+    <div class="col-xs-6 col-lg-9 col-sm-12 mt-3 wrapper__pictureNews">
+      <a href="lo-que-pasa-en-el-mundo/" class="btn btn-danger mb-3" style="width: 100%;">
+        <i class="fas fa-globe"></i>
+        <h5>Lo mejor del deporte</h5>
+      </a>
+      <div class="bt-center boxroun">
+        {% get_category_all 'Deporte' as news_sport %}
+        {% for new in news_sport %}
+        <img class="float-start zoom" src="{{new.image.url}}" alt="{{new.image}}">
+        <div class="overlay"></div>
+        <div class="bt-title-cat-intro-eranews">
+          <a class="bt-category eranews homestyle2" href="Deporte">deporte</a>
+          <br>
+          <a class="bt-title eranews homestyle2" href="{{new.get_absolute_url}}"><h1 class="h3">{{new.header}}</h1></a>
+          <div class="d-flex justify-content-between">
+            <div class="bt-extra">
+              <span><i class="fas fa-clock"></i>{{new.published|date:'t-N P'}}</span>
+              <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+              <span><i class="fas fa-tag"></i>{{new.categories}}</span>
+            </div>
+            <div class="bt-share">
+              <i class="fas fa-share-alt share-all"></i>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>

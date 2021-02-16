@@ -1,6 +1,6 @@
 {% load static %}
-<div class="container__navbar bg-activate" id="navbar__nav-float"> <!--! QUITAR MANANA LA BARRA DE BUSQUEDA EN RESPONSIVE -->
-  <div class="wrapper__navbar" >
+<div class="container__navbar">
+  <div class="wrapper__navbar hide" id="navbar__nav-float">
     <nav class="navbar__navbar">
       <div class="row">
         <div class="col wrapper-logo-nav-float">
@@ -8,40 +8,27 @@
             <img class="logo__img" src="{% static 'img/tnews.png' %}" alt="Tnews">
           </a>
         </div>
-        -->
         <div class="col wrapper-section-nav-float">
           <ul>
             <li class="lst-item tabnav"><a href="/" title="Inicio">Inicio</a></li>
             <li class="lst-item tabnav">
               <a href="/" title="seccion">seccion</a>
               <ul class="sub__lst-nav">
-                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Colombia" href="/colombia/"><strong>Colombia</strong></a></li>
-                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Internacional" href="/internacional/"><strong>Internacional</strong></a></li>
-                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Deporte" href="/deporte/"><strong>Deporte</strong></a></li>
-                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Tendencia" href="/tendencia/"><strong>Tendencia</strong></a></li>
-                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Tecnologia" href="/tecnologia/"><strong>Tecnologia</strong></a></li>
-                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Entretenimiento" href="/entretenimiento/"><strong>Entretenimiento</strong></a></li>
+                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Colombia" href="{% url 'all-category' 'colombia' %}"><strong>Colombia</strong></a></li>
+                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Internacional" href="{% url 'all-category' 'internacional' %}"><strong>Internacional</strong></a></li>
+                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Deporte" href="{% url 'all-category' 'deporte' %}"><strong>Deporte</strong></a></li>
+                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Tendencia" href="{% url 'all-category' 'tendencia' %}"><strong>Tendencia</strong></a></li>
+                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Tecnología" href="{% url 'all-category' 'tecnologia' %}"><strong>Tecnología</strong></a></li>
+                <li class="sub__lst-item tabnav"><a class="navbar__nav-link" title="Entretenimiento" href="{% url 'all-category' 'entretenimiento' %}"><strong>Entretenimiento</strong></a></li>
               </ul>
             </li>
           </ul>
         </div>
         <div class="col search-network portlet-column">
           <!-- REDES -->
-          <div>
-            <div align="center" class="network">
-              <a class="network__nav-link" href="#" target="_blank" title="facebook"><i class="fab fa-facebook-f"></i></a>
-              <div class="separadorNetwork"></div>
-              <a class="network__nav-link" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a>
-              <div class="separadorNetwork"></div>
-              <a class="network__nav-link" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-          <!-- SEARCH -->
-          <div class="buscador-portada">
-            <div class="wrapper__search">
-              <input type="text" placeholder="BUSCADOR DE NOTICIAS"> <!-- TODO aqui se tiene que hacer con peticion AJAX -->
-            </div>
-          </div>
+          {% include 'components/redes.html' %}
+          <!-- SEARCH-FLOAT -->
+          {% include 'components/search-float.html' %}
         </div>
       </div>
     </nav>

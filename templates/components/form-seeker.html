@@ -1,0 +1,47 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<div class="container bg-wrapper wrapper__main rounded pt-3">
+  <div class="row">
+    <div class="col-xs-6 col-lg-8 col-sm-12 p-0">
+      <div class="noticias-carrusel-list">
+        {% for item in categories %}
+        <div class="noticias-tercer-nivel">
+          <div class="noticia-segundaria">
+            <div class="row">
+              <div class="col-lg-6 col-sm-3 col-md-6 bt-center-sm">
+                <div class="left">
+                  <a href="{{item.get_absolute_url}}">
+                    <div frame="Lista" style="position: relative; width: 100%; padding-top: 53.53%; background-color: #000000">
+                      <img style="bottom:0;left:0;top:0;right:0;height:auto;width:100%;max-height:100%;max-width:100%;display:block;position:absolute;margin:auto;" height="129" src="{{item.get_image_url}}" alt="{{item.image}}">
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col">
+                <div class="right">
+                  <div class="categoria-noticia">
+                    <span class="bullet-categoria-noticia" style="background-color: #9C1F42;"></span>
+                    <a href="{{item.get_absolute_url}}"><i class="fas fa-clock"></i>{{item.published|date:"t-N P"}}</a>
+                  </div>
+                  <h3>
+                    <a class="bt-title eranews homestyle2 text-dark" title="{{item.header}}" href="{{item.get_absolute_url}}">
+                      <span class="priority-content">{{item.header}}</span>
+                    </a>
+                  </h3>
+                  <p>{{item.sub_title}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% include 'components/redes.html' %}
+    </div>
+    <div class="col-lg-4 col-sm-12">
+      {% include 'pages/breaking-news/aside.html' %}
+    </div>
+  </div>
+</div>
+{% include 'components/footer.html' %}
+{% endblock content %}

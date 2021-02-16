@@ -1,18 +1,36 @@
-# Base de datos
+# install
 
-## Categorias
+[packages]
+django = "==2.2"
+djangorestframework = "*"
+gunicorn = "*"
+django-decouple = "*"
+django-ckeditor = "*"
+pillow = "*"
+django-hitcount = "*"
+whitenoise = "*"
+
+[dev-packages]
+pylint = "*"
+
+[requires]
+python_version = "3.6"
+
+## Base de datos
+
+### Categorias
 
 * Colombia
   * Cali
-  * Cucuta
-  * Bogota
+  * Cúcuta
+  * Bogotá
   * Bucaramanga
   * Barranquilla
-  * Medellin
+  * Medellín
   * Otras ciudades
-* Internacionales
-  * America latina
-  * Estados unidos
+* Internacional
+  * América Latina
+  * Estados Unidos
   * Venezuela
   * Europa
   * África
@@ -28,25 +46,26 @@
   * Investigacion
   * Delitos
 * Deporte
-  * Futbol internacional
-  * Futbol colombiano
+  * Fútbol Colombiano
+  * Fútbol Internacional
   * Tenis
   * Ciclismo
   * Automovilismo
-  * Otros deporte
+  * Otros Deportes
 * Tendecia
-  * Mascota
+  * Lo mejor del día
+  * Mascotas
   * Ciencia
   * Motores
   * Turismo
-  * Medio ambiente
+  * Medio Ambiente
 * Tecnologia
   * VideoJuegos
   * Aplicaciones
 * Entretenimiento
-  * Farandula
+  * Farándula
   * Moda
-  * Television
+  * Televisión
 
 ## Error 404: página no encontrada
 

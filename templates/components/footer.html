@@ -1,44 +1,48 @@
-<!-- FOOTER -->
 {% load static %}
-<footer class="footer-wrapper container p-0">
-  <!-- FOOT NAVIGATION -->
-  <div class="container bg-footer1 pt-3 rounded-top">
+<!-- FOOTER -->
+<footer class="container footer-wrapper p-0 mt-4">
+  <div class="container bg-footer1 p-3 rounded-top">
     <div class="row">
-      <div class="col-xs-6 col-lg-4 col-sm-4" name="Section(Left)">
+      <!-- FOOT NAVIGATION -->
+      <div class="col-xs-6 col-lg-4 col-sm-12" name="Section(Left)">
         <div class="widget Text">
           <div class="widget-title">
             <h6 class="footer__title">INFORMACIÓN RELEVANTE</h6>
           </div>
           <div class="widget-content">
-            <small><p>Este sitio web no almacena archivos, este blog es solo para uso informativo.</p></small>
+            <p>Este sitio web no almacena archivos, este blog es solo para uso informativo.</p>
           </div>
         </div>
       </div>
-      <div class="col-xs-6 col-lg-4 col-sm-4" name="Section(Center)">
+      <div class="col-xs-6 col-lg-4 col-sm-6 table-3rem" name="Section(Center)">
         <div class="widget Text">
           <div class="widget-title">
             <h6 class="footer__title">VISTAS A LA PÁGINA TOTALES</h6>
           </div>
-          <div class="widget-content text-center">
-            <small><h3>5463</h3></small>
+          <div class="widget-content count-view">
+            <h3>5463</h3>
           </div>
         </div>
       </div>
-      <div class="col-xs-6 col-lg-4 col-sm-4" name="Section(Right)">
+      <div class="col-xs-6 col-lg-4 col-sm-6 table-3rem" name="Section(Right)">
         <div class="widget Text">
           <div class="widget-title">
             <h6 class="footer__title">POPULAR POSTS</h6>
           </div>
           <div class="content__item-aside">
+            {% load news_extras %}
+            {% popular_hit as hit %}
+            {% for fav in hit %}
             <h6 class="h6">
-              <a class="content__nav-link" href="#">
+              <a class="content__nav-link" title="{{fav.header}}" href="{% url 'slug-general' fav.category|slugify fav.categories|slugify fav.slug|slugify %}">
                 <div class="row">
-                  <div class="col col-lg-6">
-                    <img class="zoom-sm" src="{% static 'img/tnews.png' %}" alt="">
+                  <div class="col-lg-6">
+                    <img class="zoom-sm" src="{{fav.get_image_url}}" alt="{{fav.header}}">
                   </div>
                   <div class="col col-lg-6">
-                    <span class="content__nav-title">Aun no contamos con el mejor contenido</span>
+                    <span class="content__nav-title">{{fav.header}}</span>
                   </div>
+                  {% endfor %}
                 </div>
               </a>
             </h6>
@@ -46,25 +50,38 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- //FOOT NAVIGATION -->
-  <div class="t3-copiright bg-footer2 text-white">
-    <div class="container">
-      <div class="d-flex justify-content-between">
-        <div class="copyright">
-          <div class="custom">
-            <h6 class="post-title">Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://yoydev3.herokuapp.com/" target="_blank" rel="noopener noreferrer">rookie-thunder.com</a> </h6>
+    <!-- COPYRIGHT -->
+    <div class="row t3-copyright">
+      <div class="col-xs-12 col-lg-2 col-sm-3 col">
+        <a href="/" title="Tnews">
+          <img class="logo__img end-footer" src="{% static 'img/tnews.png' %}" alt="Tnews">
+        </a>
+      </div>
+      <div class="col-lg-7 col-sm-6">
+        <div class="creditos-sitio">
+          <div class="custom creditos">
+            <p>
+              Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://yoydev3.herokuapp.com/" target="_blank" rel="noopener noreferrer">rookie-thunder.com</a>
+              <br>
+              <a href="/terminos-y-condiciones/">Términos y condiciones</a>
+            </p>
           </div>
         </div>
-        <div class="copyright">
-          <div class="d-flex">
-            <div class="p-2 bd-highlight"><h6 class="post-title"><a href="/">Inicio</a></h6></div>
-            <div class="p-2 bd-highlight"><h6 class="post-title"><a href="/acerca/">Acerca</a></h6></div>
-            <div class="p-2 bd-highlight"><h6 class="post-title"><a href="/permiso-y-privacidad/">Permiso y privacidad</a></h6></div>
+      </div>
+      <div class="col-lg-3 col-ms-3 search-network">
+        <div class="network-footer">
+          <p>Síguenos en:</p>
+          <div>
+            <div align="center" class="network">
+              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="facebook"><i class="fab fa-facebook-f"></i></a>
+              <div class="separadorNetwork"></div>
+              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a>
+              <div class="separadorNetwork"></div>
+              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </footer>
-<!-- //FOOTER -->

@@ -13,7 +13,7 @@ media/
 *.db
 *.pid
 
-news.code-workspace
+news-breaking.code-workspace
 
 Pipfile
 Pipfile.lock

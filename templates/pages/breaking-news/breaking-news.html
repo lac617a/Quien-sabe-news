@@ -1,60 +1,38 @@
-{% extends 'pages/home.html' %}
-{% load static %}
-{% block content %}
-<div class="container bg-light rounded pt-3">
-  <div class="row mt-3 mb-3">
-    {% if breaking_news %}
-    <div class="col-xs-6 col-lg-8 col-sm-7 p-0">
-      <div class="container">
-        <h1 class="h1 fw-bold">{{breaking_news.title|linebreaks}}</h1>
-        <div class="bt-extra pb-2">
-          <small class="text-muted">
-            <span><i class="fas fa-clock"></i>{{breaking_news.published|date:"SHORT_DATE_FORMAT"}}</span>
-            <span><i class="fas fa-eye"></i>2312</span>
-          </small>
-        </div>
-      </div>
-      <figure class="image__figure">
-        <div class="row">
-          <div class="col-lg-12 p-0 image__container-image">
-            <img class="float-start zoom" src="{{breaking_news.image.url}}" alt="">
-          </div>
-          <div class="col-lg-12 p-0 image__container-sub-title">
-            <figcaption class="image__figcation">
-              {% if breaking_news.sub_title == None %}
-                <br>
-              {% else %}
-                <small class="text-muted">{{breaking_news.sub_title}}</small>
-              {% endif %}
-            </figcaption>
-          </div>
-        </div>
-      </figure>
-      <div class="container lh-base wrapper__content">
-        {% spaceless %}
-        {{breaking_news.content|safe}}
-        {% endspaceless %}
-      </div>
-      <div class="container">
-        {% include 'components/redes.html' %}
-      </div>
-    </div>
-    {% else %}
-    <div class="col-xs-6 col-lg-8 col-sm-7 p-0">
-      <div class="container">
-        <img src="{% static 'img/logo-404.png' %}" style="width: 100%;" alt="url-404">
-        <div class="container">
-          {% include 'components/advertising.html' %}
-        </div>
-        <div class="wrapper__redes" style="background-color: grey; margin: 1rem 0;">
-          {% include 'components/form.html' %}
-        </div>
-      </div>
-    </div>
-    {% endif %}
-    <div class="col-lg-4 col-sm-5">
-      {% include 'pages/breaking-news/aside.html' %}
-    </div>
+{% extends 'pages/category.html' %}
+{% block category %}
+{% if breaking_news %}
+<div class="container">
+  <h1 class="h1 fw-bold">{{breaking_news.header}}</h1>
+  <div class="bt-extra pb-2">
+    <small class="text-muted">
+      <span><i class="fas fa-clock"></i><b>{{breaking_news.categories}}</b> | {{breaking_news.published|date:"h:i A"}}</span>
+      {% load hitcount_tags %}
+      <span><i class="fas fa-eye"></i>{% get_hit_count for breaking_news %}</span>
+    </small>
   </div>
 </div>
-{% endblock content %}
+<figure class="image__figure">
+  <div class="row">
+    <div class="col-lg-12 p-0 image__container-image">
+      <img class="float-start zoom" src="{{breaking_news.image.url}}" alt="">
+    </div>
+    <div class="col-lg-12 p-0 image__container-sub-title">
+      <figcaption class="image__figcation">
+        {% if breaking_news.sub_title == None %}
+          <br>
+        {% else %}
+          <small class="text-muted">{{breaking_news.sub_title}}</small>
+        {% endif %}
+      </figcaption>
+    </div>
+  </div>
+</figure>
+<div class="container lh-base wrapper__content">
+  {% spaceless %}
+  {{breaking_news.content|safe}}
+  {% endspaceless %}
+</div>
+{% else %}
+{% include 'pages/404.html' %}
+{% endif %}
+{% endblock category %}

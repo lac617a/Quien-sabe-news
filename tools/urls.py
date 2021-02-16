@@ -18,10 +18,13 @@ from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    path('',include('news.urls')),
-    path('admin/', admin.site.urls),
+  path('',include('news.urls')),
+  path('Category/',include('categories.urls')),
+  path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
+  path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+  urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

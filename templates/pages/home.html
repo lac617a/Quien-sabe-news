@@ -1,15 +1,119 @@
 {% extends 'pages/base.html' %}
-{% load static %}
 {% block content %}
-  <div class="container rounded bg-light pt-3 pb-3 mb-3">
-    <div class="row">
-      <div class="col-lg-12">{% include 'components/picture_news.html' %}</div>
-      <div class="col-lg-12 mb-3 mt-3">{% include 'components/picture_news2.html' %}</div>
-      <div class="col-lg-12">{% include 'components/advertising.html' %}</div>
-      <div class="col-lg-12">{% include 'components/picture_news3.html' %}</div>
+<div class="container wrapper__main bg-wrapper">
+  <div class="row">
+    <!-- pictureNews -->
+    <div class="col-lg-12">
+      <div class="row">
+        <!-- Column first -->
+        <div class="col-xs-6 col-lg-7 col-sm-12 wrapper__pictureNews">
+          <div class="bt-center boxroun">
+            {% load hitcount_tags %}
+            {% load news_extras %}
+            {% get_element_news 0 1 as new_posts %}
+            {% for new in new_posts %}
+            <img class="float-start zoom" src="{{new.get_image_url}}" alt={{new.header}}">
+            <div class="overlay"></div>
+            <div class="bt-title-cat-intro-eranews">
+              <a class="bt-category eranews homestyle2" href="{{new.get_absolute_url}}">noticias de última hora</a>
+              <br>
+              <a class="bt-title eranews homestyle2" title="{{new.header}}" href="{{new.get_absolute_url}}"><h1 class="h3">{{new.header|linebreaks}}</h1></a>
+              <div class="d-flex justify-content-between">
+                <div class="bt-extra">
+                  <span><i class="fas fa-clock"></i>{{new.published|date:"t-N P"}}</span>
+                  <span><i class="fas fa-tag"></i>{{new.categories}}</span>
+                  {% if new.city %}<span><i class="fas fa-globe"></i>{{new.city}}</span>{% endif %}
+                  <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+                </div>
+                <div class="bt-share">
+                  <i class="fas fa-share-alt share-all"></i>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- Column last -->
+        <div class="col-lg-5 col">
+          <div class="row picturenews-right">
+            <div class="col-lg-12 col-sm-12 bt-center-sm">
+              {% get_element_news 1 2 as new_posts %}
+              {% for new in new_posts %}
+              <div class="bt-center">
+                <img class="float-start zoom-sm" src="{{new.get_image_url}}" alt="{{new.header}}">
+                <div class="overlay-sm"></div>
+              </div>
+              <div class="bt-title-cat-intro-eranews">
+                <a class="bt-category eranews homestyle2" href="/recent-news/">Reciente</a>
+                <br>
+                <a class="bt-title eranews homestyle2" title="{{new.header}}" href="{{new.get_absolute_url}}"><small>{{new.header}}</small></a>
+                <div class="bt-extra">
+                  <small>
+                    <span><i class="fas fa-clock"></i>{{new.published|date:"t-N P"}}</span>
+                    <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+                  </small>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row picturenews-right">
+            <div class="col-lg-6 col-sm-3 col-md-6 bt-center-sm">
+              {% get_element_news 2 3 as new_posts %}
+              {% for new in new_posts %}
+              <div class="col bt-center">
+                <img class="float-start zoom-sm" width="224" src="{{new.get_image_url}}" alt="{{new.header}}">
+                <div class="overlay-sm"></div>
+              </div>
+              <div class="bt-title-cat-intro-eranews">
+                <a class="bt-category eranews homestyle2" href="/recent-news/">Reciente</a>
+                <br>
+                <a class="bt-title eranews homestyle2" title="{{new.header}}" href="{{new.get_absolute_url}}"><small>{{new.header}}</small></a>
+                <div class="bt-extra">
+                  <small>
+                    <span><i class="fas fa-clock"></i>{{new.published|date:"t-N P"}}</span>
+                    <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+                  </small>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="col-lg-6 col-sm-3 col-md-6 bt-center-sm">
+              {% get_element_news 3 4 as new_posts %}
+              {% for new in new_posts %}
+              <div class="col bt-center">
+                <img class="float-start zoom-sm" width="224" src="{{new.get_image_url}}" alt="{{new.header}}">
+                <div class="overlay-sm"></div>
+              </div>
+              <div class="bt-title-cat-intro-eranews">
+                <a class="bt-category eranews homestyle2" href="/recent-news/">Reciente</a>
+                <br>
+                <a class="bt-title eranews homestyle2" title="{{new.header}}" href="{{new.get_absolute_url}}"><small>{{new.header}}</small></a>
+                <div class="bt-extra">
+                  <small>
+                    <span><i class="fas fa-clock"></i>{{new.published|date:"t-N P"}}</span>
+                    <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+                  </small>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- pictureNews2 -->
+    <div class="col-lg-12 mb-3 mt-3">
+      <div class="row">
+        <!-- PICTURE NEWS LEFT -->
+        {% include 'components/state-united-entertainment.html' %}
+        <!-- PICTURE NEWS RIGHT -->
+        {% include 'components/lo-que-pasa-en-venezuela.html' %}
+      </div>
+    </div>
+    {% include 'components/advertising.html' %}
+    {% include 'components/picture_news3.html' %}
   </div>
+</div>
+{% include 'components/footer.html' %}
 {% endblock content %}
-{% block js_extras %}
-  <script src="{% static 'js/btn-share.js' %}"></script>
-{% endblock js_extras %}

@@ -1,123 +1,52 @@
 from django import template
 from django.http import Http404
-from news.models import NewNews
+from news.models import NewNews, Category
+
+from datetime import datetime,date
 
 register = template.Library()
-"""
-ALL CATEGORIES
-"""
+
 @register.simple_tag
-def get_news_sport_news():
-  """
-  Un Objecto de nuestro deporte
-  """
-  object_filter = NewNews.objects.filter(sub_categories=5)[:1]
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
+def check_date_time(format_string):
+  now_date = datetime.now().day
+  print(format_string)
+
+#!hits_count_context_all
+@register.simple_tag
+def popular_hit():
+  popular_hit = NewNews.objects.order_by('-hit_count_generic__hits')[:1]
+  return popular_hit
+
+#!ALL CATEGORIES
+@register.simple_tag
+def get_category_all(category):
+  object_filter = NewNews.objects.filter(category__iexact=category)[:1] # get all international range 1
+  return object_filter
+@register.simple_tag
+def get_categories(category):
+  """Obtenemos las categorias y sus items. para el navbar"""
+  qs = Category.objects.filter(category__iexact=category)
+  return qs
+@register.simple_tag
+def get_categories_by_id(categories_id,value):
+  object_filter = NewNews.objects.filter(categories_id=categories_id)[:value] # get_categories_by_id range 3
+  return object_filter
 
 @register.simple_tag
 def get_main_news():
-  """
-  Pequena llamada a 3 objecto de las principales noticias
-  """
+  """Pequena llamada a 3 objecto de las principales noticias ASIDE SLUG"""
   object_filter = NewNews.objects.all()[:3]
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
+  return object_filter
 
 @register.simple_tag
 def get_the_best_news():
-  """
-  Cierta llamada a 9 objecto de la categoria internacional aleatoriamente
-  """
-  object_filter = NewNews.objects.filter(categories='Internacional').order_by('?')[:9]
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
+  """Cierta llamada a 9 objecto de la categoria internacional aleatoriamente"""
+  object_filter = NewNews.objects.filter(category__iexact=u'internacional').order_by('?')[:9]
+  return object_filter
 
+#Simple llamada a la db de forma rebanada, para todas las nuevas noticias.
 @register.simple_tag
-def get_colombia_news():
-  """
-  Cierta llamada a un objecto de la categoria colombiano.
-  """
-  object_filter = NewNews.objects.filter(categories__exact=u'Colombia')[:1]
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
-
-"""
-Simple llamada a la db de forma rebanada, para todas las nuevas noticias.
-"""
-@register.simple_tag
-def get_element_news():
-  """LLamada simple al primer objecto de nuestro db """
-  object_filter = NewNews.objects.all()[:1]
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
-
-@register.simple_tag
-def get_one_element_news():
-  object_filter = NewNews.objects.all()[1:2]
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
-
-@register.simple_tag
-def get_two_element_news():
-  object_filter = NewNews.objects.all()[2:3]
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
-
-@register.simple_tag
-def get_three_element_news():
-  object_filter = NewNews.objects.all()[3:4]
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
-
-"""
-Llamadas a lo que pasa en el mundo
-"""
-
-@register.simple_tag
-def get_international():
-  object_filter = NewNews.objects.filter(categories__exact=u'Internacional')[:1] # get all international range 1
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
-
-@register.simple_tag
-def get_venezuela():
-  object_filter = NewNews.objects.filter(sub_categories=1)[:3] # Get all Venezuela range 3
-  try:
-    return object_filter
-  except NewNews.DoesNotExiste:
-    raise Http404
-
-@register.simple_tag
-def get_united_state_news():
-  object_filter = NewNews.objects.filter(sub_categories=2)[:1] # E.E.U.U
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
-
-@register.simple_tag
-def get_entertainment_news():
-  object_filter = NewNews.objects.filter(sub_categories=4)[:1] # Entred
-  try:
-    return object_filter
-  except NewNews.DoesNotExist:
-    raise Http404
+def get_element_news(a,b):
+  """LLamada simple al primer objecto de nuestro db"""
+  object_filter = NewNews.objects.all()[a:b]
+  return object_filter

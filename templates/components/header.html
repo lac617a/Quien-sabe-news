@@ -8,24 +8,11 @@
         <img class="logo__img" src="{% static 'img/tnews.png' %}" alt="Tnews">
       </a>
     </div>
-    <!-- COMPONENTES NECESARIOS -->
     <div class="col col-sm-6 col-lg-4 search-network portlet-column">
       <!-- REDES -->
-      <div>
-        <div align="center" class="network">
-          <a class="network__nav-link" href="#" target="_blank" title="facebook"><i class="fab fa-facebook-f"></i></a>
-          <div class="separadorNetwork"></div>
-          <a class="network__nav-link" href="#" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a>
-          <div class="separadorNetwork"></div>
-          <a class="network__nav-link" href="#" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
+      {% include 'components/redes.html' %}
       <!-- SEARCH -->
-      <div class="buscador-portada">
-        <div class="wrapper__search">
-          <input type="text" placeholder="BUSCADOR DE NOTICIAS"> <!-- TODO aqui se tiene que hacer con peticion AJAX -->
-        </div>
-      </div>
+      {% include 'components/search.html' %}
     </div>
   </div>
 </div>
