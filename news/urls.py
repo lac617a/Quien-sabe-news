@@ -14,6 +14,7 @@ Tenemos los siquiente:
 urlpatterns = [
   path('',PostListView.as_view()),
   path('recent-news/',all_recents_news_view,name="recent-news"),
+  path('deatils/',search_objects),
   path('seeker/',search_objects),
   path('get-news-category/',get_news_category),
   path('terminos-y-condiciones/',terms_and_conditions),

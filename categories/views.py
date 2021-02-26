@@ -36,9 +36,9 @@ def slug_detail_view(request,slug_news,*args,**kwargs):
   return render(request,'pages/breaking-news/breaking-news.html',context=context, status=200)
 
 def category_list_views(request,category,*args,**kwargs):
-  qs = NewNews.objects.order_by('-pk').filter(category__iexact=category)
-  # print(qs)
-  return render(request,'pages/category/category_list/category_list.html',context={'category':qs}, status=200)
+  qs = NewNews.objects.order_by('-pk').filter(category__iexact=category)[1:]
+  qs_entry_header = NewNews.objects.filter(category__iexact=category)[:1]
+  return render(request,'pages/category/category_list/category_list.html',context={'category':qs,'entry_header':qs_entry_header}, status=200)
 
 def category_detail_view(request,categories,*args,**kwargs):
   context = {}

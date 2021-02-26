@@ -1,0 +1,10 @@
+<div class="buscador-portada">
+  <div class="wrapper__search">
+    <form action="/get-news-category/" id="seeker-objects-float" class="header__form-search" method="GET">{% csrf_token %}
+      <input type="hidden" value="/" name="next">
+      <input type="text" autocomplete="off" class="search" id="search-float" name="search" placeholder="BUSCADOR DE NOTICIAS">
+      <div class="autocomplete" id="autocomplete-float"></div>
+      <button type="submit" class="btn-submit"><i class="fas fa-search"></i></button>
+    </form>
+  </div>
+</div>

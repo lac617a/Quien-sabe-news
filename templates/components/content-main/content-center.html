@@ -1,0 +1,129 @@
+<!-- pictureNews2 -->
+<div class="row">
+  <!-- PICTURE NEWS LEFT -->
+  {% load news_extras %}
+  {% load hitcount_tags %}
+  <div class="col-xs-6 col-lg-9 col-sm-12 wrapper__pictureNews">
+    <!-- ESTADOS UNIDOS -->
+    {% get_categories_by_id 9 1 as united_state %}
+    {% for item in united_state %}
+    {% get_categories item.category as internacional %}
+    {% for sub_item in internacional %}
+    {% if item.categories|slugify in sub_item.categories|slugify %}
+    <a href="{{sub_item.get_absolute_url}}" class="btn btn-danger w-100">
+      <i class="fas fa-globe"></i>
+      <h5 class="fw-bold">Estados unidos en la mira</h5>
+    </a>
+    {% endif %}
+    {% endfor %}
+    <div class="bt-center boxroun mt-3">
+      <img
+        class="float-start zoom"
+        src="{{item.get_image_url}}"
+        alt="{{item.header}}"
+      />
+      <div class="overlay"></div>
+      <div class="bt-title-cat-intro-eranews">
+        <a class="bt-category eranews homestyle2" href="{{item.get_absolute_url}}"
+          >E.E.U.U</a
+        >
+        <br />
+        <a class="bt-title eranews homestyle2" href="{{item.get_absolute_url}}"
+          ><h3 class="h3">{{item.header}}</h3></a
+        >
+        <div class="d-flex justify-content-between">
+          <div class="bt-extra">
+            {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+            <span><i class="fas fa-clock"></i>{{date}}</span>
+            <span><i class="fas fa-tag"></i>{{item.categories}}</span>
+            <span><i class="fas fa-eye"></i>{% get_hit_count for item %}</span>
+          </div>
+          <div class="bt-share">
+            <i class="fas fa-share-alt share-all"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- Entretenimiento -->
+    {% get_category_all 'Entretenimiento' as entretenimiento %}
+    {% for item in entretenimiento %}
+    {% get_categories item.category as entretenimiento %}
+    {% for sub_item in entretenimiento %}
+    {% if item.categories|slugify in sub_item.categories|slugify %}
+    <a
+      href="{{sub_item.get_absolute_url}}"
+      class="btn btn-danger mt-3"
+      style="width: 100%"
+    >
+      <i class="fas fa-globe"></i>
+      <h5 class="fw-bold">Entretenimiento</h5>
+    </a>
+    {% endif %}
+    {% endfor %}
+    <div class="bt-center boxroun mt-3">
+      <img
+        class="float-start card-img zoom"
+        src="{{item.get_image_url}}"
+        alt="{{item.header}}"
+      />
+      <div class="overlay"></div>
+      <div class="bt-title-cat-intro-eranews">
+        <a class="bt-category eranews homestyle2" href="{{item.get_absolute_url}}"
+          >Entretenimiento</a
+        >
+        <br />
+        <a class="bt-title eranews homestyle2" href="{{item.get_absolute_url}}"
+          ><h3 class="h3">{{item.header}}</h3></a
+        >
+        <div class="d-flex justify-content-between">
+          <div class="bt-extra">
+            {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+            <span><i class="fas fa-clock"></i>{{date}}</span>
+            <span><i class="fas fa-globe"></i>{{item.categories}}</span>
+            <span><i class="fas fa-eye"></i>{% get_hit_count for item %}</span>
+          </div>
+          <div class="bt-share">
+            <i class="fas fa-share-alt share-all"></i>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- PICTURE NEWS RIGHT -->
+  <div class="col-xs-6 col-lg-3 col-sm-12 pt-1">
+    <!-- LO QUE PASA EN VENEZUELA -->
+    {% load news_extras %}
+    {% load hitcount_tags %}
+    {% get_categories 'Internacional' as venezuela %}
+    {% for sub_item in venezuela %}
+      {% if 'Venezuela' in sub_item.categories %}
+        <a href="{{sub_item.get_absolute_url}}" class="btn btn-danger mb-3" style="width: 100%;">
+          <i class="fas fa-globe-americas"></i>
+          <h5 class="fw-bold">¿Qué pasa en Venezuela?</h5>
+        </a>
+      {% endif %}
+    {% endfor %}
+    <!--! hacer que el ultimo border-bottom color dark se vea solo en la ultima iteracion -->
+    {% get_categories_by_id 10 3 as venezuela %}
+    {% for item in venezuela %}
+    <div class="col-lg-12">
+      <div class="information" {% if forloop.last %} style="border-bottom: 1px solid #1c1c1c;" {% endif %}>
+        <div class="categoria-noticia">
+          <span class="bullet-categoria-noticia" style="background-color: #9C1F42;"></span>
+          <a href="{{item.get_absolute_url}}" class="section"><i class="fas fa-tag"></i>{{item.categories}}</a>
+          {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+          <span class="update-date"><i class="fas fa-clock"></i>{{date}}</span>
+        </div>
+        <h3 class="title-sm">
+          <a href="{{item.get_absolute_url}}">{{item.header}}</a>
+        </h3>
+        <div class="lead">
+          <a href="{{item.get_absolute_url}}">{{item.sub_title|safe}}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

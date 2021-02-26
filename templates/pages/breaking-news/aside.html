@@ -1,89 +1,59 @@
-<div class="row position-relative">
-  <div class="col-lg-12 position-relative">
-    <div class="content-title">
-      <h2>
-        <span>
-          <span>
-            <span class="title-aside one">Principales noticias</span>
-          </span>
-        </span>
-      </h2>
-    </div>
-    <ul class="content-aside">
+<div class="col-lg-4 col-sm-12">
+  <aside class="wrapper__aside">
+    <div class="aside__content_title"><h2><span class="title">Principales noticias</span></h2></div>
+    <div class="aside__content_aside">
       {% load news_extras %}
       {% get_main_news as main_news %}
       {% for news in main_news %}
-        <li class="content__item-aside">
+        <div class="aside__content_item">
           <h6>
-            <a class="content__nav-link" href="{{news.get_absolute_url}}">{{news.header}}</a>
-            <br><small class="text-muted"><b>{{news.categories}}</b> | {{news.published|date:"h:i A"}}</small>
+            <a class="aside__content_link" href="{{news.get_absolute_url}}">{{news.header}}</a>
+            {% check_date_time news.published|date:'d/m/Y H:m A' as date %}
+            <br><small class="text-muted"><b>{{news.categories}}</b> | {{date}}</small>
           </h6>
-        </li>
+        </div>
       {% endfor %}
-    </ul>
-    {% include 'components/advertising.html' %}
-  </div>
-  <div class="col-lg-12 position-relative">
-    <div class="content-title">
-      <h2>
-        <span>
-          <span>
-            <span class="title-aside two">No te lo pierdas</span>
-          </span>
-        </span>
-      </h2>
     </div>
-    <ul class="content-aside">
+    {% include 'components/advertising.html' %}
+    <div class="aside__content_title"><h2><span class="title">No te lo pierdas</span></h2></div>
+    <div class="aside__content_aside">
       {% get_the_best_news as main_news %}
       {% for news in main_news %}
-        <li class="content__item-aside">
+        <div class="aside__content_item">
           <h6>
-            <a class="content__nav-link" href="{{news.get_absolute_url}}">
+            <a class="aside__content_link" href="{{news.get_absolute_url}}">
               <div class="row">
-                <div class="col col-lg-12">
-                  <img class="zoom-sm rounded" src="{{news.get_image_url}}" alt="">
+                <div class="wrapper__aside_box_content">
+                  <div class="col col-lg-8">
+                    <span class="title">{{news.header}}</span>
+                    {% check_date_time news.published|date:'d/m/Y H:m A' as date %}
+                    <small class="text-muted"><b>{{news.categories}}</b> | {{date}}</small>
+                  </div>
+                  <div class="col col-lg-4">
+                    <img class="aside__content_img rou-box" width="116" height="86" src="{{news.get_image_url}}" alt="{{news.header}}">
+                  </div>
                 </div>
-                <div class="col col-lg-12">
-                  <span class="content__nav-title">{{news.header}}</span>
-                  <small class="text-muted"><b>{{news.categories}}</b> | {{news.published|date:"h:i A"}}</small>
-                </div>
-              </div>
-            </a>
-          </h6>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div class="col-lg-12 position-relative">
-    <div class="content-title">
-      <h2>
-        <span>
-          <span>
-            <span class="title-aside three">Más leídas</span>
-          </span>
-        </span>
-      </h2>
-    </div>
-    <ol class="content-aside">
-    {% load hitcount_tags %}
-    {% for favorite in popular_hits %}
-      <li class="content__item-aside">
-        <div class="row">
-          <h6 class="h6">
-            <a class="content__nav-link" href="{{news.get_image_url}}">
-              <div class="content__aside-counter">
-              {% if favorite.id %}
-                <span>{{forloop.counter}}</span>
-              {% endif %}
-              </div>
-              <div class="content__aside-nav-link">
-                {{favorite.header}}
               </div>
             </a>
           </h6>
         </div>
-      </li>
+      {% endfor %}
+    </div>
+    <div class="aside__content_title"><h2><span class="title">Más leídas</span></h2></div>
+    <div class="aside__content_aside">
+    {% populares_hit 3 as hit %}
+    {% for favorite in hit %}
+      <div class="aside__content_item">
+        <div class="row">
+          <h6 class="h6">
+            <a class="aside__content_link" href="{{news.get_absolute_url}}">
+              <div class="aside__content_count"><span>{{forloop.counter}}</span></div>
+              <div>{{favorite.header}}</div>
+            </a>
+          </h6>
+        </div>
+      </div>
     {% endfor %}
-    </ol>
-  </div>
+    </div>
+  </aside>
 </div>

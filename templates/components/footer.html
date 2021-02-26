@@ -31,13 +31,13 @@
           </div>
           <div class="content__item-aside">
             {% load news_extras %}
-            {% popular_hit as hit %}
+            {% populares_hit 1 as hit %}
             {% for fav in hit %}
             <h6 class="h6">
-              <a class="content__nav-link" title="{{fav.header}}" href="{% url 'slug-general' fav.category|slugify fav.categories|slugify fav.slug|slugify %}">
+              <a class="content__nav-link" title="{{fav.header}}" href="{{fav.get_absolute_url}}">
                 <div class="row">
                   <div class="col-lg-6">
-                    <img class="zoom-sm" src="{{fav.get_image_url}}" alt="{{fav.header}}">
+                    <img class="zoom-sm" height="117" width="164" src="{{fav.get_image_url}}" alt="{{fav.header}}">
                   </div>
                   <div class="col col-lg-6">
                     <span class="content__nav-title">{{fav.header}}</span>
@@ -54,7 +54,7 @@
     <div class="row t3-copyright">
       <div class="col-xs-12 col-lg-2 col-sm-3 col">
         <a href="/" title="Tnews">
-          <img class="logo__img end-footer" src="{% static 'img/tnews.png' %}" alt="Tnews">
+          <img class="logo__img end-footer" src="{% static 'img/logo.png' %}" alt="QSN">
         </a>
       </div>
       <div class="col-lg-7 col-sm-6">
@@ -73,11 +73,11 @@
           <p>Síguenos en:</p>
           <div>
             <div align="center" class="network">
-              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="facebook"><i class="fab fa-facebook-f"></i></a>
+              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="facebook"><i class="bi bi-facebook"></i></a>
               <div class="separadorNetwork"></div>
-              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a>
+              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="twitter"><i class="bi bi-twitter"></i></a>
               <div class="separadorNetwork"></div>
-              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a>
+              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="instagram"><i class="bi bi-instagram"></i></a>
             </div>
           </div>
         </div>

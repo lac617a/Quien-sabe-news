@@ -1,0 +1,62 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light t3-header navbar-mobile"
+  id="navbar-mobile"
+  style="background-position: center"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      {% load static %}
+      <img
+        class="logo__img"
+        src="{% static 'img/logo.png' %}"
+        style="width: 100px !important"
+        alt="QSN"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" title="Colombia" href="{% url 'all-category' 'colombia' %}"
+            ><strong>Colombia</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Internacional" href="{% url 'all-category' 'internacional' %}"
+            ><strong>Internacional</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Deporte" href="{% url 'all-category' 'deporte' %}"
+            ><strong>Deporte</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Tendencia" href="{% url 'all-category' 'tendencia' %}"
+            ><strong>Tendencia</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Tecnología" href="{% url 'all-category' 'tecnologia' %}"
+            ><strong>Tecnología</strong></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" title="Entretenimiento" href="{% url 'all-category' 'entretenimiento' %}"
+            ><strong>Entretenimiento</strong></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

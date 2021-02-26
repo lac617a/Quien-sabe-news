@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # sitemap
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    # bitly
+    'django_bitly',
     # DRF
     'rest_framework',
     # App
@@ -46,6 +51,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'hitcount',
 ]
+
+SITE_ID = 1 # new
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -114,12 +121,24 @@ WSGI_APPLICATION = 'tools.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+DATABASES={
+    'default':{
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME':config('DB_NAME'),
+        'USER':config('DB_USER'),
+        'PASSWORD':config('DB_PASS'),
+        'HOST':config('DB_HOST'),
+        'PORT':'5432',
     }
 }
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -157,7 +176,7 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+# COLLECTSTATIC
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
@@ -174,3 +193,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 # HITCOUNT_KEEP_HIT_ACTIVE = {'minutes': 60}
 # HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
 # HITCOUNT_KEEP_HIT_IN_DATABASE = {'seconds': 10}
+
+# BITLY
+BITLY_LOGIN = 'Dominyel Rivera'
+BITLY_API_KEY = 'e54ed519ec2761d8a93f10f791a84c5cc555681c'

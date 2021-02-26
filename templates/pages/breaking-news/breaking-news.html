@@ -1,11 +1,29 @@
 {% extends 'pages/category.html' %}
 {% block category %}
 {% if breaking_news %}
+{% block meta %}
+<meta name="keywords"           content="{{breaking_news.category}},{{breaking_news.categories}}" />
+<meta property="og:title"       content="{{breaking_news.header}}" />
+<meta property="og:type"        content="{{breaking_news.category}}" />
+<meta property="og:url"         content="https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" />
+<meta property="og:image"       content="https://www.quiensabenoticias.com{{breaking_news.get_image_url}}" />
+<meta property="og:description" content="{{breaking_news.sub_title}}" />
+<meta name="twitter:card"       value="summary_large_image">
+<meta name="twitter:title"      content="{{breaking_news.header}}">
+<meta name="twitter:url"        content="https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}">
+<meta name="twitter:description"content="{{breaking_news.sub_title}}">
+<meta name="twitter:image"      content="https://www.quiensabenoticias.com{{breaking_news.get_image_url}}">
+{% endblock meta %}
+{% load news_extras %}
+{% decode_url breaking_news.header as decode %}
 <div class="container">
-  <h1 class="h1 fw-bold">{{breaking_news.header}}</h1>
+  <a id="get-absolute-url" href="{{decode}}"></a>
+  <h1 id="is-header" class="h1 fw-bold">{{breaking_news.header}}</h1>
   <div class="bt-extra pb-2">
     <small class="text-muted">
-      <span><i class="fas fa-clock"></i><b>{{breaking_news.categories}}</b> | {{breaking_news.published|date:"h:i A"}}</span>
+      {% load news_extras %}
+      {% check_date_time breaking_news.published|date:'d/m/Y H:m A' as date %}
+      <span><i class="fas fa-clock"></i><b id="is-categories">{{breaking_news.categories}}</b> | {{date}}</span>
       {% load hitcount_tags %}
       <span><i class="fas fa-eye"></i>{% get_hit_count for breaking_news %}</span>
     </small>
@@ -14,14 +32,14 @@
 <figure class="image__figure">
   <div class="row">
     <div class="col-lg-12 p-0 image__container-image">
-      <img class="float-start zoom" src="{{breaking_news.image.url}}" alt="">
+      <img class="float-start zoom" width="720" height="423" src="{{breaking_news.get_image_url}}" alt="{{breaking_news.header}}">
     </div>
     <div class="col-lg-12 p-0 image__container-sub-title">
       <figcaption class="image__figcation">
         {% if breaking_news.sub_title == None %}
           <br>
         {% else %}
-          <small class="text-muted">{{breaking_news.sub_title}}</small>
+          <small id="is-subtitle" class="text-muted">{{breaking_news.sub_title}}</small>
         {% endif %}
       </figcaption>
     </div>
@@ -32,6 +50,43 @@
   {{breaking_news.content|safe}}
   {% endspaceless %}
 </div>
+<div class="container">
+  <div class="redes">
+    <div class="wrapper_share">
+      <div class="fb-share">
+        <a class="mashicon-facebook" data-text="{{breaking_news.header}}" href="https://www.facebook.com/sharer.php?u=https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" target="_blank" rel="nofollow">
+          <div class="rou-box">
+            <i class="fab fa-facebook-f"></i>
+          </div>
+        </a>
+      </div>
+      <div class="wapp-share">
+        <div class="rou-box">
+          <a style="color: #fff; text-decoration: none; text-align: center;" href="https://wa.me/send?text={{breaking_news.header}} https://www.qsn.com{{breaking_news.get_absolute_url}}" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </div>
+      <div class="inst-share">
+        <div class="rou-box">
+          <a href="http://" target="_blank" rel="noopener noreferrer"></a>
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="twt-share">
+        <a id="tt-share" class="mashicon-twitter" data-via="QsNoticias" data-text="{{breaking_news.header}}" data-href="https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" href="https://twitter.com/intent/" target="_top" rel="nofollow">
+          <div class="rou-box">
+            <i class="fab fa-twitter"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% load static %}
+{% block js_extras %}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="{% static 'js/btn.js' %}"></script>
+{% endblock js_extras %}
 {% else %}
 {% include 'pages/404.html' %}
 {% endif %}

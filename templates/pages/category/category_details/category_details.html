@@ -1,5 +1,5 @@
-{% extends 'pages/category.html' %}
-{% block category %}
+{% extends 'pages/base.html' %}
+{% block content %}
 {% if categories %}
 <div class="noticias-carrusel-list">
   {% for item in categories %}
@@ -18,8 +18,9 @@
         <div class="col">
           <div class="right">
             <div class="categoria-noticia">
-              <span class="bullet-categoria-noticia" style="background-color: #9C1F42;"></span>
-              <a href="{{item.get_absolute_url}}"><i class="fas fa-clock"></i>{{item.published|date:"d-M h-A"}}</a>
+              {% load news_extras %}
+              {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+              <a href="{{item.get_absolute_url}}"><i class="fas fa-clock"></i><b>{{item.categories}}</b> | {{date}}</a>
             </div>
             <h3>
               <a class="bt-title eranews homestyle2 text-dark" title="{{item.header}}" href="{{item.get_absolute_url}}">
@@ -37,4 +38,4 @@
 {% else %}
 {% include 'pages/404.html' %}
 {% endif %}
-{% endblock category %}
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% load static %}
+<!-- HEADER -->
+<div class="container text-center" id="t3-header">
+  <!-- LOGO -->
+  <div class="row logo">
+    <div class="col-xs-12 col-lg-8 col-sm-6 col">
+      <a href="/" title="QSN">
+        <img class="logo__img" src="{% static 'img/logo.png' %}" alt="QSN">
+      </a>
+    </div>
+    <div class="col col-sm-6 col-lg-4 search-network portlet-column">
+      <!-- REDES -->
+      {% include 'components/redes.html' %}
+      <!-- SEARCH -->
+      {% include 'components/header-search/search.html' %}
+    </div>
+  </div>
+</div>
+{% include 'components/header-search/navbar-responsive.html' %}
+{% include 'components/header-search/nav.html' %}
+{% include 'components/header-search/nav_float.html' %}

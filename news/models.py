@@ -1,12 +1,11 @@
-from random import randint
 from django.db import models
-from django.urls import reverse
-from django.utils.timezone import now
-from ckeditor.fields import RichTextField
 from django.template.defaultfilters import slugify
 from hitcount.models import HitCountMixin, HitCount
+from django.utils.timezone import now
 from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.encoding import python_2_unicode_compatible
+from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 # Create your models here.
 CATEGORY = [
@@ -106,7 +105,7 @@ class NewNews(models.Model):
     if self.image and hasattr(self.image, 'url'):
       return self.image.url
     else:
-      return '/static/img/tnews.png'
+      return '/static/img/logo.png'
 
   def get_absolute_url(self):
     return reverse('slug-general', kwargs={'category': slugify(self.category), 'categories': slugify(self.categories), 'slug_news': self.slug})

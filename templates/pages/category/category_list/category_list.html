@@ -1,5 +1,48 @@
-{% extends 'pages/category.html' %}
-{% block category %}
+{% extends 'pages/base.html' %}
+{% block content %}
+{% for item in entry_header %}
+<div class="modulo-principal-seccion">
+  <div class="todo">
+    <div class="date">
+      {% if request.path == '/Category/colombia/' %}
+      <span class="bullet-categoria-noticia" style="background:#1ac2ec"></span>
+      {% endif %}
+      {% if request.path == '/Category/internacional/' %}
+      <span class="bullet-categoria-noticia" style="background:#9C1F42"></span>
+      {% endif %}
+      {% if request.path == '/Category/deporte/' %}
+      <span class="bullet-categoria-noticia" style="background:#1ac22c"></span>
+      {% endif %}
+      {% if request.path == '/Category/tendencia/' %}
+      <span class="bullet-categoria-noticia" style="background:#DB5C72"></span>
+      {% endif %}
+      {% if request.path == '/Category/tecnologia/' %}
+      <span class="bullet-categoria-noticia" style="background:#dd21dd"></span>
+      {% endif %}
+      {% if request.path == '/Category/entretenimiento/' %}
+      <span class="bullet-categoria-noticia" style="background:#e60034"></span>
+      {% endif %}
+      {% load news_extras %}
+      {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+      <a href="{{item.categories|slugify}}"><b>{{item.categories}}</b> | {{date}}</a>
+    </div>
+    <div class="photo">
+      <a href="{{item.get_absolute_url}}">
+        <div frame="Principal-Seccion" style="position: relative; width: 100%; padding-top: 51.78%; background-color: #000000">
+          <img class=" lazyloaded" height="334" width="645" src="{{item.get_image_url}}" alt="{{item.header}}" style="bottom: 0; left: 0; top: 0; right: 0;height: auto; width: 100%;max-height: 100%; max-width: 100%;display: block; position: absolute; margin: auto;">
+        </div>
+        <div class="sombra-interior">
+          <h3>
+            <div class="tx-titulo">
+              <span class="priority-content">{{item.header}}</span>
+            </div>
+          </h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endfor %}
 <div class="noticias-carrusel-list">
   {% for item in category %}
   <div class="noticias-tercer-nivel">
@@ -17,10 +60,26 @@
         <div class="col">
           <div class="right">
             <div class="categoria-noticia">
-              <span class="bullet-categoria-noticia" style="background-color: #9C1F42;"></span>
-              {% load news_extras %}
-              {% check_date_time item.published|date:'SHORT_DATETIME_FORMAT' %}
-              <a href="{{item.get_absolute_url}}"><i class="fas fa-clock"></i><b>{{item.categories}}</b> | {{item.published|date:"h:i A"}}</a>
+              {% if request.path == '/Category/colombia/' %}
+              <span class="bullet-categoria-noticia" style="background:#1ac2ec"></span>
+              {% endif %}
+              {% if request.path == '/Category/internacional/' %}
+              <span class="bullet-categoria-noticia" style="background:#9C1F42"></span>
+              {% endif %}
+              {% if request.path == '/Category/deporte/' %}
+              <span class="bullet-categoria-noticia" style="background:#1ac22c"></span>
+              {% endif %}
+              {% if request.path == '/Category/tendencia/' %}
+              <span class="bullet-categoria-noticia" style="background:#DB5C72"></span>
+              {% endif %}
+              {% if request.path == '/Category/tecnologia/' %}
+              <span class="bullet-categoria-noticia" style="background:#dd21dd"></span>
+              {% endif %}
+              {% if request.path == '/Category/entretenimiento/' %}
+              <span class="bullet-categoria-noticia" style="background:#e60034"></span>
+              {% endif %}
+              {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+              <a href="{{item.categories|slugify}}"><i class="fas fa-clock"></i><b>{{item.categories}}</b> | {{date}}</a>
             </div>
             <h3>
               <a class="bt-title eranews homestyle2 text-dark" title="{{item.header}}" href="{{item.get_absolute_url}}">
@@ -35,4 +94,4 @@
   </div>
   {% endfor %}
 </div>
-{% endblock category %}
+{% endblock content %}
