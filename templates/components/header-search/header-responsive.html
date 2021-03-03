@@ -1,0 +1,54 @@
+{% load static %}
+<div class="container__tab-bar display-none">
+  <div class="col-xs-12 col-lg-4 col-sm-12 mb-3 text-center col-sm-6 col">
+    <a href="/" title="QSN">
+      <img class="logo__img" src="{% static 'img/logo.png' %}" style="padding: .5rem 0; height:50px; width:50px;" alt="QSN">
+    </a>
+  </div>
+  <div class="wrapper-radius">
+    <div class="box-tab">
+      <div class="home {%if request.path == '/'%}active{%endif%}"><a href="/"><i aria-label="false" class="fas fa-home"></i></a></div>
+      <div class="category_"><i aria-label="false" id="bars" class="fas fa-bars"></i>
+        <div data-toggle="true" class="category-radius deactive animate">
+          <ul class="box-ul">
+            <li><a title="Colombia" href="{% url 'all-category' 'colombia' %}">
+                <strong>Colombia</strong>
+                </a>
+            </li>
+            <li><a title="Internacional" href="{% url 'all-category' 'internacional' %}">
+                <strong>Internacional</strong>
+                </a>
+            </li>
+            <li><a title="Deporte" href="{% url 'all-category' 'deporte' %}">
+                <strong>Deporte</strong>
+              </a>
+            </li>
+            <li><a title="Tendencia" href="{% url 'all-category' 'tendencia' %}">
+                <strong>Tendencia</strong>
+              </a>
+            </li>
+            <li><a title="Tecnología" href="{% url 'all-category' 'tecnologia' %}">
+                <strong>Tecnología</strong>
+              </a>
+            </li>
+            <li><a class="-link" title="Entretenimiento" href="{% url 'all-category' 'entretenimiento' %}">
+                <strong>Entretenimiento</strong>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="search_"><i aria-disabled="false"   id="search-R" class="fas fa-search"></i>
+        <div data-toggle="true" class="search-radius deactive animate">
+          <form action="/get-news-category/" class="form-R" method="GET">
+            {% csrf_token %}
+            <input  type="hidden" name="next" value="/">
+            <input  type="text" name="search" id="search-3" autocomplete="off" placeholder="Search...">
+            <button type="submit"><i aria-label="false" class="fas fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+      <div id="arrow-up"  class="up_"><i aria-label="false" class="fas fa-arrow-up"></i></div>
+    </div>
+  </div>
+</div>

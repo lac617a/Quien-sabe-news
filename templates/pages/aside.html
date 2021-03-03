@@ -1,0 +1,99 @@
+<div class="col-lg-4 col-sm-12 line-left">
+  <aside class="wrapper__aside">
+    <div class="aside__content_title"><h2><span class="title">Principales noticias</span></h2></div>
+    <div class="aside__content_aside" align="left">
+      <div class="border-dashed">
+      {% load news_extras %}
+      {% get_main_news as main_news %}
+      {% for news in main_news %}
+        <div class="aside__content_item">
+          <h6>
+            <a class="aside__content_link" href="{{news.get_absolute_url}}">{{news.header}}</a>
+            {% check_date_time news.published|date:'d/m/Y H:m A' as date %}
+            <br><small class="text-muted"><b>{{news.categories}}</b> | {{date}}</small>
+          </h6>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+    {% include 'components/advertising.html' %}
+    <div class="aside__content_title"><h2><span class="title">No te lo pierdas</span></h2></div>
+    <div class="aside__content_aside">
+    {% load hitcount_tags %}
+      <div class="carousel-container display-n-carousel">
+        <div class="carousel-slider">
+          <div class="carousel-list">
+            <div class="carousel-element">
+              {% get_the_best_news as main_news %}
+              {% for news in main_news %}
+              <div class="carousel__container-figure">
+                <figure class="carousel-figure">
+                  <a href="{{news.get_absolute_url}}" style="text-decoration: none; color:#333;">
+                    <div class="carousel__lazy-load">
+                      <img class="carousel-img" width="490" height="150" src="{{news.get_image_url}}" alt="{{news.header}}">
+                    </div>
+                    <div class="carousel__header-float">
+                      <h2>{{news.header}}</h2>
+                    </div>
+                    <figcaption class="carousel__container-figcaption">
+                      <div class="carousel-figcaption">
+                        <div class="carousel-components">
+                          <div class="extra">
+                            {% check_date_time news.published|date:'d/m/Y H:m A' as date %}
+                            <span><i class="fas fa-clock"></i>{{date}}</span>
+                            <span><i class="fas fa-eye"></i>{% get_hit_count for news %}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </figcaption>
+                  </a>
+                </figure>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div role="tablist" class="carousel-dots"></div>
+      </div>
+      {% get_the_best_news as main_news %}
+      {% for news in main_news %}
+      <div class="aside__content_item display-block">
+        <h6>
+          <a class="aside__content_link" href="{{news.get_absolute_url}}">
+            <div class="row">
+              <div class="wrapper__aside_box_content">
+                <div class="col col-lg-8">
+                  <span class="title">{{news.header}}</span>
+                  {% check_date_time news.published|date:'d/m/Y H:m A' as date %}
+                  <small class="text-muted"><b>{{news.categories}}</b> | {{date}}</small>
+                </div>
+                <div class="col col-lg-4">
+                  <img class="aside__content_img rou-box" width="116" height="86" src="{{news.get_image_url}}" alt="{{news.header}}">
+                </div>
+              </div>
+            </div>
+          </a>
+        </h6>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="aside__content_title"><h2><span class="title">Más leídas</span></h2></div>
+    <div class="aside__content_aside">
+      <div class="border-dashed">
+      {% populares_hit 3 as hit %}
+      {% for favorite in hit %}
+        <div class="aside__content_item">
+          <div class="row">
+            <h6 class="h6">
+              <a class="aside__content_link" href="{{favorite.get_absolute_url}}">
+                <div class="aside__content_count"><span>{{forloop.counter}}</span></div>
+                <div>{{favorite.header}}</div>
+              </a>
+            </h6>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+  </aside>
+</div>

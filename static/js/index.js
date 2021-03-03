@@ -1,15 +1,29 @@
-document.addEventListener('DOMContentLoaded',(e)=>{
+const wrapper = document.getElementById('wrapper')
+const load = document.getElementById('load')
+
+document.addEventListener('DOMContentLoaded',()=>{
+  load.style.display = 'none'
+  wrapper.classList.add('activate')
+  // BARS CATEGORY
+  const category_radius = document.querySelector('.category-radius')
+  const category_data = category_radius.dataset.toggle
+  const bars = document.getElementById('bars')
+  // SEEKER
+  const search_radius = document.querySelector('.search-radius')
+  const search_data = search_radius.dataset.toggle
+  const search = document.getElementById('search-R')
+  btnFavorite(category_radius,bars,category_data,search_radius,search,search_data)
+  scrollTop()
   main_ajax()
 })
+
 function main_ajax(){
   const $error_message = document.getElementById('error-message')
   const $autocomplete = document.getElementById('autocomplete')
-  const $autocomplete_float = document.getElementById('autocomplete-float')
-  const $search = document.getElementById('search')
   document.addEventListener('keyup',(e)=>{
-    const $search_value = document.getElementById('search').value
-    const $search_float_value = document.getElementById('search-float').value
-    objects_categories_xhr($search,$search_value,$search_float_value,$autocomplete,$autocomplete_float,$error_message)
+    const $search = document.getElementById('search')
+    const $search_3 = document.getElementById('search-3')
+    objects_categories_xhr($search,$search_3,$autocomplete,$error_message)
   })
 }
 const special_characters = /[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g
@@ -34,7 +48,13 @@ function to_string(str){
   for(let i=0,l=from.length;i<l;i++){str = str.replace(new RegExp(from.charAt(i),'g'),to.charAt(i))}
   return str
 }
-function objects_categories_xhr(search,search_value,search_float,autocomplete,autocomplete_float,error_message){
+/*
+para no complicarnos la vida y hacer el codigo un poco o mas limpio de lo que es, vamos hacer que sea mas simple,
+como logramos eso, pues no vamos a referir a cada uno de los ID como search-[1,2,3] esto con la intencion de que
+lo que vamos hacer sea mas eficaz a la hora de registro y no se nos quede tan pegado, porque creo que eso tambien
+es en el rendimiento del codigo, asi que no tengamos miedo y hagamos esto mas divertido :D
+*/
+function objects_categories_xhr(search,search_3,autocomplete,error_message){
   const xhr = new XMLHttpRequest()
   const method = 'GET'
   const url = '/seeker/'
@@ -49,26 +69,23 @@ function objects_categories_xhr(search,search_value,search_float,autocomplete,au
         let catgory = category
         let catgories = categories
         let categories_to_string = to_string(categories)
-        if(search_value[0] === categories_to_string[0] || search_float[0] === categories_to_string[0]){
-          if(categories_to_string.startsWith(search_value) && search_value !== ''){
-            error_message.classList.remove('message-active')
-            search.classList.remove('item-not-found')
-            autocomplete.classList.add('autocomplete-active')
-            return autocomplete.innerHTML = link(catgory,catgories)
+        if (search.value !== ''){
+          if(search.value[0] === categories_to_string[0]){
+            if(categories_to_string.startsWith(search.value)){
+              error_message.classList.remove('message-active')
+              search.classList.remove('item-not-found')
+              autocomplete.classList.add('autocomplete-active')
+              return autocomplete.innerHTML = link(catgory,catgories)
+            }
           }
-          else if(categories_to_string.startsWith(search_float) && search_float !== ''){
-            autocomplete_float.classList.add('autocomplete-active')
-            return autocomplete_float.innerHTML = link(catgory,catgories)
+          else{
+            error_message.classList.add('message-active')
+            search.classList.add('item-not-found')
           }
-        }
-        else if(search_value === ''){
+        }else{
           autocomplete.classList.remove('autocomplete-active')
           error_message.classList.remove('message-active')
           search.classList.remove('item-not-found')
-        }
-        else{
-          error_message.classList.add('message-active')
-          search.classList.add('item-not-found')
         }
       }
     }
@@ -96,4 +113,46 @@ function link(pattern,url) {
               </a>
             </li>
           </ul>`
+}
+
+function btnFavorite(category,bar,check_category,btn_search,search,check_search){
+  // BARS CATEGORY
+  bar.addEventListener('click',()=>{
+    if (check_category){
+      check_category = false
+      check_search = true
+      removeClassList(btn_search)
+      return addClassList(category)
+    }else{
+      check_category = true
+      return removeClassList(category)
+    }
+  })
+  // SEEKER
+  search.addEventListener('click',()=>{
+    if (check_search){
+      check_search = false
+      check_category = true
+      removeClassList(category)
+      return addClassList(btn_search)
+    }else{
+      check_search = true
+      return removeClassList(btn_search)
+    }
+  })
+}
+function addClassList(value){
+  value.classList.add('active')
+  value.classList.remove('deactive')
+}
+function removeClassList(value){
+  value.classList.remove('active')
+  value.classList.add('deactive')
+}
+// CURRENT SCROLL READY
+function scrollTop(){
+  const arrowUp = document.getElementById('arrow-up')
+  arrowUp.addEventListener('click',()=>{
+    window.scrollTo({top:0,behavior:'smooth'})
+  })
 }

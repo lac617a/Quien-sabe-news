@@ -29,34 +29,19 @@ btn_share.forEach(item => {
   })
 })
 
-const wrapper = document.getElementById('wrapper')
-const load = document.getElementById('load')
-
-document.addEventListener('DOMContentLoaded',()=>{
-  load.style.display = 'none'
-  wrapper.classList.add('activate')
-})
-
 //Controlador del navbar
 const $navbar_float = document.getElementById('navbar__nav-float')
-const $navbar_mobile = document.getElementById('navbar-mobile')
 
 window.onscroll = function(){
   const currentScroll = document.documentElement.scrollTop  //200 height to scroll
-  // if(currentScroll >= 0){
-  //   $navbar_float.classList.add('hiden')
-  // }
   if(currentScroll >= 150){
-    $navbar_mobile.classList.add('navbar__mobile-activate')
     $navbar_float.classList.add('bg-activate')
-    // $navbar_float.style.display = 'block'
     if(currentScroll >= 190)
     $navbar_float.style.transform = 'translateY(45px)'
   }
   else{
     $navbar_float.classList.remove('bg-activate')
     $navbar_float.style.transform = 'translateY(-45px)'
-    // $navbar_float.style.display = 'none'
 
   }
 }

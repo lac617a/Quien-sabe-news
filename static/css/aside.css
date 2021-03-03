@@ -11,16 +11,20 @@
 }
 .aside__content_title{
   border-top: #333333 1px solid;
-  padding-top: .5rem;
+  padding: 1rem 0;
 }
-.aside__content_item{
-  line-height: 50px;
-  padding: .5rem 0;
+.aside__content_title .title{
+  text-transform: uppercase;
+  text-shadow: #e60034 1px 1px 1px;
 }
 .aside__content_img{
   width: 100%;
   height: 100%;
   transition: all .3s ease-in-out;
+}
+.aside__content_item .h6{
+  display: flex;
+  align-items: center;
 }
 .aside__content_img.rou-box{
   border-radius: 20px;
@@ -48,22 +52,55 @@
   display: inline-block;
 }
 
+/* slider */
+.aside__content_aside .carousel-element{
+  display: flex;
+  flex-flow: row wrap;
+}
+.aside__content_aside .carousel-figure{margin: 0 !important;}
+.aside__content_aside .carousel__lazy-load{
+  padding-top: 30% !important;
+}
+.aside__content_aside .carousel__lazy-load .carousel-img{
+  width: 100%;
+  height: 100%;
+}
+
 /* Extra small devices (phones, 425px and down) */
 @media only screen and (min-width: 425px){
   .aside__content_title{
     display: block;
   }
+  .aside__content_aside .carousel__container-figure{
+    height: 50%;
+    width: 100%;
+    margin: .5rem;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width:768px){
+  .aside__content_item{
+    padding: 0 3rem;
+    line-height: 50px;
+  }
+  .aside__content_aside .border-dashed{
+    padding: 1rem .5rem;
+    border: 1px dashed #333;
+  }
+  .aside__content_aside .carousel__container-figure{
+    height: 50%;
+    width: 47%;
+    margin: .5rem;
+  }
+  .aside__content_item {padding: .5rem 0;line-height: 20px;}
+
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px){
   /* ------------------
     ASIDE-BREAKING-NEWS
   ------------------ */
-  .aside__content_title{
-  display: inline-block;
-
-  }
-  .aside__content_aside .aside__content_img {
-    padding-top: 0;
-  }
+  .aside__content_title{display: inline-block;}
+  .aside__content_aside .aside__content_img {padding-top: 0;}
+  .aside__content_item {padding: .5rem 0;line-height: 20px;}
 }

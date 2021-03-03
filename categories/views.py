@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from news.models import NewNews, Category
-from hitcount.views import HitCountDetailView
+# from hitcount.views import HitCountDetailView
 from hitcount.utils import get_hitcount_model
 from hitcount.views import HitCountMixin
 from slugify import slugify
@@ -20,7 +20,7 @@ def slug_detail_view(request,slug_news,*args,**kwargs):
     context['breaking_news'] = qs
     object = get_object_or_404(NewNews, pk=qs.id)
   else:
-    return render(request,'pages/breaking-news/breaking-news.html',context=context, status=404)
+    return render(request,'pages/category.html',context=context, status=404)
 
   # hitcount logic
   popular_hits = context['popular_hits'] = NewNews.objects.order_by('-hit_count_generic__hits')[:3]
@@ -33,7 +33,7 @@ def slug_detail_view(request,slug_news,*args,**kwargs):
     hitcontext['hit_counted'] = hit_count_response.hit_counted
     hitcontext['hit_message'] = hit_count_response.hit_message
     hitcontext['total_hits'] = hits
-  return render(request,'pages/breaking-news/breaking-news.html',context=context, status=200)
+  return render(request,'pages/category.html',context=context, status=200)
 
 def category_list_views(request,category,*args,**kwargs):
   qs = NewNews.objects.order_by('-pk').filter(category__iexact=category)[1:]

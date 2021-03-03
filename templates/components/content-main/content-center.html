@@ -1,45 +1,38 @@
 <!-- pictureNews2 -->
-<div class="row">
+<div class="row line">
   <!-- PICTURE NEWS LEFT -->
   {% load news_extras %}
   {% load hitcount_tags %}
-  <div class="col-xs-6 col-lg-9 col-sm-12 wrapper__pictureNews">
+  <div class="col-xs-6 col-lg-9 col-sm-12 mt-3 wrapper__pictureNews no-padding">
     <!-- ESTADOS UNIDOS -->
     {% get_categories_by_id 9 1 as united_state %}
     {% for item in united_state %}
-    {% get_categories item.category as internacional %}
-    {% for sub_item in internacional %}
-    {% if item.categories|slugify in sub_item.categories|slugify %}
-    <a href="{{sub_item.get_absolute_url}}" class="btn btn-danger w-100">
-      <i class="fas fa-globe"></i>
-      <h5 class="fw-bold">Estados unidos en la mira</h5>
-    </a>
-    {% endif %}
-    {% endfor %}
-    <div class="bt-center boxroun mt-3">
-      <img
-        class="float-start zoom"
-        src="{{item.get_image_url}}"
-        alt="{{item.header}}"
-      />
-      <div class="overlay"></div>
-      <div class="bt-title-cat-intro-eranews">
-        <a class="bt-category eranews homestyle2" href="{{item.get_absolute_url}}"
-          >E.E.U.U</a
-        >
-        <br />
-        <a class="bt-title eranews homestyle2" href="{{item.get_absolute_url}}"
-          ><h3 class="h3">{{item.header}}</h3></a
-        >
-        <div class="d-flex justify-content-between">
-          <div class="bt-extra">
-            {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
-            <span><i class="fas fa-clock"></i>{{date}}</span>
-            <span><i class="fas fa-tag"></i>{{item.categories}}</span>
-            <span><i class="fas fa-eye"></i>{% get_hit_count for item %}</span>
-          </div>
-          <div class="bt-share">
-            <i class="fas fa-share-alt share-all"></i>
+    <div class="header-noticias">
+      <span class="header-noticias-title" align="center" >Estados <br> Unidos <br> En la mira</span>
+      <!-- <span class="header-noticias-frase"><b>FRASES: </b>“Decidir qué no hacer es tan importante como decidir qué hacer”</span> -->
+    </div>
+    <div class="pictureNews">
+      <div class="boxroun center">
+        <img
+          class="float-start zoom"
+          src="{{item.get_image_url}}"
+          alt="{{item.header}}"
+        />
+        <div class="overlay center"></div>
+        <div class="bt-title-cat-intro-eranews">
+          <a href="{{item.get_absolute_url}}">E.E.U.U</a>
+          <br />
+          <a href="{{item.get_absolute_url}}"><h3 class="h3">{{item.header}}</h3></a>
+          <div class="pictureNews-components">
+            <div class="bt-extra">
+              {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+              <span><i class="fas fa-clock"></i>{{date}}</span>
+              {% if item.city %}<span><i class="fas fa-globe"></i>{{item.city}}</span>{% endif %}
+              <span><i class="fas fa-eye"></i>{% get_hit_count for item %}</span>
+            </div>
+            <div class="btn-share">
+              <i class="fas fa-share-alt share-all"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -48,51 +41,42 @@
     <!-- Entretenimiento -->
     {% get_category_all 'Entretenimiento' as entretenimiento %}
     {% for item in entretenimiento %}
-    {% get_categories item.category as entretenimiento %}
-    {% for sub_item in entretenimiento %}
-    {% if item.categories|slugify in sub_item.categories|slugify %}
-    <a
-      href="{{sub_item.get_absolute_url}}"
-      class="btn btn-danger mt-3"
-      style="width: 100%"
-    >
-      <i class="fas fa-globe"></i>
-      <h5 class="fw-bold">Entretenimiento</h5>
-    </a>
-    {% endif %}
-    {% endfor %}
-    <div class="bt-center boxroun mt-3">
-      <img
-        class="float-start card-img zoom"
-        src="{{item.get_image_url}}"
-        alt="{{item.header}}"
-      />
-      <div class="overlay"></div>
-      <div class="bt-title-cat-intro-eranews">
-        <a class="bt-category eranews homestyle2" href="{{item.get_absolute_url}}"
-          >Entretenimiento</a
-        >
-        <br />
-        <a class="bt-title eranews homestyle2" href="{{item.get_absolute_url}}"
-          ><h3 class="h3">{{item.header}}</h3></a
-        >
-        <div class="d-flex justify-content-between">
-          <div class="bt-extra">
-            {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
-            <span><i class="fas fa-clock"></i>{{date}}</span>
-            <span><i class="fas fa-globe"></i>{{item.categories}}</span>
-            <span><i class="fas fa-eye"></i>{% get_hit_count for item %}</span>
+    <div class="entertainment">
+      <div class="header-noticias">
+        <span class="header-noticias-title" align="center" >Entretenimiento</span>
+        <!-- <span class="header-noticias-frase"><b>FRASES: </b>“Decidir qué no hacer es tan importante como decidir qué hacer”</span> -->
+      </div>
+      <div class="pictureNews">
+        <div class="boxroun center">
+          <img
+            class="float-start card-img zoom"
+            src="{{item.get_image_url}}"
+            alt="{{item.header}}"
+          />
+          <div class="overlay center"></div>
+          <div class="bt-title-cat-intro-eranews">
+            <a href="{{item.get_absolute_url}}">Entretenimiento</a>
+            <br />
+            <a href="{{item.get_absolute_url}}"><h3 class="h3">{{item.header}}</h3></a>
+            <div class="pictureNews-components">
+              <div class="bt-extra">
+                {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+                <span><i class="fas fa-clock"></i>{{date}}</span>
+                {% if item.city %}<span><i class="fas fa-globe"></i>{{item.city}}</span>{% endif %}
+                <span><i class="fas fa-eye"></i>{% get_hit_count for item %}</span>
+              </div>
+              <div class="btn-share">
+                <i class="fas fa-share-alt share-all"></i>
+              </div>
+            </div>
           </div>
-          <div class="bt-share">
-            <i class="fas fa-share-alt share-all"></i>
-          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
   </div>
   <!-- PICTURE NEWS RIGHT -->
-  <div class="col-xs-6 col-lg-3 col-sm-12 pt-1">
+  <div class="col-xs-6 col-lg-3 col-sm-12 mt-3 pt-1 line-left">
     <!-- LO QUE PASA EN VENEZUELA -->
     {% load news_extras %}
     {% load hitcount_tags %}
@@ -105,7 +89,6 @@
         </a>
       {% endif %}
     {% endfor %}
-    <!--! hacer que el ultimo border-bottom color dark se vea solo en la ultima iteracion -->
     {% get_categories_by_id 10 3 as venezuela %}
     {% for item in venezuela %}
     <div class="col-lg-12">

@@ -1,8 +1,8 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect
 from .models import NewNews,Category,PermissionsAndPrivacy
-from django.http import Http404,JsonResponse,HttpResponse
+from django.http import JsonResponse
 from django.views.generic.list import ListView
-from hitcount.views import HitCountDetailView
+# from hitcount.views import HitCountDetailView
 from django.utils.http import is_safe_url
 from django.conf import settings
 from slugify import slugify
@@ -19,6 +19,7 @@ def terms_and_conditions(request,*args,**kwargs):
   return render(request,'pages/terms-and-conditions.html',context={'obj':obj})
 
 def update_site_web(request,*args,**kwargs):
+  return render(request,'pages/working-to-improve-the-site.html')
   pass
 class PostListView(ListView):
   model = NewNews

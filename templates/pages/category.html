@@ -14,74 +14,79 @@
 {% endblock meta %}
 {% load static %}
 {% load news_extras %}
+{% load bitly %}
 {% block content %}
 {% if breaking_news %}
-{{breaking_news.get_absolute_url|bitlify}}
-<div class="container">
-  <a id="get-absolute-url" href="{{decode}}"></a>
-  <h1 id="is-header" class="h1 fw-bold">{{breaking_news.header}}</h1>
-  <div class="bt-extra pb-2">
-    <small class="text-muted">
-      {% load news_extras %}
-      {% check_date_time breaking_news.published|date:'d/m/Y H:m A' as date %}
-      <span><i class="fas fa-clock"></i><b id="is-categories">{{breaking_news.categories}}</b> | {{date}}</span>
-      {% load hitcount_tags %}
-      <span><i class="fas fa-eye"></i>{% get_hit_count for breaking_news %}</span>
-    </small>
-  </div>
-</div>
-<figure class="image__figure">
-  <div class="row">
-    <div class="col-lg-12 p-0 image__container-image">
-      <img class="float-start zoom" width="720" height="423" src="{{breaking_news.get_image_url}}" alt="{{breaking_news.header}}">
-    </div>
-    <div class="col-lg-12 p-0 image__container-sub-title">
-      <figcaption class="image__figcation">
-        {% if breaking_news.sub_title == None %}
-          <br>
-        {% else %}
-          <small id="is-subtitle" class="text-muted">{{breaking_news.sub_title}}</small>
-        {% endif %}
-      </figcaption>
-    </div>
-  </div>
-</figure>
-<div class="container lh-base wrapper__content">
-  {% spaceless %}
-  {{breaking_news.content|safe}}
-  {% endspaceless %}
-</div>
-<div class="container">
-  <div class="redes">
-    <div class="wrapper_share">
-      <div class="fb-share">
-        <a class="mashicon-facebook" data-text="{{breaking_news.header}}" href="https://www.facebook.com/sharer.php?u=https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" target="_blank" rel="nofollow">
-          <div class="rou-box">
-            <i class="fab fa-facebook-f"></i>
-          </div>
-        </a>
+<div class="row pt-3">
+  <div class="col-lg-8">
+    <div class="container">
+      <a id="get-absolute-url" href="{{decode}}"></a>
+      <h1 id="is-header" class="h1 fw-bold">{{breaking_news.header}}</h1>
+      <div class="bt-extra pb-2">
+        <small class="text-muted">
+          {% load news_extras %}
+          {% check_date_time breaking_news.published|date:'d/m/Y H:m A' as date %}
+          <span><i class="fas fa-clock"></i><b id="is-categories">{{breaking_news.categories}}</b> | {{date}}</span>
+          {% load hitcount_tags %}
+          <span><i class="fas fa-eye"></i>{% get_hit_count for breaking_news %}</span>
+        </small>
       </div>
-      <div class="wapp-share">
-        <div class="rou-box">
-          <a style="color: #fff; text-decoration: none; text-align: center;" href="https://wa.me/send?text={{breaking_news.header}} https://www.qsn.com{{breaking_news.get_absolute_url}}" target="_blank">
-          <i class="fab fa-whatsapp"></i>
+    </div>
+    <figure class="image__figure">
+      <div class="row">
+        <div class="col-lg-12 p-0 image__container-image">
+          <img class="float-start" width="720" height="423" src="{{breaking_news.get_image_url}}" alt="{{breaking_news.header}}">
+        </div>
+        <div class="col-lg-12 p-0 image__container-sub-title">
+          <figcaption class="image__figcation">
+            {% if breaking_news.sub_title == None %}
+              <br>
+            {% else %}
+              <small id="is-subtitle" class="text-muted">{{breaking_news.sub_title}}</small>
+            {% endif %}
+          </figcaption>
         </div>
       </div>
-      <div class="inst-share">
-        <div class="rou-box">
-          <a href="http://" target="_blank" rel="noopener noreferrer"></a>
-          <i class="fab fa-instagram"></i>
-        </div>
-      </div>
-      <div class="twt-share">
-        <a id="tt-share" class="mashicon-twitter" data-via="QsNoticias" data-text="{{breaking_news.header}}" data-href="https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" href="https://twitter.com/intent/" target="_top" rel="nofollow">
-          <div class="rou-box">
-            <i class="fab fa-twitter"></i>
+    </figure>
+    <div class="container lh-base wrapper__content">
+      {% spaceless %}
+      {{breaking_news.content|safe}}
+      {% endspaceless %}
+    </div>
+    <div class="container">
+      <div class="redes">
+        <div class="wrapper_share">
+          <div class="fb-share">
+            <a class="mashicon-facebook" data-text="{{breaking_news.header}}" href="https://www.facebook.com/sharer.php?u=https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" target="_blank" rel="nofollow">
+              <div class="rou-box">
+                <i class="fab fa-facebook-f"></i>
+              </div>
+            </a>
           </div>
-        </a>
+          <div class="wapp-share">
+            <div class="rou-box">
+              <a style="color: #fff; text-decoration: none; text-align: center;" href="https://wa.me/send?text={{breaking_news.header}} https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+          </div>
+          <div class="inst-share">
+            <div class="rou-box">
+              <a href="http://" target="_blank" rel="noopener noreferrer"></a>
+              <i class="fab fa-instagram"></i>
+            </div>
+          </div>
+          <div class="twt-share">
+            <a id="tt-share" class="mashicon-twitter" data-via="QsNoticias" data-text="{{breaking_news.header}}" data-href="https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" href="https://twitter.com/intent/" target="_top" rel="nofollow">
+              <div class="rou-box">
+                <i class="fab fa-twitter"></i>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  {% include 'pages/aside.html' %}
 </div>
 {% else %}
 {% include 'pages/404.html' %}

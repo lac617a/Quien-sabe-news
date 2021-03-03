@@ -33,19 +33,21 @@
             {% load news_extras %}
             {% populares_hit 1 as hit %}
             {% for fav in hit %}
-            <h6 class="h6">
-              <a class="content__nav-link" title="{{fav.header}}" href="{{fav.get_absolute_url}}">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <img class="zoom-sm" height="117" width="164" src="{{fav.get_image_url}}" alt="{{fav.header}}">
+            <a class="content__nav-link" title="{{fav.header}}" href="{{fav.get_absolute_url}}">
+              <div class="row">
+                <figure class="footer__figure">
+                  <div class="footer__figure_img">
+                    <img class="figure_img" height="117" width="164" src="{{fav.get_image_url}}" alt="{{fav.header}}">
                   </div>
-                  <div class="col col-lg-6">
-                    <span class="content__nav-title">{{fav.header}}</span>
-                  </div>
-                  {% endfor %}
-                </div>
-              </a>
-            </h6>
+                  <figcaption class="footer__figcaption">
+                    <div class="footer_figcaption_title">
+                      <span>{{fav.header}}</span>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+            </a>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -75,7 +77,7 @@
             <div align="center" class="network">
               <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="facebook"><i class="bi bi-facebook"></i></a>
               <div class="separadorNetwork"></div>
-              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="twitter"><i class="bi bi-twitter"></i></a>
+              <a class="network__nav-link" href="https://twitter.com/QsNoticias" target="_blank" title="twitter"><i class="bi bi-twitter"></i></a>
               <div class="separadorNetwork"></div>
               <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="instagram"><i class="bi bi-instagram"></i></a>
             </div>

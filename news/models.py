@@ -1,6 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
-from hitcount.models import HitCountMixin, HitCount
+from hitcount.models import HitCount
 from django.utils.timezone import now
 from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.encoding import python_2_unicode_compatible
@@ -125,3 +125,13 @@ class PermissionsAndPrivacy(models.Model):
 
   def __str__(self):
     return self.title
+
+class Motivation(models.Model):
+  name = models.CharField(max_length=50)
+  content = models.TextField()
+  published = models.DateTimeField(
+    default=now, verbose_name='Fecha de publicación')
+  update = models.DateTimeField(
+    auto_now_add=True, verbose_name='Fecha de edición')
+  created = models.DateTimeField(
+    auto_now_add=True, verbose_name='Fecha de creación')
