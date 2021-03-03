@@ -1,0 +1,47 @@
+:root{
+  /* main */
+  --main-bg-color: #eee;
+  /* navbar */
+  --first-color: #1ac2ec;
+  --second-color:#9C1F42;
+  --third-color: #1ac22c;
+  --fourth-color:#DB5C72;
+  --fifth-color: #dd21dd;
+  --last-color:  #e60034;
+  /* tabar */
+  /* footer */
+}
+
+.container-custom{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.row-custom{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.is-xs{}
+.is-sm{}
+.is-md{}
+.is-lg{}
+.is-input{}
+
+/* Extra small devices (phones, 425px and down) */
+@media only screen and (min-width:425px){
+}
+/* Extra small devices (large phones, 576px and down) */
+@media only screen and (min-width:576px){
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width:768px){
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width:992px){
+  .custom-col-dm-8{width: 100px;}
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width:1200px){
+  .container-custom{max-width: 95%;}
+}

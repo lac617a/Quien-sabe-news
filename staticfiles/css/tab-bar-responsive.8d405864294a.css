@@ -1,0 +1,255 @@
+.wrapper-radius{
+  position: fixed;
+  background-color: #24272d;
+  height: 60px;
+  width: 100%;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 -5px 10px -1px rgba(0,0,0,.5);
+}
+.wrapper-radius .box-tab{
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color:rgba(255,255,255,.5);
+}
+.wrapper-radius .box-tab > div{
+  margin: .5rem 1rem;
+  border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+
+  /* border-radius: 10px; */
+  /* border-top: 1px solid rgba(255,255,255,.5);
+  border-left: 1px solid rgba(255,255,255,.5); */
+  box-shadow: -4px -4px 10px -1px rgba(255,255,255,.1),
+              4px 4px 10px -1px rgba(0,0,0,.1);
+  padding: .5rem;
+}
+.home.active{
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+  box-shadow: -1px -1px 1px -1px rgba(255,255,255,.5),
+              inset 4px 4px 5px -1px rgba(0,0,0,.2),
+              inset -4px -4px 5px -1px rgba(255,255,255,.1)
+              !important;
+}
+
+.wrapper-radius .box-tab i{cursor: pointer;}
+.wrapper-radius .box-tab a{
+  color:rgba(255,255,255,.8);
+  text-decoration: none;
+  text-shadow: 0 0 1px #e60034;
+}
+/* CATEGORY */
+.category-radius{
+  position: fixed;
+  display: block;
+  padding: 1rem;
+  background-color: #24272d;
+  box-shadow: 0 0 10px -2px rgba(255,255,255,.5);
+  /* border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%; */
+  text-align: center;
+  bottom: 80px;
+  left: 60px;
+  right: 180px;
+  border-radius: 5px;
+  z-index: 1;
+  transform: translateY(30rem);
+}
+.category-radius::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: -35px;
+  left: 75px;
+  right: 0;
+  border-top: 20px solid #24272d;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  margin: 10px 0 0 ­32px;
+}
+.category-radius .box-ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.category-radius .box-ul li{
+  position: relative;
+  padding: .5rem;
+  border-bottom: 1px solid rgba(255,255,255,.2);
+}
+.category-radius .box-ul li:last-child{
+  border: none;
+}
+.category-radius .box-ul li:nth-child(1n+2)::before{
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 5px;
+  transform: rotate(90deg);
+  top: -1px;
+  left: -2px;
+  background-color: rgba(255,255,255,.2);
+}
+.category-radius .box-ul li:nth-child(1n+2)::after{
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 5px;
+  transform: rotate(90deg);
+  top: -1px;
+  right: -2px;
+  background-color: rgba(255,255,255,.2);
+}
+.category-radius.active{
+  transition: linear .3s all;
+  visibility: visible;
+  opacity: 1;
+}
+.category-radius.deactive{
+  transition: linear .3s all;
+  visibility: hidden;
+  opacity: 0;
+}
+.category-radius.active.animate{
+  transform: translateY(0);
+  transition: linear .3s transform;
+}
+/* SEARCH */
+.search-radius{
+  position: fixed;
+  display: block;
+  padding: 1rem;
+  background-color: #24272d;
+  box-shadow: -2px -2px 10px -5px rgba(255,255,255,.5),4px 2px 10px -1px rgba(0,0,0,.5);
+  border-radius: 10px;
+  text-align: center;
+  /* top: 0; */
+  bottom: 90px;
+  left: 2rem;
+  right: 2rem;
+  transform: translateY(5rem);
+}
+.search-radius::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: -35px;
+  right: 6rem;
+  border-top: 20px solid #24272d;
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  margin: 10px 0 0 ­32px;
+}
+.search-radius.active{
+  transition: linear .3s all;
+  visibility: visible;
+  opacity: 1;
+}
+.search-radius.deactive{
+  transition: linear .3s all;
+  visibility: hidden;
+  opacity: 0;
+}
+.search-radius.active.animate{
+  transform: translateY(0);
+  transition: linear .2s transform;
+}
+.search-radius .form-R{
+  position: relative;
+  z-index: 100;
+}
+.search-radius input[type=text]{
+  font-family: 'Anton', sans-serif;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: .3rem 1rem;
+  outline-style: none;
+  caret-color:rgba(0,0,0,.5);
+}
+.search-radius button{
+  position: absolute;
+  top: 0;
+  right: 30px;
+  bottom: 0;
+  /* background: rgb(255,255,255); */
+  background: #24272d;
+  border: none;
+  box-shadow: 0 0 10px -2px rgba(255,255,255,.5);
+  color:rgba(255,255,255,.5);
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.search-radius input[type=text]:focus{
+  box-shadow: -5px 0 10px -2px rgba(255,255,255,.5);
+  caret-color: #8ab4f8;
+}
+.search-radius input[type=text]:focus::placeholder{
+  color: #8ab4f8;
+}
+.wrapper-radius .box-tab:hover.search-radius{display: block;}
+
+@media only screen and (min-width: 375px){
+
+}
+/* Extra small devices (phones, 425px and down) */
+@media only screen and (min-width: 425px){
+  /* ------------------
+  FIRST-CONTENT-MAIN
+  ------------------ */
+  .display-block{display: none;}
+  .display-none{display: block;}
+  /* ------------------
+    LAST-CONTENT-MAIN
+  ------------------ */
+}
+/* Extra small devices (large phones, 576px and down) */
+@media only screen and (min-width:576px){
+  /* ------------------
+  FIRST-CONTENT-MAIN
+  ------------------ */
+  /* ------------------
+    LAST-CONTENT-MAIN
+  ------------------ */
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width:768px){
+  /* ------------------
+  FIRST-CONTENT-MAIN
+  ------------------ */
+  /* ------------------
+    LAST-CONTENT-MAIN
+  ------------------ */
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  /* ------------------
+  FIRST-CONTENT-MAIN
+  ------------------ */
+  .display-block{display: block;}
+  .display-none{display: none;}
+  .display-n-carousel{display: none;}
+  /* ------------------
+    LAST-CONTENT-MAIN
+  ------------------ */
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  /* ------------------
+  FIRST-CONTENT-MAIN
+  ------------------ */
+  .display-n-carousel{display: none;}
+  .display-block{display: block;}
+  .display-none{display: none;}
+}
