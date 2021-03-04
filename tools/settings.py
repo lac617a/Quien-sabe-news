@@ -185,7 +185,7 @@ USE_S3 = config('USE_S3',default=False,cast=bool)
 if USE_S3:
     AWS_ACCESS_KEY_ID = config('AWS_ID')
     AWS_SECRET_ACCESS_KEY = config('AWS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'qsn-s3'
+    AWS_STORAGE_BUCKET_NAME = 'static-qsn'
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
     AWS_LOCATION = 'static'
