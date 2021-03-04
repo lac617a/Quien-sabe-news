@@ -13,6 +13,7 @@ media/
 *.db
 *.pid
 
+dc.sqlite3
 news-breaking.code-workspace
 
 Pipfile
