@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'categories',
     'ckeditor',
     'hitcount',
+    'storages',
 ]
 
 SITE_ID = 1 # new
@@ -174,10 +175,18 @@ USE_L10N = True
 USE_TZ = False
 
 
+# AWS S3
+AWS_ACCESS_KEY_ID = config('AWS_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'qsn-s3'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
+AWS_LOCATION = 'static'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 # COLLECTSTATIC
-STATIC_URL = '/static/'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 
 MEDIA_URL = '/media/'
@@ -187,6 +196,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 # WhiteNoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # HitCount
 SESSION_SAVE_EVERY_REQUEST = True
