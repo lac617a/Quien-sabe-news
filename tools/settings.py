@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from typing import cast
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG',default='True',cast=bool)
+DEBUG = config('DEBUG',default=True,cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -175,28 +176,30 @@ USE_L10N = True
 USE_TZ = False
 
 
-# AWS S3
-AWS_ACCESS_KEY_ID = config('AWS_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'qsn-s3'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
-AWS_LOCATION = 'static'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 # COLLECTSTATIC
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+# AWS S3
+USE_S3 = config('USE_S3',default=False,cast=bool)
+if USE_S3:
+    AWS_ACCESS_KEY_ID = config('AWS_ID')
+    AWS_SECRET_ACCESS_KEY = config('AWS_KEY')
+    AWS_STORAGE_BUCKET_NAME = 'qsn-s3'
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
+    AWS_LOCATION = 'static'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+else:
+    STATIC_URL = '/staticfiles/'
+    STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+    # WhiteNoise
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-
-# WhiteNoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # HitCount
 SESSION_SAVE_EVERY_REQUEST = True
