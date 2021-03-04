@@ -9,7 +9,6 @@
     {% for item in united_state %}
     <div class="header-noticias">
       <span class="header-noticias-title" align="center" >Estados <br> Unidos <br> En la mira</span>
-      <!-- <span class="header-noticias-frase"><b>FRASES: </b>“Decidir qué no hacer es tan importante como decidir qué hacer”</span> -->
     </div>
     <div class="pictureNews">
       <div class="boxroun center">
@@ -20,8 +19,8 @@
         />
         <div class="overlay center"></div>
         <div class="bt-title-cat-intro-eranews">
-          <a href="{{item.get_absolute_url}}">E.E.U.U</a>
-          <br />
+          <span style="font-size:18px; margin:1rem 0;display:inline-block;"><i class="fas fa-tag" style="color:rgba(230,0,52,.9);"></i><span style="text-shadow: 1px 0 1px #e60034;">{{new.categories}}</span></span>
+          <a href="{{item.get_absolute_url}}">{{item.categories}}</a>
           <a href="{{item.get_absolute_url}}"><h3 class="h3">{{item.header}}</h3></a>
           <div class="pictureNews-components">
             <div class="bt-extra">
@@ -39,24 +38,23 @@
     </div>
     {% endfor %}
     <!-- Entretenimiento -->
-    {% get_category_all 'Entretenimiento' as entretenimiento %}
-    {% for item in entretenimiento %}
     <div class="entertainment">
       <div class="header-noticias">
         <span class="header-noticias-title" align="center" >Entretenimiento</span>
-        <!-- <span class="header-noticias-frase"><b>FRASES: </b>“Decidir qué no hacer es tan importante como decidir qué hacer”</span> -->
       </div>
+      {% get_category_all 'Entretenimiento' as entretenimiento %}
+      {% for item in entretenimiento %}
       <div class="pictureNews">
         <div class="boxroun center">
           <img
-            class="float-start card-img zoom"
+            class="float-start"
             src="{{item.get_image_url}}"
             alt="{{item.header}}"
           />
           <div class="overlay center"></div>
           <div class="bt-title-cat-intro-eranews">
-            <a href="{{item.get_absolute_url}}">Entretenimiento</a>
-            <br />
+            <span style="font-size:18px; margin:1rem 0;display:inline-block;"><i class="fas fa-tag" style="color:rgba(230,0,52,.9);"></i><span style="text-shadow: 1px 0 1px #e60034;">{{new.categories}}</span></span>
+            <a href="{{item.get_absolute_url}}">{{item.categories}}</a>
             <a href="{{item.get_absolute_url}}"><h3 class="h3">{{item.header}}</h3></a>
             <div class="pictureNews-components">
               <div class="bt-extra">
@@ -70,12 +68,12 @@
               </div>
             </div>
           </div>
-          {% endfor %}
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
-  <!-- PICTURE NEWS RIGHT -->
+  <!-- PICTURE NEWS BOTTOM -->
   <div class="col-xs-6 col-lg-3 col-sm-12 mt-3 pt-1 line-left">
     <!-- LO QUE PASA EN VENEZUELA -->
     {% load news_extras %}

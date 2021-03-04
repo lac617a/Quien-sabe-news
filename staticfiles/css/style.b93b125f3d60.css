@@ -64,7 +64,7 @@ body{
 }
 @keyframes spin{0%{background: transparent; transform: rotate(720deg);}}
 .wrapper{
-  background-image: url(../img/background-main.jpg);
+  background-image: url("../img/background-main.45e0bf0d21e3.jpg");
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
@@ -146,7 +146,7 @@ body{
   margin: 0;
 }
 .bg-footer1{
-  background-image: url(/static/img/footer.jpg);
+  background-image: url("/static/img/footer.7c72c50a3761.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -175,7 +175,7 @@ body{
       END-FOOTER
  -------------------- */
 .t3-copyright{
-  background: url(/static/img/end-footer.png) center top no-repeat;
+  background: url("/static/img/end-footer.4e9edbe15ba1.png") center top no-repeat;
   min-height: 130px;
   align-items: center;
   color: #aaa;
@@ -277,7 +277,7 @@ ASIDE-ALL-PICTURENEWS
 ------------------- */
 .information {
   display: table-cell;
-  background: url(/static/img/background-categories.png) center bottom no-repeat ;
+  background: url("/static/img/background-categories.1e76b6e4cc12.png") center bottom no-repeat ;
   vertical-align: top;
   padding: 1rem .5rem 0;
   padding-top: 1rem;
@@ -402,7 +402,7 @@ h3 a{color: #3a3a3a;}
   padding: 2px 0;
 }
 .noticias-tercer-nivel>.noticia-segundaria {
-  background: url(/static/img/background-categories.png) center bottom no-repeat;
+  background: url("/static/img/background-categories.1e76b6e4cc12.png") center bottom no-repeat;
   margin: 0 auto;
   padding: 15px 0;
   width: 95%;
@@ -417,13 +417,13 @@ h3 a{color: #3a3a3a;}
   border-radius: 5px;
 }
 .contenedor-terminos .titular-terminos{
-  background-image: url(/static/img/line-termino-condiciones.png);
+  background-image: url("/static/img/line-termino-condiciones.64c38e41603f.png");
   background-repeat: no-repeat;
   background-position: center center;
 }
 .contenedor-terminos .titular-terminos .barratitular {
   height: 78px;
-  background-image: url(/static/img/terminos-condiciones.png);
+  background-image: url("/static/img/terminos-condiciones.06427326251d.png");
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -450,7 +450,7 @@ h3 a{color: #3a3a3a;}
 .modulo-principal-seccion {margin: 21px 0 15px;}
 .modulo-principal-seccion .todo {
   display: block;
-  background-image: url(/static/img/line-modulo-main.png);
+  background-image: url("/static/img/line-modulo-main.4fa3802b468c.png");
   background-repeat: no-repeat;
   background-position: center bottom;
 }
@@ -482,7 +482,7 @@ h3 a{color: #3a3a3a;}
 
 }
 .modulo-principal-seccion .photo .sombra-interior {
-  background-image: url(/static/img/sombra-box.png);
+  background-image: url("/static/img/sombra-box.2a2f88b54315.png");
   background-repeat: no-repeat;
   background-size: cover;
   height: auto;
@@ -617,6 +617,16 @@ h3 a{color: #3a3a3a;}
   }
   .footer__figure .footer_figcaption_title{font-size: 18px; line-height: 25px;}
 }
+
+/* Opcional work */
+.container-work{
+  width: 100%;
+}
+.work-img{
+  width: 100%;
+  height:100%;
+}
+
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width:768px){

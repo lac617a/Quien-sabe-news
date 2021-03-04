@@ -134,8 +134,6 @@ DATABASES={
     }
 }
 
-
-
 if DEBUG:
     DATABASES = {
         'default': {
@@ -190,11 +188,12 @@ if USE_S3:
     AWS_STORAGE_BUCKET_NAME = 'static-qsn'
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
-    AWS_LOCATION = 'static'
+    AWS_LOCATION = 'media'
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+    DEFAULT_FILE_STORAGE  =  'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 else:
-    STATIC_URL = '/staticfiles/'
+    STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
     # WhiteNoise
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -205,6 +204,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # HitCount
 SESSION_SAVE_EVERY_REQUEST = True
+CSRF_COOKIE_SECURE = True
 # HITCOUNT_KEEP_HIT_ACTIVE = {'minutes': 60}
 # HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
 # HITCOUNT_KEEP_HIT_IN_DATABASE = {'seconds': 10}

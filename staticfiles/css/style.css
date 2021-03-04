@@ -618,6 +618,15 @@ h3 a{color: #3a3a3a;}
   .footer__figure .footer_figcaption_title{font-size: 18px; line-height: 25px;}
 }
 
+/* Opcional work */
+.container-work{
+  width: 100%;
+}
+.work-img{
+  width: 100%;
+  height:100%;
+}
+
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width:768px){
@@ -863,6 +872,11 @@ h3 a{color: #3a3a3a;}
   .footer-wrapper .widget-content.count-view h3{font-size: 2rem;}
   .bg-footer1 .table-3rem{margin: 0;}
   .footer-wrapper{margin-bottom: 0;}
+  .footer__figure .footer_figcaption_title {
+    font-size: 18px;
+    padding-top: .5rem;
+    line-height: 25px;
+}
   /* ------------------
       END-FOOTER
   ------------------ */
