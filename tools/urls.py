@@ -25,12 +25,13 @@ info_dict = {'queryset':NewNews.objects.all(),}
 
 
 urlpatterns = [
-  path('',include('news.urls')),
-  path('Category/',include('categories.urls')),
-  path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
-  path('sitemap.xml',sitemap,{'sitemaps':{'blog':GenericSitemap(info_dict,priority=0.6)}},name='django.contrib.sitemaps.views.sitemap'),
-  path('18-qsn-admin/', admin.site.urls),
+    path('',include('news.urls')),
+    path('Category/',include('categories.urls')),
+    path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
+    path('sitemap.xml',sitemap,{'sitemaps':{'blog':GenericSitemap(info_dict,priority=0.6)}},name='django.contrib.sitemaps.views.sitemap'),
+    path('18-qsn-admin/', admin.site.urls),
 ]
 
-if settings.DEBUG:
-  urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+if settings.DEBUG: # DEV ONLY
+    urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

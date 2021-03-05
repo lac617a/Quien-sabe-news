@@ -181,24 +181,42 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 # COLLECTSTATIC
 # AWS S3
+# if USE_S3:
 USE_S3 = config('USE_S3',default=False,cast=bool)
-if USE_S3:
-    AWS_ACCESS_KEY_ID = config('AWS_ID')
-    AWS_SECRET_ACCESS_KEY = config('AWS_KEY')
-    AWS_STORAGE_BUCKET_NAME = 'static-qsn'
-    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
-    AWS_LOCATION = 'media'
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-    DEFAULT_FILE_STORAGE  =  'storages.backends.s3boto3.S3Boto3Storage'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-else:
+AWS_ACCESS_KEY_ID = config('AWS_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'qsn-s3'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
+AWS_S3_SECURE_URLS = True
+AWS_DEFAULT_ACL = 'plublic-read'
+
+# AWS_LOCATION = 'static'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+
+# DEFAULT_FILE_STORAGE  =  'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN,AWS_LOCATION)
+
+AWS_QUERYSTRING_AUTH = False
+
+# s3 public media settings
+PUBLIC_MEDIA_LOCATION = 'media'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
+DEFAULT_FILE_STORAGE = 'tools.storages.MediaStorage'
+
+# carga de de static
+PUBLIC_STATIC_LOCATION ='static'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_STATIC_LOCATION}/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR,"static" ),)
+STATICFILES_STORAGE = 'tools.storages.StaticStorage'
+
+if DEBUG:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
     # WhiteNoise
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
@@ -208,6 +226,8 @@ CSRF_COOKIE_SECURE = True
 # HITCOUNT_KEEP_HIT_ACTIVE = {'minutes': 60}
 # HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
 # HITCOUNT_KEEP_HIT_IN_DATABASE = {'seconds': 10}
+
+CKEDITOR_UPLOAD_PATH = "CkEditor/"
 
 # BITLY
 BITLY_LOGIN = 'botlacrita617@gmail.com'
