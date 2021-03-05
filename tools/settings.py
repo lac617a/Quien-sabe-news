@@ -179,10 +179,9 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-# COLLECTSTATIC
+
 # AWS S3
-# if USE_S3:
-USE_S3 = config('USE_S3',default=False,cast=bool)
+USE_S3 = True #config('USE_S3',default=False,cast=bool)
 AWS_ACCESS_KEY_ID = config('AWS_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'qsn-s3'
@@ -190,13 +189,6 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400',}
 AWS_S3_SECURE_URLS = True
 AWS_DEFAULT_ACL = 'plublic-read'
-
-# AWS_LOCATION = 'static'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
-
-# DEFAULT_FILE_STORAGE  =  'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN,AWS_LOCATION)
 
 AWS_QUERYSTRING_AUTH = False
 
@@ -211,21 +203,9 @@ STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_STATIC_LOCATION}/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,"static" ),)
 STATICFILES_STORAGE = 'tools.storages.StaticStorage'
 
-if DEBUG:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
-    # WhiteNoise
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-
 # HitCount
 SESSION_SAVE_EVERY_REQUEST = True
 CSRF_COOKIE_SECURE = True
-# HITCOUNT_KEEP_HIT_ACTIVE = {'minutes': 60}
-# HITCOUNT_HITS_PER_IP_LIMIT = 0  # unlimited
-# HITCOUNT_KEEP_HIT_IN_DATABASE = {'seconds': 10}
 
 CKEDITOR_UPLOAD_PATH = "CkEditor/"
 
