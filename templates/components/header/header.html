@@ -1,0 +1,25 @@
+{% load static %}
+<!-- HEADER -->
+<div class="container no-responsive">
+  <!-- LOGO -->
+  <div class="row logo">
+    <div class="col-xs-12 col-lg-4 col-sm-6 col" align="center">
+      <a href="/" title="QSN">
+        <img width="200" height="120" src="{% static 'img/logo.png' %}" alt="QSN">
+      </a>
+    </div>
+    <!-- ADVERTISING -->
+    <div class="col-lg-4">
+      {# {% include 'components/advertising.html' %} #}
+    </div>
+    <!-- REDES AND SEARCH -->
+    <div class="col col-sm-6 col-lg-4">
+      <!-- REDES -->
+      {% include 'components/redes.html' %}
+        <!-- SEARCH -->
+      {% include 'components/header/search.html' %}
+    </div>
+  </div>
+  {% include 'components/header/navegation.html' %}
+  {% include 'components/header/nav_float.html' %}
+</div>

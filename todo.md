@@ -53,7 +53,7 @@ python_version = "3.6"
   * Automovilismo
   * Otros Deportes
 * Tendecia
-  * Lo mejor del día
+  * Virales
   * Mascotas
   * Ciencia
   * Motores
@@ -64,6 +64,7 @@ python_version = "3.6"
   * Aplicaciones
 * Entretenimiento
   * Farándula
+  * Series
   * Moda
   * Televisión
 

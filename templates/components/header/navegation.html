@@ -1,0 +1,279 @@
+<!-- MAIN NAVIGATION -->
+{% load static %}
+<div class="container__portlet">
+  <nav class="portlet__nav">
+    <ul class="portlet__bar">
+      <li>
+        <div class="portlet__tab">
+          <a href="{% url 'all-category' 'colombia' %}"><strong>Colombia</strong></a>
+          <nav class="child-nav">
+            <div class="portlet-boundary" role="main">
+              <div class="portlet-layout" role="grid">
+                <div class="portlet-column left">
+                  <ul class="portlet-list">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR LA CATEGORY -->
+                    {% load news_extras %}
+                    {% get_categories 'Colombia' as categories %}
+                    {% for sub in categories %}
+                    <li><a title="{{sub.categories}}" href="{{sub.get_absolute_url}}">{{sub.categories}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="portlet-column right">
+                  <div class="dropdown-menu-all">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR AVANCES-->
+                    {% get_category_all 'Colombia' as element %}
+                    {% for item in element %}
+                    <figure class="portlet-figure">
+                      <div class="overlay"></div>
+                      <div class="portlet-lazyloaded">
+                        <img class="portlet-img" width="540" src="{{item.get_image_url}}" alt="{{item.header}}">
+                      </div>
+                      <figcaption class="portlet-figcaption">
+                        <a title="{{item.header}}" href="{{item.get_absolute_url}}">
+                          <div class="portlt-title">
+                            <h3>{{item.header}}</h3>
+                          </div>
+                          <div class="portlet-extra">
+                            <span class="bullet" style="background-color: #1ac2ec;"></span>
+                            <span>{% check_date_time item.published|date:'d/m/Y H:m A' %}</span>
+                          </div>
+                        </a>
+                      </figcaption>
+                    </figure>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </li>
+      <li>
+        <div class="portlet__tab">
+          <a href="{% url 'all-category' 'internacional' %}"><strong>Internacional</strong></a>
+          <nav class="child-nav">
+            <div class="portlet-boundary" role="main">
+              <div class="portlet-layout" role="grid">
+                <div class="portlet-column left">
+                  <ul class="portlet-list">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR LA CATEGORY -->
+                    {% get_categories 'Internacional' as categories %}
+                    {% for sub in categories %}
+                    <li><a title="{{sub.categories}}" href="{{sub.get_absolute_url}}">{{sub.categories}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="portlet-column right">
+                  <div class="dropdown-menu-all">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR AVANCES-->
+                    {% get_category_all 'Internacional' as element %}
+                    {% for item in element %}
+                    <figure class="portlet-figure">
+                      <div class="overlay"></div>
+                      <div class="portlet-lazyloaded">
+                        <img class="portlet-img" width="540" src="{{item.get_image_url}}" alt="{{item.header}}">
+                      </div>
+                      <figcaption class="portlet-figcaption">
+                        <a title="{{item.header}}" href="{{item.get_absolute_url}}">
+                          <div class="portlt-title">
+                            <h3>{{item.header}}</h3>
+                          </div>
+                          <div class="portlet-extra">
+                            <span class="bullet" style="background-color: #9C1F42;"></span>
+                            <span>{% check_date_time item.published|date:'d/m/Y H:m A' %}</span>
+                          </div>
+                        </a>
+                      </figcaption>
+                    </figure>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </li>
+      <li>
+        <div class="portlet__tab">
+          <a href="{% url 'all-category' 'deporte' %}"><strong>Deporte</strong></a>
+          <nav class="child-nav">
+            <div class="portlet-boundary" role="main">
+              <div class="portlet-layout" role="grid">
+                <div class="portlet-column left">
+                  <ul class="portlet-list">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR LA CATEGORY -->
+                    {% get_categories 'Deporte' as categories %}
+                    {% for sub in categories %}
+                    <li><a title="{{sub.categories}}" href="{{sub.get_absolute_url}}">{{sub.categories}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="portlet-column right">
+                  <div class="dropdown-menu-all">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR AVANCES-->
+                    {% get_category_all 'Deporte' as element %}
+                    {% for item in element %}
+                    <figure class="portlet-figure">
+                      <div class="overlay"></div>
+                      <div class="portlet-lazyloaded">
+                        <img class="portlet-img" width="540" src="{{item.get_image_url}}" alt="{{item.header}}">
+                      </div>
+                      <figcaption class="portlet-figcaption">
+                        <a title="{{item.header}}" href="{{item.get_absolute_url}}">
+                          <div class="portlt-title">
+                            <h3>{{item.header}}</h3>
+                          </div>
+                          <div class="portlet-extra">
+                            <span class="bullet" style="background-color: #1ac22c;"></span>
+                            <span>{% check_date_time item.published|date:'d/m/Y H:m A' %}</span>
+                          </div>
+                        </a>
+                      </figcaption>
+                    </figure>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </li>
+      <li>
+        <div class="portlet__tab">
+          <a href="{% url 'all-category' 'tendecia' %}"><strong>Tendencia</strong></a>
+          <nav class="child-nav">
+            <div class="portlet-boundary" role="main">
+              <div class="portlet-layout" role="grid">
+                <div class="portlet-column left">
+                  <ul class="portlet-list">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR LA CATEGORY -->
+                    {% get_categories 'Tendencia' as categories %}
+                    {% for sub in categories %}
+                    <li><a title="{{sub.categories}}" href="{{sub.get_absolute_url}}">{{sub.categories}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="portlet-column right">
+                  <div class="dropdown-menu-all">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR AVANCES-->
+                    {% get_category_all 'Tendencia' as element %}
+                    {% for item in element %}
+                    <figure class="portlet-figure">
+                      <div class="overlay"></div>
+                      <div class="portlet-lazyloaded">
+                        <img class="portlet-img" width="540" src="{{item.get_image_url}}" alt="{{item.header}}">
+                      </div>
+                      <figcaption class="portlet-figcaption">
+                        <a title="{{item.header}}" href="{{item.get_absolute_url}}">
+                          <div class="portlt-title">
+                            <h3>{{item.header}}</h3>
+                          </div>
+                          <div class="portlet-extra">
+                            <span class="bullet" style="background-color: #DB5C72;"></span>
+                            <span>{% check_date_time item.published|date:'d/m/Y H:m A' %}</span>
+                          </div>
+                        </a>
+                      </figcaption>
+                    </figure>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </li>
+      <li>
+        <div class="portlet__tab">
+          <a href="{% url 'all-category' 'tecnologia' %}"><strong>Tecnología</strong></a>
+          <nav class="child-nav">
+            <div class="portlet-boundary" role="main">
+              <div class="portlet-layout" role="grid">
+                <div class="portlet-column left">
+                  <ul class="portlet-list">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR LA CATEGORY -->
+                    {% get_categories 'Tecnología' as categories %}
+                    {% for sub in categories %}
+                    <li><a title="{{sub.categories}}" href="{{sub.get_absolute_url}}">{{sub.categories}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="portlet-column right">
+                  <div class="dropdown-menu-all">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR AVANCES-->
+                    {% get_category_all 'Tecnología' as element %}
+                    {% for item in element %}
+                    <figure class="portlet-figure">
+                      <div class="overlay"></div>
+                      <div class="portlet-lazyloaded">
+                        <img class="portlet-img" width="540" src="{{item.get_image_url}}" alt="{{item.header}}">
+                      </div>
+                      <figcaption class="portlet-figcaption">
+                        <a title="{{item.header}}" href="{{item.get_absolute_url}}">
+                          <div class="portlt-title">
+                            <h3>{{item.header}}</h3>
+                          </div>
+                          <div class="portlet-extra">
+                            <span class="bullet" style="background-color: #dd21dd;"></span>
+                            <span>{% check_date_time item.published|date:'d/m/Y H:m A' %}</span>
+                          </div>
+                        </a>
+                      </figcaption>
+                    </figure>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </li>
+      <li>
+        <div class="portlet__tab">
+          <a href="{% url 'all-category' 'entretenimiento' %}"><strong>Entretenimiento</strong></a>
+          <nav class="child-nav">
+            <div class="portlet-boundary" role="main">
+              <div class="portlet-layout" role="grid">
+                <div class="portlet-column left">
+                  <ul class="portlet-list">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR LA CATEGORY -->
+                    {% get_categories 'Entretenimiento' as categories %}
+                    {% for sub in categories %}
+                    <li><a title="{{sub.categories}}" href="{{sub.get_absolute_url}}">{{sub.categories}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="portlet-column right">
+                  <div class="dropdown-menu-all">
+                    <!-- LLAMAMOS A NUESTRA FUNCTION AQUI PARA MOSTRAR AVANCES-->
+                    {% get_category_all 'Entretenimiento' as element %}
+                    {% for item in element %}
+                    <figure class="portlet-figure">
+                      <div class="overlay"></div>
+                      <div class="portlet-lazyloaded">
+                        <img class="portlet-img" width="540" src="{{item.get_image_url}}" alt="{{item.header}}">
+                      </div>
+                      <figcaption class="portlet-figcaption">
+                        <a title="{{item.header}}" href="{{item.get_absolute_url}}">
+                          <div class="portlt-title">
+                            <h3>{{item.header}}</h3>
+                          </div>
+                          <div class="portlet-extra">
+                            <span class="bullet" style="background-color: #e60034;"></span>
+                            <span>{% check_date_time item.published|date:'d/m/Y H:m A' %}</span>
+                          </div>
+                        </a>
+                      </figcaption>
+                    </figure>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>

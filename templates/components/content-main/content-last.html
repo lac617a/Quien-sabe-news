@@ -1,5 +1,5 @@
 <!-- pictureNews3 -->
-<div class="row pt-3" style="border-top: dashed 1px #333;">
+<div class="row pt-3"> <!-- style="border-top: dashed 1px #333;" -->
   <!-- INTERNACIONAL -->
   <div class="col-xs-6 col-sm-12 col-lg-3 pt-2 line-right">
     <a href="internacional/" class="btn btn-danger mb-3" style="width: 100%;">
@@ -10,7 +10,7 @@
     {% load hitcount_tags %}
     {% get_category_all 'Internacional' as internacional %}
     {% for new in internacional %}
-    <div class="col-lg-12">
+    <div class="col-lg-12 mb-3">
       <div class="information" {% if forloop.last %} style="border-bottom: 1px solid #1c1c1c;" {% endif %}>
         <div class="categoria-noticia">
           <span class="bullet-categoria-noticia" style="background-color: #9C1F42;"></span>

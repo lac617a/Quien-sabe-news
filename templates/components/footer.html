@@ -1,88 +1,81 @@
 {% load static %}
 <!-- FOOTER -->
-<footer class="container footer-wrapper p-0 mt-4">
-  <div class="container bg-footer1 p-3 rounded-top">
-    <div class="row">
-      <!-- FOOT NAVIGATION -->
-      <div class="col-xs-6 col-lg-4 col-sm-12" name="Section(Left)">
-        <div class="widget Text">
-          <div class="widget-title">
-            <h6 class="footer__title">INFORMACIÓN RELEVANTE</h6>
-          </div>
-          <div class="widget-content">
-            <p>Este sitio web no almacena archivos, este blog es solo para uso informativo.</p>
-          </div>
+<footer class="container wrapper__footer">
+  <div class="row widget">
+    <!-- FOOTER NAVIGATION -->
+    <div class="widget-box col-xs-6 col-lg-4 col-sm-12">
+      <div class="widget-header">
+        <div class="widget-title">
+          <h6>INFORMACIÓN RELEVANTE</h6>
         </div>
       </div>
-      <div class="col-xs-6 col-lg-4 col-sm-6 table-3rem" name="Section(Center)">
-        <div class="widget Text">
-          <div class="widget-title">
-            <h6 class="footer__title">VISTAS A LA PÁGINA TOTALES</h6>
-          </div>
-          <div class="widget-content count-view">
-            <h3>5463</h3>
-          </div>
+      <div class="widget-body">
+        <span>Este sitio web no almacena archivos, este blog es solo para uso informativo.</span>
+      </div>
+    </div>
+    <div class="widget-box col-xs-6 col-lg-4 col-sm-12">
+      <div class="widget-header">
+        <div class="widget-title">
+          <h6>VISTAS A LA PÁGINA TOTALES</h6>
         </div>
       </div>
-      <div class="col-xs-6 col-lg-4 col-sm-6 table-3rem" name="Section(Right)">
-        <div class="widget Text">
-          <div class="widget-title">
-            <h6 class="footer__title">POPULAR POSTS</h6>
-          </div>
-          <div class="content__item-aside">
-            {% load news_extras %}
-            {% populares_hit 1 as hit %}
-            {% for fav in hit %}
-            <a class="content__nav-link" title="{{fav.header}}" href="{{fav.get_absolute_url}}">
-              <div class="row">
-                <figure class="footer__figure">
-                  <div class="footer__figure_img">
-                    <img class="figure_img" height="117" width="164" src="{{fav.get_image_url}}" alt="{{fav.header}}">
-                  </div>
-                  <figcaption class="footer__figcaption">
-                    <div class="footer_figcaption_title">
-                      <span>{{fav.header}}</span>
-                    </div>
-                  </figcaption>
-                </figure>
-              </div>
-            </a>
-            {% endfor %}
-          </div>
+      <div class="widget-body">
+        <!-- !HACER ESTO REALIDAD Y DINAMICO -->
+        <div id="count-view" class="count-view">
+          <h3>5463</h3>
         </div>
       </div>
     </div>
-    <!-- COPYRIGHT -->
-    <div class="row t3-copyright">
-      <div class="col-xs-12 col-lg-2 col-sm-3 col">
-        <a href="/" title="Tnews">
-          <img class="logo__img end-footer" src="{% static 'img/logo.png' %}" alt="QSN">
+    <div class="widget-box col-xs-6 col-lg-4 col-sm-12">
+      <div class="widget-header">
+        <div class="widget-title">
+          <h6>POPULAR POSTS</h6>
+        </div>
+      </div>
+      {% load news_extras %}
+      {% populares_hit 1 as hit %}
+      {% for fav in hit %}
+      <div class="widget-body" align="left">
+        <a class="widget-link" href="{{fav.get_absolute_url}}">
+          <figure class="widget-figure">
+            <div class="widget-img">
+              <img height="117" width="164" src="{{fav.get_image_url}}" alt="{{fav.header}}">
+            </div>
+            <figcaption class="widget-figcaption">
+              <div class="widget-content">
+                <span>{{fav.header}}</span>
+              </div>
+            </figcaption>
+          </figure>
         </a>
       </div>
-      <div class="col-lg-7 col-sm-6">
-        <div class="creditos-sitio">
-          <div class="custom creditos">
-            <p>
-              Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://yoydev3.herokuapp.com/" target="_blank" rel="noopener noreferrer">rookie-thunder.com</a>
-              <br>
-              <a href="/terminos-y-condiciones/">Términos y condiciones</a>
-            </p>
-          </div>
-        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row widget__component">
+    <!-- LOGO -->
+    <div class="col-xs-12 col-lg-2 col-sm-3 no-responsive">
+      <div class="widget-img">
+        <a class="widget-link" href="/" title="Tnews">
+          <img src="{% static 'img/logo.png' %}" alt="QSN">
+        </a>
       </div>
-      <div class="col-lg-3 col-ms-3 search-network">
-        <div class="network-footer">
-          <p>Síguenos en:</p>
-          <div>
-            <div align="center" class="network">
-              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="facebook"><i class="bi bi-facebook"></i></a>
-              <div class="separadorNetwork"></div>
-              <a class="network__nav-link" href="https://twitter.com/QsNoticias" target="_blank" title="twitter"><i class="bi bi-twitter"></i></a>
-              <div class="separadorNetwork"></div>
-              <a class="network__nav-link" href="/estamos-trabajando-para-darte-la-mejor-experiencia/" target="_blank" title="instagram"><i class="bi bi-instagram"></i></a>
-            </div>
-          </div>
-        </div>
+    </div>
+    <!-- COPYRIGHT -->
+    <div class="col-xs-12 col-lg-7 col-sm-6">
+      <div class="widget-copyright">
+        <p>
+          Copyright © <script>document.write(new Date().getFullYear())</script> <a href="https://yoydev3.herokuapp.com/" target="_blank" rel="noopener noreferrer">rookie-thunder.com</a>
+          <br>
+          <a href="/terminos-y-condiciones/">Términos y condiciones</a>
+        </p>
+      </div>
+    </div>
+    <!-- REDES -->
+    <div class="col-xs-12 col-lg-3 col-sm-6">
+      <div class="widget-redes">
+        <p>Síguenos en:</p>
+        {% include 'components/redes.html' %}
       </div>
     </div>
   </div>
