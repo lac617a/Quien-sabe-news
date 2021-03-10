@@ -3,14 +3,14 @@
 <meta name="keywords"           content="{{breaking_news.category}},{{breaking_news.categories}}" />
 <meta property="og:title"       content="{{breaking_news.header}}" />
 <meta property="og:type"        content="{{breaking_news.category}}" />
-<meta property="og:url"         content="https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}" />
-<meta property="og:image"       content="https://www.quiensabenoticias.com{{breaking_news.get_image_url}}" />
+<meta property="og:url"         content="https://quiensabenoticias.herokuapp.com/{{breaking_news.get_absolute_url}}" />
+<meta property="og:image"       content="{{breaking_news.get_image_url}}" />
 <meta property="og:description" content="{{breaking_news.sub_title}}" />
 <meta name="twitter:card"       value="summary_large_image">
 <meta name="twitter:title"      content="{{breaking_news.header}}">
-<meta name="twitter:url"        content="https://www.quiensabenoticias.com{{breaking_news.get_absolute_url}}">
+<meta name="twitter:url"        content="{{breaking_news.get_absolute_url}}">
 <meta name="twitter:description"content="{{breaking_news.sub_title}}">
-<meta name="twitter:image"      content="https://www.quiensabenoticias.com{{breaking_news.get_image_url}}">
+<meta name="twitter:image"      content="{{breaking_news.get_image_url}}">
 {% endblock meta %}
 {% load static %}
 {% load news_extras %}
