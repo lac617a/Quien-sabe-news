@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   // CLASS QUERYSELECTOR
   const _category = document.querySelector('.category_')
   const $search = document.querySelector('.search_')
-  console.log($search)
   btnFavorite(category_radius,bars,category_data,search_radius,search,search_data,$search)
   scrollTop()
   main_ajax()
