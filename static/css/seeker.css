@@ -17,7 +17,7 @@
   border: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  font-size: 14px;
+  font-size: 13px;
   padding: .3rem 1rem;
   outline-style: none;
   caret-color:rgba(0,0,0,.5);
@@ -33,9 +33,6 @@
 .wrapper__seeker .container-seeker .autocomplete{
   position: absolute;
   display: none;
-  width: 100%;
-  top: 20px;
-  left: 0;
   align-items: center;
   max-height: 96px;
   min-height: auto;
@@ -101,9 +98,18 @@
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width:992px){
+  .wrapper__seeker .container-seeker .autocomplete{
+    width: 70.3%;
+    top: 20px;
+    left: 44px;
+  }
   .wrapper__seeker .container-seeker .form-search{margin: 0;}
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width:1200px){
+  .wrapper__seeker .container-seeker .autocomplete{
+    width: 100%;
+    left: 0;
+  }
   .wrapper__seeker .container-seeker .form-search{margin: 0 22%;}
 }
