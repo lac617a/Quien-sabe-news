@@ -5,6 +5,7 @@ from django.utils.timezone import now
 from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.encoding import python_2_unicode_compatible
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 
 # Create your models here.
@@ -74,7 +75,8 @@ class NewNews(models.Model):
     help_text='Dado caso que Exista un Sub titulo'
   )
   image = models.ImageField(upload_to='news-post/%Y/%m/%d',verbose_name='Imagen del post', null=True, blank=True)
-  content = RichTextField(verbose_name='Contenido del nuevo post')
+  # content = RichTextField(verbose_name='Contenido del nuevo post')
+  content = RichTextUploadingField(verbose_name='Contenido del nuevo post',blank=True,null=True)
   sub_content = models.TextField(
     verbose_name='sub contenido',
     null=True,

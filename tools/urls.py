@@ -26,6 +26,7 @@ info_dict = {'queryset':NewNews.objects.all(),}
 
 urlpatterns = [
     path('',include('news.urls')),
+    path('ckeditor/',include('ckeditor_uploader.urls')),
     path('Category/',include('categories.urls')),
     path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
     path('sitemap.xml',sitemap,{'sitemaps':{'blog':GenericSitemap(info_dict,priority=0.6)}},name='django.contrib.sitemaps.views.sitemap'),
