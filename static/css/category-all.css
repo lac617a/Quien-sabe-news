@@ -1,0 +1,128 @@
+/* -----------------------------------------------------------------------------------------------------
+                                            CUSTOM-MAIN-CSS
+------------------------------------------------------------------------------------------------------*/
+.wrapper__visual{
+  position: relative;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 10px;
+  padding-top: .5rem;
+  border-bottom: 2px solid #3a3a3a;
+  box-shadow:  -4px -4px 10px -1px rgba(255 255 255 / .5),4px 4px 10px -3px rgba(0 0 0 / .5);
+}
+/* LEFT */
+.wrapper__visual .container-visual a{
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrapper__visual .container-visual-figure{
+  position: relative;
+  width: 100%;
+}
+.wrapper__visual .container-visual-figure .visual-figure .visual-img{
+  position: relative;
+  width: 100%;
+  background-color: #3a3a3a;
+}
+.wrapper__visual .container-visual-figure .visual-figure .visual-img img{
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+  border-radius: 10px;
+}
+/* RIGHT */
+.wrapper__visual .container-visual{
+  position: relative;
+  width: 100%;
+}
+.wrapper__visual .container-visual div{padding-bottom: .5rem;}
+.wrapper__visual .container-visual .visual-date{}
+.wrapper__visual .container-visual .visual-header{}
+.wrapper__visual .container-visual .visual-sub{
+
+}
+
+/* -----------------------------------------------------------------------------------------------------
+                                              RESPONSIVE
+------------------------------------------------------------------------------------------------------*/
+
+/* small devices (small phones, 320px and down) */
+@media only screen and (min-width:320px){
+  .wrapper__visual .container-visual{padding: 1rem .8rem 0;}
+  .wrapper__visual{display: block;margin: 0;}
+  .wrapper__visual.content{margin: 1rem 0;}
+  /* .wrapper__visual.content{margin: 1rem .5rem;} */
+  .wrapper__visual .container-visual-figure .visual-figure{padding-top: 1rem;}
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img{
+    top: 0;
+    left: -12px;
+    padding-top: 60%;
+    border-top: #3a3a3a 0px solid;
+    border-left: #3a3a3a 0px solid;
+    box-shadow: 0 0 10px -2px rgba(0 0 0 / .1);
+    border-radius: 0px;
+    width: 320px;
+  }
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img img{border-radius: 0px;}
+}
+
+/* small devices (small phones, 360px and down) */
+@media only screen and (min-width:360px){
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img{width: 360px;}
+}
+@media (min-width:375px){
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img{width: 375px;}
+}
+@media only screen and (min-width:411px){
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img{width: 411px;}
+}
+/* Extra small devices (phones, 425px and down) */
+@media only screen and (min-width:425px){
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img{width: 425px;}
+}
+/* Extra small devices (large phones, 576px and down) */
+@media only screen and (min-width:576px){}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width:768px){
+  .wrapper__visual{display: flex;margin: 0 2rem;}
+  .wrapper__visual.content{margin: 1rem 4rem;}
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img{
+    left: 5px;
+    border-top: #3a3a3a 2px solid;
+    border-left: #3a3a3a 2px solid;
+    box-shadow: 0 0 10px -2px rgba(0 0 0 / .5);
+    border-radius: 10px;
+    padding-top: 80%;
+    width: 300px;
+  }
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img img{border-radius: 10px;}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width:992px){
+  .wrapper__visual .container-visual{padding: .5rem 1rem 0 ;}
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img{
+    top: 0px;
+    left: 5px;
+    padding-top: 100%;
+    width: 250px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width:1200px){
+  .wrapper__visual .container-visual-figure .visual-figure{padding-top: 0px;}
+  .wrapper__visual .container-visual-figure .visual-figure .visual-img{
+    top: 20px;
+    left: -2rem;
+    padding-top: 50%;
+    width: 100%;
+  }
+}

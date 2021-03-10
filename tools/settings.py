@@ -203,10 +203,10 @@ STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_STATIC_LOCATION}/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,"static" ),)
 STATICFILES_STORAGE = 'tools.storages.StaticStorage'
 
-# if DEBUG:
-#     STATIC_URL = '/static/'
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#     STATICFILES_DIRS = (os.path.join(BASE_DIR,"static" ),)
+if DEBUG:
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = (os.path.join(BASE_DIR,"static" ),)
 
 # HitCount
 SESSION_SAVE_EVERY_REQUEST = True

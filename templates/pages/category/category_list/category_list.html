@@ -3,98 +3,58 @@
 {% for item in entry_header %}
 <div class="row pt-3">
   <div class="display-none table">
-    {% include 'components/advertising.html' %}
+    {# {% include 'components/advertising.html' %} #}
   </div>
   <div class="col-lg-8">
-    <div class="modulo-principal-seccion">
-      <div class="todo">
-        <div class="date">
-          {% if request.path == '/Category/colombia/' %}
-          <span class="bullet-categoria-noticia" style="background:#1ac2ec"></span>
-          {% endif %}
-          {% if request.path == '/Category/internacional/' %}
-          <span class="bullet-categoria-noticia" style="background:#9C1F42"></span>
-          {% endif %}
-          {% if request.path == '/Category/deporte/' %}
-          <span class="bullet-categoria-noticia" style="background:#1ac22c"></span>
-          {% endif %}
-          {% if request.path == '/Category/tendencia/' %}
-          <span class="bullet-categoria-noticia" style="background:#DB5C72"></span>
-          {% endif %}
-          {% if request.path == '/Category/tecnologia/' %}
-          <span class="bullet-categoria-noticia" style="background:#dd21dd"></span>
-          {% endif %}
-          {% if request.path == '/Category/entretenimiento/' %}
-          <span class="bullet-categoria-noticia" style="background:#e60034"></span>
-          {% endif %}
-          {% load news_extras %}
-          {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
-          <a href="{{item.categories|slugify}}"><b>{{item.categories}}</b> | {{date}}</a>
-        </div>
-        <div class="photo">
-          <a href="{{item.get_absolute_url}}">
-            <div frame="Principal-Seccion" style="position: relative; width: 100%; padding-top: 51.78%; background-color: #000000">
-              <img class=" lazyloaded" height="334" width="645" src="{{item.get_image_url}}" alt="{{item.header}}" style="bottom: 0; left: 0; top: 0; right: 0;height: auto; width: 100%;max-height: 100%; max-width: 100%;display: block; position: absolute; margin: auto;">
-            </div>
-            <div class="sombra-interior">
-              <h3>
-                <div class="tx-titulo">
-                  <span class="priority-content">{{item.header}}</span>
-                </div>
-              </h3>
-            </div>
-          </a>
-        </div>
+    <div class="wrapper__visual">
+      <div class="container-visual-figure">
+        <figure class="visual-figure main">
+          <div class="visual-img">
+            <img height="250" width="645" src="{{item.get_image_url}}" alt="{{item.header}}">
+          </div>
+        </figure>
+      </div>
+      <div class="container-visual">
+        <a href="{{item.get_absolute_url}}">
+          <div class="visual-date">
+            {% load news_extras %}
+            {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+            <small class="text-muted"><b>{{item.categories}}</b> | {{date}}</small>
+          </div>
+          <div class="visual-header">
+            <h5 class="h5"><b>{{item.header}}</b></h5>
+          </div>
+          <div class="visual-sub">
+            <p><span>{{item.sub_title}}</span></p>
+          </div>
+        </a>
       </div>
     </div>
     {% endfor %}
     <div class="noticias-carrusel-list">
       {% for item in category %}
-      <div class="noticias-tercer-nivel">
-        <div class="noticia-segundaria">
-          <div class="row">
-            <div class="col-lg-6 col-sm-3 col-md-6 bt-center-sm">
-              <div class="left">
-                <a href="{{item.get_absolute_url}}">
-                  <div frame="Lista" style="position: relative; width: 100%; padding-top: 53.53%; background-color: #000000">
-                    <img style="bottom:0;left:0;top:0;right:0;height:auto;width:100%;max-height:100%;max-width:100%;display:block;position:absolute;margin:auto;" height="129" src="{{item.get_image_url}}" alt="{{item.image}}">
-                  </div>
-                </a>
-              </div>
+      <div class="wrapper__visual content">
+        <div class="container-visual-figure">
+          <figure class="visual-figure">
+            <div class="visual-img">
+              <img height="250" width="645" src="{{item.get_image_url}}" alt="{{item.header}}">
             </div>
-            <div class="col">
-              <div class="right">
-                <div class="categoria-noticia">
-                  {% if request.path == '/Category/colombia/' %}
-                  <span class="bullet-categoria-noticia" style="background:#1ac2ec"></span>
-                  {% endif %}
-                  {% if request.path == '/Category/internacional/' %}
-                  <span class="bullet-categoria-noticia" style="background:#9C1F42"></span>
-                  {% endif %}
-                  {% if request.path == '/Category/deporte/' %}
-                  <span class="bullet-categoria-noticia" style="background:#1ac22c"></span>
-                  {% endif %}
-                  {% if request.path == '/Category/tendencia/' %}
-                  <span class="bullet-categoria-noticia" style="background:#DB5C72"></span>
-                  {% endif %}
-                  {% if request.path == '/Category/tecnologia/' %}
-                  <span class="bullet-categoria-noticia" style="background:#dd21dd"></span>
-                  {% endif %}
-                  {% if request.path == '/Category/entretenimiento/' %}
-                  <span class="bullet-categoria-noticia" style="background:#e60034"></span>
-                  {% endif %}
-                  {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
-                  <a href="{{item.categories|slugify}}"><i class="fas fa-clock"></i><b>{{item.categories}}</b> | {{date}}</a>
-                </div>
-                <h3>
-                  <a class="bt-title eranews homestyle2 text-dark" title="{{item.header}}" href="{{item.get_absolute_url}}">
-                    <span class="priority-content">{{item.header}}</span>
-                  </a>
-                </h3>
-                <p>{{item.sub_title}}</p>
-              </div>
+          </figure>
+        </div>
+        <div class="container-visual">
+          <a href="{{item.get_absolute_url}}">
+            <div class="visual-date">
+              {% load news_extras %}
+              {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+              <small class="text-muted"><b>{{item.categories}}</b> | {{date}}</small>
             </div>
-          </div>
+            <div class="visual-header">
+              <h5 class="h5"><b>{{item.header}}</b></h5>
+            </div>
+            <div class="visual-sub">
+              <p><span>{{item.sub_title}}</span></p>
+            </div>
+          </a>
         </div>
       </div>
       {% endfor %}

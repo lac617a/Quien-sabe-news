@@ -49,7 +49,7 @@
                 {% for new in new_posts %}
                 <div class="carousel__container-figure">
                   <figure class="carousel-figure">
-                    <a href="{{new.get_absolute_url}}" style="text-decoration: none; color:#333;">
+                    <a href="{{new.get_absolute_url}}" style="text-decoration: none; color:inherit;">
                       <div class="carousel__lazy-load">
                         <img class="carousel-img" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
                       </div>
@@ -79,25 +79,27 @@
                 {% for new in new_posts %}
                 <div class="carousel__container-figure">
                   <figure class="carousel-figure">
-                    <div class="carousel__lazy-load">
-                      <img class="carousel-img" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
-                    </div>
-                    <div class="carousel__header-float">
-                      <!-- header font 13px color #eee opacity .7 box-shadow -->
-                      <h2>{{new.header}}</h2>
-                    </div>
-                    <figcaption class="carousel__container-figcaption">
-                      <div class="carousel-figcaption">
-                        <!-- view,date,category and categories -->
-                        <div class="carousel-components">
-                          <div class="extra">
-                            {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                            <span><i class="fas fa-clock"></i>{{date}}</span>
-                            <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+                    <a href="{{new.get_absolute_url}}" style="text-decoration: none; color:inherit;">
+                      <div class="carousel__lazy-load">
+                        <img class="carousel-img" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
+                      </div>
+                      <div class="carousel__header-float">
+                        <!-- header font 13px color #eee opacity .7 box-shadow -->
+                        <h2>{{new.header}}</h2>
+                      </div>
+                      <figcaption class="carousel__container-figcaption">
+                        <div class="carousel-figcaption">
+                          <!-- view,date,category and categories -->
+                          <div class="carousel-components">
+                            <div class="extra">
+                              {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
+                              <span><i class="fas fa-clock"></i>{{date}}</span>
+                              <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </figcaption>
+                      </figcaption>
+                    </a>
                   </figure>
                 </div>
                 {% endfor %}
@@ -107,25 +109,27 @@
                 {% for new in new_posts %}
                 <div class="carousel__container-figure">
                   <figure class="carousel-figure">
-                    <div class="carousel__lazy-load">
-                      <img class="carousel-img" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
-                    </div>
-                    <div class="carousel__header-float">
-                      <!-- header font 13px color #eee opacity .7 box-shadow -->
-                      <h2>{{new.header}}</h2>
-                    </div>
-                    <figcaption class="carousel__container-figcaption">
-                      <div class="carousel-figcaption">
-                        <!-- view,date,category and categories -->
-                        <div class="carousel-components">
-                          <div class="extra">
-                            {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                            <span><i class="fas fa-clock"></i>{{date}}</span>
-                            <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+                    <a href="{{new.get_absolute_url}}" style="text-decoration: none; color:inherit;">
+                      <div class="carousel__lazy-load">
+                        <img class="carousel-img" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
+                      </div>
+                      <div class="carousel__header-float">
+                        <!-- header font 13px color #eee opacity .7 box-shadow -->
+                        <h2>{{new.header}}</h2>
+                      </div>
+                      <figcaption class="carousel__container-figcaption">
+                        <div class="carousel-figcaption">
+                          <!-- view,date,category and categories -->
+                          <div class="carousel-components">
+                            <div class="extra">
+                              {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
+                              <span><i class="fas fa-clock"></i>{{date}}</span>
+                              <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </figcaption>
+                      </figcaption>
+                    </a>
                   </figure>
                 </div>
                 {% endfor %}
