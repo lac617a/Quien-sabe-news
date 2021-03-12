@@ -3,12 +3,12 @@
 <meta name="keywords"           content="{{breaking_news.category}},{{breaking_news.categories}}" />
 <meta property="og:title"       content="{{breaking_news.header}}" />
 <meta property="og:type"        content="{{breaking_news.category}}" />
-<meta property="og:url"         content="https://quiensabenoticias.herokuapp.com/{{breaking_news.get_absolute_url}}" />
+<meta property="og:url"         content="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" />
 <meta property="og:image"       content="{{breaking_news.get_image_url}}" />
 <meta property="og:description" content="{{breaking_news.sub_title}}" />
 <meta name="twitter:card"       value="summary_large_image">
 <meta name="twitter:title"      content="{{breaking_news.header}}">
-<meta name="twitter:url"        content="{{breaking_news.get_absolute_url}}">
+<meta name="twitter:url"        content="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}">
 <meta name="twitter:description"content="{{breaking_news.sub_title}}">
 <meta name="twitter:image"      content="{{breaking_news.get_image_url}}">
 {% endblock meta %}
@@ -57,7 +57,7 @@
       <div class="redes">
         <div class="wrapper_share">
           <div class="fb-share">
-            <a class="mashicon-facebook" data-text="{{breaking_news.header}}" href="https://www.facebook.com/sharer.php?u=https://quiensabenoticias.herokuapp.com{{breaking_news.get_absolute_url}}" target="_blank" rel="nofollow">
+            <a class="mashicon-facebook" data-text="{{breaking_news.header}}" href="https://www.facebook.com/sharer.php?u=https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" target="_blank" rel="nofollow">
               <div class="rou-box">
                 <i class="fab fa-facebook-f"></i>
               </div>
@@ -65,7 +65,7 @@
           </div>
           <div class="wapp-share">
             <div class="rou-box">
-              <a style="color: #fff; text-decoration: none; text-align: center;" href="https://wa.me/send?text={{breaking_news.header}} https://quiensabenoticias.herokuapp.com{{breaking_news.get_absolute_url}}" target="_blank">
+              <a style="color: #fff; text-decoration: none; text-align: center;" href="https://wa.me/?text={{breaking_news.header}} https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" target="_blank">
               <i class="fab fa-whatsapp"></i>
             </div>
           </div>
@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="twt-share">
-            <a id="tt-share" class="mashicon-twitter" data-via="QsNoticias" data-text="{{breaking_news.header}}" data-href="https://quiensabenoticias.herokuapp.com{{breaking_news.get_absolute_url}}" href="https://twitter.com/intent/" target="_top" rel="nofollow">
+            <a id="tt-share" class="mashicon-twitter" data-via="QsNoticias" data-text="{{breaking_news.header}}" data-href="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" href="https://twitter.com/intent/" target="_top" rel="nofollow">
               <div class="rou-box">
                 <i class="fab fa-twitter"></i>
               </div>
