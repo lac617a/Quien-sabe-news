@@ -1,4 +1,5 @@
 {% extends 'pages/base.html' %}
+{% block title %}QSN a tu alcance - {{title|capfirst}}{% endblock title %}
 {% block content %}
 {% if categories %}
 <div class="row pt-3">
@@ -17,17 +18,19 @@
           </figure>
         </div>
         <div class="container-visual">
-          <div class="visual-date">
-            {% load news_extras %}
-            {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
-            <small class="text-muted"><b>{{item.categories}}</b> | {{date}}</small>
-          </div>
-          <div class="visual-header">
-            <h5 class="h5"><b>{{item.header}}</b></h5>
-          </div>
-          <div class="visual-sub">
-            <p><span>{{item.sub_title}}</span></p>
-          </div>
+          <a href="{{item.get_absolute_url}}">
+            <div class="visual-date">
+              {% load news_extras %}
+              {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+              <small class="text-muted"><b>{{item.categories}}</b> | {{date}}</small>
+            </div>
+            <div class="visual-header">
+              <h5 class="h5"><b>{{item.header}}</b></h5>
+            </div>
+            <div class="visual-sub">
+              <p><span>{{item.sub_title}}</span></p>
+            </div>
+          </a>
         </div>
       </div>
       {% endfor %}

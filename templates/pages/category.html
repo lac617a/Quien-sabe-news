@@ -12,6 +12,7 @@
 <meta name="twitter:description"content="{{breaking_news.sub_title}}">
 <meta name="twitter:image"      content="{{breaking_news.get_image_url}}">
 {% endblock meta %}
+{% block title %}QSN a tu alcance - {{breaking_news.header|capfirst}}{% endblock title %}
 {% load static %}
 {% load news_extras %}
 {% load bitly %}
