@@ -153,12 +153,8 @@ Design responsive slider
   /* ::-webkit-scrollbar {display: none;} */
   .carousel-element .carousel__container-figure{margin: 1rem;}
 }
-@media (min-width:375px){
-  .carousel-element .carousel-figure .carousel__lazy-load {padding-top: 102%;}
-}
-@media only screen and (min-width: 411px){
-  .carousel-element .carousel-figure .carousel__lazy-load {padding-top: 95%;}
-}
+@media (min-width:375px){.carousel-element .carousel-figure .carousel__lazy-load {padding-top: 102%;}}
+@media only screen and (min-width: 400px){.carousel-element .carousel-figure .carousel__lazy-load {padding-top: 95%;}}
 /* Extra small devices (phones, 425px and down) */
 @media only screen and (min-width: 425px){
   /* ------------------

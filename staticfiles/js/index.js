@@ -12,18 +12,21 @@ document.addEventListener('DOMContentLoaded',()=>{
   const search_radius = document.querySelector('.search-radius')
   const search_data = search_radius.dataset.toggle
   const search = document.getElementById('search-R')
-  btnFavorite(category_radius,bars,category_data,search_radius,search,search_data)
+  // CLASS QUERYSELECTOR
+  const _category = document.querySelector('.category_')
+  const $search = document.querySelector('.search_')
+  btnFavorite(category_radius,bars,category_data,search_radius,search,search_data,$search)
   scrollTop()
   main_ajax()
 })
 
 function main_ajax(){
-  const $error_message = document.getElementById('error-message')
+  // fas fa-exclamation con esto lo haceremos mas divertido :3
+  const $error = document.querySelector('#seeker-objects .btn-submit')
   const $autocomplete = document.getElementById('autocomplete')
   document.addEventListener('keyup',(e)=>{
     const $search = document.getElementById('search')
-    const $search_3 = document.getElementById('search-3')
-    objects_categories_xhr($search,$search_3,$autocomplete,$error_message)
+    objects_categories_xhr($search,$autocomplete,$error)
   })
 }
 const special_characters = /[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g
@@ -54,7 +57,7 @@ como logramos eso, pues no vamos a referir a cada uno de los ID como search-[1,2
 lo que vamos hacer sea mas eficaz a la hora de registro y no se nos quede tan pegado, porque creo que eso tambien
 es en el rendimiento del codigo, asi que no tengamos miedo y hagamos esto mas divertido :D
 */
-function objects_categories_xhr(search,search_3,autocomplete,error_message){
+function objects_categories_xhr(search,autocomplete,error){
   const xhr = new XMLHttpRequest()
   const method = 'GET'
   const url = '/seeker/'
@@ -72,20 +75,23 @@ function objects_categories_xhr(search,search_3,autocomplete,error_message){
         if (search.value !== ''){
           if(search.value[0] === categories_to_string[0]){
             if(categories_to_string.startsWith(search.value)){
-              error_message.classList.remove('message-active')
-              search.classList.remove('item-not-found')
+              error.classList.remove('error')
+              error.disabled = false
+              err(false)
               autocomplete.classList.add('autocomplete-active')
               return autocomplete.innerHTML = link(catgory,catgories)
             }
           }
           else{
-            error_message.classList.add('message-active')
-            search.classList.add('item-not-found')
+            error.classList.add('error')
+            error.disabled = true
+            err(true)
           }
         }else{
           autocomplete.classList.remove('autocomplete-active')
-          error_message.classList.remove('message-active')
-          search.classList.remove('item-not-found')
+          error.classList.remove('error')
+          error.disabled = false
+          err(false)
         }
       }
     }
@@ -103,7 +109,12 @@ function objects_categories_xhr(search,search_3,autocomplete,error_message){
   }
   xhr.send()
 }
-
+function err(error){
+  const fas = document.getElementById('fas')
+  if (error){
+    return fas.setAttribute('class','fas fa-exclamation')
+  }else{return fas.setAttribute('class','fas fa-search')}
+}
 function link(pattern,url) {
   return `<ul class="list-group">
             <li class="nav-item">
@@ -115,17 +126,17 @@ function link(pattern,url) {
           </ul>`
 }
 
-function btnFavorite(category,bar,check_category,btn_search,search,check_search){
+function btnFavorite(category,bar,check_category,btn_search,search,check_search,addCategory){
   // BARS CATEGORY
   bar.addEventListener('click',()=>{
     if (check_category){
       check_category = false
       check_search = true
-      removeClassList(btn_search)
-      return addClassList(category)
+      removeClassList(btn_search,addCategory)
+      return addClassList(category,addCategory)
     }else{
       check_category = true
-      return removeClassList(category)
+      return removeClassList(category,addCategory)
     }
   })
   // SEEKER
@@ -133,20 +144,23 @@ function btnFavorite(category,bar,check_category,btn_search,search,check_search)
     if (check_search){
       check_search = false
       check_category = true
-      removeClassList(category)
-      return addClassList(btn_search)
+      removeClassList(category,addCategory)
+      return addClassList(btn_search,addCategory)
     }else{
       check_search = true
       return removeClassList(btn_search)
     }
   })
 }
-function addClassList(value){
+//! hacer que cuando se pulse el boton se vea la animacion hacia el OK :3
+function addClassList(value,category){
   value.classList.add('active')
+  // category.classList.add('active')
   value.classList.remove('deactive')
 }
-function removeClassList(value){
+function removeClassList(value,category){
   value.classList.remove('active')
+  // category.classList.remove('active')
   value.classList.add('deactive')
 }
 // CURRENT SCROLL READY
