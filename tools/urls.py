@@ -29,6 +29,8 @@ urlpatterns = [
     path('',include('news.urls')),
     path('ckeditor/',include('ckeditor_uploader.urls')),
     path('Category/',include('categories.urls')),
+    path('api/v0.1/',include('news.urls_router')),
+    path('api/v0.1/',include('news.urls_router')),
     path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
     path('sitemap.xml', sitemap, {'sitemaps': {'blog':GenericSitemap(info_dict,priority=0.6,protocol='https')}},name='django.contrib.sitemaps.views.sitemap'),
     path('18-qsnoticia-forever/', admin.site.urls),

@@ -6,7 +6,7 @@
 <meta property="og:url"         content="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" />
 <meta property="og:image"       content="{{breaking_news.get_image_url}}" />
 <meta property="og:description" content="{{breaking_news.sub_title}}" />
-<meta name="twitter:card"       value="summary_large_image">
+<meta name="twitter:card"       content="summary_large_image">
 <meta name="twitter:title"      content="{{breaking_news.header}}">
 <meta name="twitter:url"        content="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}">
 <meta name="twitter:description"content="{{breaking_news.sub_title}}">
@@ -76,6 +76,7 @@
               <i class="fab fa-instagram"></i>
             </div>
           </div>
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-via="QsNoticia" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           <div class="twt-share">
             <a id="tt-share" class="mashicon-twitter" data-via="QsNoticia" data-text="{{breaking_news.header}}" data-href="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" href="https://twitter.com/intent/" target="_top" rel="nofollow">
               <div class="rou-box">
@@ -94,5 +95,10 @@
 {% endif %}
 {% endblock content %}
 {% block js_extras %}
+<script>
+  document.addEventListener('DOMContentLoaded',()=>{
+    console.log(window.AnalyserNode)
+  })
+</script>
 <script src="{% static 'js/btn.js' %}"></script>
 {% endblock js_extras %}

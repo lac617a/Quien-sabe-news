@@ -1,9 +1,16 @@
 from django import template
 from news.models import NewNews, Category
 from datetime import datetime
+from hitcount.models import HitCount
 
 register = template.Library()
 
+@register.simple_tag
+def count_total():
+  current_count = 0
+  for x in HitCount.objects.all():
+    current_count += x.hits
+  return current_count
 
 @register.simple_tag
 def check_date_time(format_string):

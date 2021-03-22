@@ -23,7 +23,7 @@ def slug_detail_view(request,slug_news,*args,**kwargs):
     return render(request,'pages/category.html',context=context, status=404)
 
   # hitcount logic
-  popular_hits = context['popular_hits'] = NewNews.objects.order_by('-hit_count_generic__hits')[:3]
+  # popular_hits = context['popular_hits'] = NewNews.objects.order_by('-hit_count_generic__hits')[:3]
   hit_count = get_hitcount_model().objects.get_for_object(object)
   hits = hit_count.hits
   hitcontext = context['hitcount'] = {'pk': hit_count.pk}

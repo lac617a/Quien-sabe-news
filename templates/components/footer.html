@@ -22,7 +22,9 @@
       <div class="widget-body">
         <!-- !HACER ESTO REALIDAD Y DINAMICO -->
         <div id="count-view" class="count-view">
-          <h3>5463</h3>
+          {% load news_extras %}
+          {% count_total as total %}
+          <h3>{{total}}</h3>
         </div>
       </div>
     </div>
