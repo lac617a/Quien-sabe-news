@@ -201,8 +201,8 @@ CSRF_COOKIE_SECURE = True
 CKEDITOR_UPLOAD_PATH = "CkEditor/"
 
 # BITLY
-BITLY_LOGIN = 'botlacrita617@gmail.com'
-BITLY_API_KEY = 'e54ed519ec2761d8a93f10f791a84c5cc555681c'
+BITLY_LOGIN = config('BITLY_ADMIN')
+BITLY_API_KEY = config('BITLY_API')
 
 if config('DJANGO_PRO_ENV',default=False,cast=bool):
     from .settings_pro import *
