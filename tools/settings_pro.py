@@ -1,8 +1,10 @@
 import os
 from .AWS import *
+from .db import DATABASES_ENV
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATABASES = DATABASES_ENV
 
 #carga de de static
 PUBLIC_STATIC_LOCATION ='static'

@@ -41,11 +41,16 @@ def check_date_time(format_string):
   # COMBINATION OF RETURN
   combination_date = datetime.strftime(publication_date.date(),'%d/%m/%Y')
   combination_time = publication_date.time().hour
+  # Manejando datos semanales
+  DAY = ('Ayer','Anteayer') # hace 3/4/5/6/ y publicado hace 1 semana
+  SEMANA = 7
+  # print(get_publication_day)
   if current_month > get_publication_month:
     return combination_date
   elif current_day > get_publication_day:
     return combination_date
   else:
+    # Aqui contamos por hora de publicacion.
     if current_time == combination_time:
       return 'publicación reciente'
     else:

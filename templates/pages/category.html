@@ -54,38 +54,39 @@
       {{breaking_news.content|safe}}
       {% endspaceless %}
     </div>
-    <div class="container">
-      <div class="redes">
-        <div class="wrapper_share">
-          <div class="fb-share">
-            <a class="mashicon-facebook" data-text="{{breaking_news.header}}" href="https://www.facebook.com/sharer.php?u=https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" target="_blank" rel="nofollow">
-              <div class="rou-box">
-                <i class="fab fa-facebook-f"></i>
-              </div>
-            </a>
-          </div>
-          <div class="wapp-share">
-            <div class="rou-box">
-              <a style="color: #fff; text-decoration: none; text-align: center;" href="https://wa.me/?text={{breaking_news.header}} https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" target="_blank">
-              <i class="fab fa-whatsapp"></i>
+    <div class="container mt-3">
+      <div class="wrapper-network"> <!-- display-none -->
+        <div class="container-network">
+          <div class="network-main">
+            <div class="network-awesome">
+              <i class="fas fa-share-alt"></i>
             </div>
           </div>
-          <div class="inst-share">
-            <div class="rou-box">
-              <a href="/" target="_blank" rel="noopener noreferrer"></a>
-              <i class="fab fa-instagram"></i>
+          <div class="network-components">
+            <div class="network-awesome">
+              <a data-text="{{breaking_news.header}}" href="https://www.facebook.com/sharer.php?u=https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook-f animate"></i>
+              </a>
             </div>
-          </div>
-          <!-- <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-via="QsNoticia" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-          <div class="twt-share">
-            <a id="tt-share" class="mashicon-twitter" data-via="QsNoticia" data-text="{{breaking_news.header}}" data-href="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" href="https://twitter.com/intent/" target="_top" rel="nofollow">
-              <div class="rou-box">
-                <i class="fab fa-twitter"></i>
-              </div>
-            </a>
+            <div class="network-awesome">
+              <a href="https://wa.me/?text={{breaking_news.header}} https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp animate"></i>
+              </a>
+            </div>
+            <div class="network-awesome">
+              <a id="tt-share"  data-via="QsNoticia" data-text="{{breaking_news.header}}" data-href="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}" href="https://twitter.com/intent/" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter animate"></i>
+              </a>
+            </div>
+            <span id="textoACopiar" class="left-infinite"></span>
+            <div class="network-awesome link-awesome">
+              <button id="btnCopiar" data-copy="https://www.qsnoticia.com{{breaking_news.get_absolute_url}}"><i class="fas fa-link animate"></i></button>
+              <div id="alerta" class="alert invisible"></div>
+            </div>
           </div>
         </div>
       </div>
+      
     </div>
   </div>
   {% include 'pages/aside.html' %}
@@ -95,10 +96,6 @@
 {% endif %}
 {% endblock content %}
 {% block js_extras %}
-<script>
-  document.addEventListener('DOMContentLoaded',()=>{
-    console.log(window.AnalyserNode)
-  })
-</script>
 <script src="{% static 'js/btn.js' %}"></script>
+<script src="{% static 'js/network.js' %}"></script>
 {% endblock js_extras %}

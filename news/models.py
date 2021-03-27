@@ -33,7 +33,7 @@ class Category(models.Model):
   created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
 
   class Meta:
-    ordering = ['id']
+    ordering = ['-id']
     verbose_name = 'Categoria'
     verbose_name_plural = 'Categorias'
 
@@ -42,12 +42,6 @@ class Category(models.Model):
 
   def get_absolute_url(self):
     return reverse('all-categories', kwargs={'category': slugify(self.category), 'categories': slugify(self.categories)})
-
-  def serialize(self):
-    return {
-      'category':self.category,
-      'categories':self.categories,
-    }
 
 @python_2_unicode_compatible
 class NewNews(models.Model):
@@ -66,7 +60,7 @@ class NewNews(models.Model):
     null=True,
     unique=True,
   )
-  header = models.CharField(max_length=80, verbose_name='Titulo del contenido')
+  header = models.CharField(max_length=100, verbose_name='Titulo del contenido')
   sub_title = models.CharField(
     max_length=150,
     null=True,
@@ -107,7 +101,7 @@ class NewNews(models.Model):
     if self.image and hasattr(self.image, 'url'):
       return self.image.url
     else:
-      return '/static/img/logo.png'
+      return '/static/img/logo-origin.png'
 
   def get_absolute_url(self):
     return reverse('slug-general', kwargs={'category': slugify(self.category), 'categories': slugify(self.categories), 'slug_news': self.slug})
@@ -117,9 +111,6 @@ class NewNews(models.Model):
       # Newly created object, so set slug
       self.slug = slugify(self.header)
       return super(NewNews, self).save(*args, **kwargs)
-
-  def serialize(self):
-    return {'header':self.header}
 
 class PermissionsAndPrivacy(models.Model):
   title = models.CharField(verbose_name='Titulo de privacidad', max_length=100)
