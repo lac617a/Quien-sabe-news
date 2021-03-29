@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     'www.qsnoticia.com',
     '127.0.0.1',
     'localhost',
+    '*'
 ]
 CORS_ALLOW_METHODS = ['GET']
 CORS_ORIGIN_ALLOW_ALL = True
