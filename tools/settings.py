@@ -192,12 +192,12 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-if DEBUG:
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    STATIC_URL = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_DIRS = (os.path.join(BASE_DIR,'static' ),)
+# if DEBUG:
+#     MEDIA_URL = '/media/'
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#     STATIC_URL = '/static/'
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#     STATICFILES_DIRS = (os.path.join(BASE_DIR,'static' ),)
 
 from .AWS import *
 
@@ -205,7 +205,11 @@ from .AWS import *
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
 DEFAULT_FILE_STORAGE = 'tools.storages.MediaStorage'
-
+#carga de de static
+PUBLIC_STATIC_LOCATION ='static'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_STATIC_LOCATION}/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static' ),)
+STATICFILES_STORAGE = 'tools.storages.StaticStorage'
 # HitCount
 SESSION_SAVE_EVERY_REQUEST = True
 CSRF_COOKIE_SECURE = True

@@ -11,8 +11,7 @@ xhr.onload = function () {
   // Hacer que reconozca los errores :3
   const responseServer = this.response;
   for ({header,image} of responseServer){
-    break
-    // console.log(header);
+    console.log(header);
   };
 };
 xhr.send();

@@ -26,7 +26,7 @@ function main_ajax(){
   const $autocomplete = document.getElementById('autocomplete')
   document.addEventListener('keyup',(e)=>{
     const $search = document.getElementById('search')
-    objects_categories_xhr($search,$autocomplete,$error)
+    // objects_categories_xhr($search,$autocomplete,$error)
   })
 }
 const special_characters = /[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g
@@ -57,58 +57,58 @@ como logramos eso, pues no vamos a referir a cada uno de los ID como search-[1,2
 lo que vamos hacer sea mas eficaz a la hora de registro y no se nos quede tan pegado, porque creo que eso tambien
 es en el rendimiento del codigo, asi que no tengamos miedo y hagamos esto mas divertido :D
 */
-function objects_categories_xhr(search,autocomplete,error){
-  const xhr = new XMLHttpRequest()
-  const method = 'GET'
-  const url = '/seeker/'
-  const responseType = 'json'
-  xhr.responseType = responseType
-  xhr.open(method,url,true)
-  xhr.onload = function(){
-    if (this.readyState == 4 && this.status == 200){
-      const server_response = this.response
-      const categories_list = server_response.response
-      for (let {category,categories} of categories_list){
-        let catgory = category
-        let catgories = categories
-        let categories_to_string = to_string(categories)
-        if (search.value !== ''){
-          if(search.value[0] === categories_to_string[0]){
-            if(categories_to_string.startsWith(search.value)){
-              error.classList.remove('error')
-              error.disabled = false
-              err(false)
-              autocomplete.classList.add('autocomplete-active')
-              return autocomplete.innerHTML = link(catgory,catgories)
-            }
-          }
-          else{
-            error.classList.add('error')
-            error.disabled = true
-            err(true)
-          }
-        }else{
-          autocomplete.classList.remove('autocomplete-active')
-          error.classList.remove('error')
-          error.disabled = false
-          err(false)
-        }
-      }
-    }
-    else if(this.status === 400){
-      // peticion invalida
-      let error = 'La respuesta de código de estado del Protocolo de Transferencia de Hipertexto (HTTP) 400 "Bad Request" indica que el servidor no puede o no procesará la petición debido a algo que es percibido como un error del cliente'
-      console.log(error)
-    }
-    else if(this.status === 500){
-      // peticion al server invalida
-      let error = `Oop! Vaya que mal, creemos que cuando la nave iba al servidor tuvo un mal percance y no pudo llegar. Dado caso a eso tenemos en este momento un ${this.status} (INTERNAL SERVER ERROR)`
-      console.error(error)
-    }
-    xhr.onerror = function(){console.error('La peticion solicitada parace no ver respondido. Por favor intentolo de nuevo status:',this.status)}
-  }
-  xhr.send()
-}
+// function objects_categories_xhr(search,autocomplete,error){
+//   const xhr = new XMLHttpRequest()
+//   const method = 'GET'
+//   const url = '/seeker/'
+//   const responseType = 'json'
+//   xhr.responseType = responseType
+//   xhr.open(method,url,true)
+//   xhr.onload = function(){
+//     if (this.readyState == 4 && this.status == 200){
+//       const server_response = this.response
+//       const categories_list = server_response.response
+//       for (let {category,categories} of categories_list){
+//         let catgory = category
+//         let catgories = categories
+//         let categories_to_string = to_string(categories)
+//         if (search.value !== ''){
+//           if(search.value[0] === categories_to_string[0]){
+//             if(categories_to_string.startsWith(search.value)){
+//               error.classList.remove('error')
+//               error.disabled = false
+//               err(false)
+//               autocomplete.classList.add('autocomplete-active')
+//               return autocomplete.innerHTML = link(catgory,catgories)
+//             }
+//           }
+//           else{
+//             error.classList.add('error')
+//             error.disabled = true
+//             err(true)
+//           }
+//         }else{
+//           autocomplete.classList.remove('autocomplete-active')
+//           error.classList.remove('error')
+//           error.disabled = false
+//           err(false)
+//         }
+//       }
+//     }
+//     else if(this.status === 400){
+//       // peticion invalida
+//       let error = 'La respuesta de código de estado del Protocolo de Transferencia de Hipertexto (HTTP) 400 "Bad Request" indica que el servidor no puede o no procesará la petición debido a algo que es percibido como un error del cliente'
+//       console.log(error)
+//     }
+//     else if(this.status === 500){
+//       // peticion al server invalida
+//       let error = `Oop! Vaya que mal, creemos que cuando la nave iba al servidor tuvo un mal percance y no pudo llegar. Dado caso a eso tenemos en este momento un ${this.status} (INTERNAL SERVER ERROR)`
+//       console.error(error)
+//     }
+//     xhr.onerror = function(){console.error('La peticion solicitada parace no ver respondido. Por favor intentolo de nuevo status:',this.status)}
+//   }
+//   xhr.send()
+// }
 function err(error){
   const fas = document.getElementById('fas')
   if (error){

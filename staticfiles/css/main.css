@@ -17,6 +17,10 @@ body{
   border-radius: 10px;
   background-color: #e60034;
 }
+blockquote {
+  border-left: 2px solid indianred;
+  padding-left: 1rem;
+}
 #load{
   width: 100%;
   height: 100vh;
