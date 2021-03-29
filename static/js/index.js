@@ -26,7 +26,7 @@ function main_ajax(){
   const $autocomplete = document.getElementById('autocomplete')
   document.addEventListener('keyup',(e)=>{
     const $search = document.getElementById('search')
-    objects_categories_xhr($search,$autocomplete,$error)
+    // objects_categories_xhr($search,$autocomplete,$error)
   })
 }
 const special_characters = /[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g

@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
 from .models import NewNews,Category,PermissionsAndPrivacy
-from django.http import JsonResponse
 from django.views.generic.list import ListView
 # from hitcount.views import HitCountDetailView
 from django.utils.http import is_safe_url
@@ -56,8 +55,8 @@ def get_news_category(request,*args,**kwargs):
       return redirect(next_url)
   return render(request,'components/form-seeker.html', context,status=status)
 
-def search_objects(request,*args,**kwargs):
-  qs = NewNews.objects.all()
-  context = [x.serialize() for x in Category.objects.all()]
-  data = {'response':context}
-  return JsonResponse(data)
+# def search_objects(request,*args,**kwargs):
+#   qs = NewNews.objects.all()
+#   context = [x.serialize() for x in Category.objects.all()]
+#   data = {'response':context}
+#   return JsonResponse(data)
