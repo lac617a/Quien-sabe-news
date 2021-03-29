@@ -48,6 +48,9 @@
   position:absolute;
   /* left: -5000px; */
   opacity: 0;
+  left: 0;
+  font-size: 5px;
+  width: 100px;
 }
 .container-network button{
   cursor: pointer;
@@ -71,7 +74,7 @@
 
 }
 .container-network .network-components{
-  position: relative;
+  /* position: relative; */
   display: flex;
   border-radius: 20px;
   background-color: #eee;

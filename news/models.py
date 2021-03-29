@@ -33,7 +33,7 @@ class Category(models.Model):
   created = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creación')
 
   class Meta:
-    ordering = ['-id']
+    # ordering = ['id']
     verbose_name = 'Categoria'
     verbose_name_plural = 'Categorias'
 
