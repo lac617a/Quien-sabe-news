@@ -214,7 +214,7 @@ Design responsive slider
   /* ------------------
   FIRST-CONTENT-MAIN
   ------------------ */
-  .wrapper__main{margin-top: 3rem;}
+  /* .wrapper__main{margin-top: 3rem;} */
   /* ------------------
     LAST-CONTENT-MAIN
   ------------------ */
@@ -226,7 +226,7 @@ Design responsive slider
   FIRST-CONTENT-MAIN
   ------------------ */
   .line-left{border-left: 1px dashed #333;}
-  .wrapper__main{margin-top: 2rem;}
+  /* .wrapper__main{margin-top: 2rem;} */
   .wrapper__pictureNews.no-padding .pictureNews{border-radius: 5px;}
   .wrapper__pictureNews.no-padding{padding: .4rem .5rem !important;}
   .pictureNews-components .btn-share{font-size: 18px;}

@@ -7,204 +7,133 @@
     <div class="display-none table">
       {# {% include 'components/advertising.html' %} #}
     </div>
-    <div class="row line">
+    <div class="row pt-1">
       <!-- Column first -->
-      <div class="col-xs-6 col-lg-7 col-sm-12 wrapper__pictureNews no-padding">
-        <div class="header-noticias">
-          <span class="header-noticias-title" align="center" >Noticias <br> de <br> última hora</span>
-          <!-- <span class="header-noticias-frase"><b>FRASES: </b>“Decidir qué no hacer es tan importante como decidir qué hacer”</span> -->
+      <div class="col-lg-3">
+        <div class="head-destacado">
+          <h3><span>Entretenimiento</span></h3>
         </div>
-        <div class="pictureNews">
-          <div class="boxroun">
+        {% populares_hit 6 as popular %}
+        {% for destacado in popular %}
+        {# {% if destacado.category == 'Entretenimiento' %} #}
+        <div class="wrapper-destacado first">
+          <a title="{{destacado.header}}" href="{{destacado.get_absolute_url}}">
+            <figure class="destacado-figure first">
+              <div class="lazy-load first">
+                <img loading="lazy" width="80" height="54" src="{{destacado.get_image_url}}" alt="{{destacado.header}}">
+              </div>
+              <figcaption class="destacado-figcaption first">
+                <div class="destacado-footer">
+                  <span class="destacado-cat sidebar">{{destacado.categories}}</span>
+                  {% check_date_time destacado.published|date:'d/m/Y H:m A' as date %}
+                  <span class="destacado-date">{{date}}</span>
+                </div>
+                <h2>{{destacado.header}}</h2>
+              </figcaption>
+            </figure>
+          </a>
+        </div>
+        {# {% endif %} #}
+        {% endfor %}
+        <div class=""> <!--display-none table-->
+          {% include 'components/advertising.html' %}
+        </div>
+      </div>
+      <!-- Column center -->
+      <div class="col-lg-6">
+        <div class="wrapper-main">
+          <section role="main">
             {% get_element_news 0 1 as new_posts %}
             {% for new in new_posts %}
-            <img class="float-start" src="{{new.get_image_url}}" alt="{{new.header}}">
-            <div class="overlay"></div>
-            <div class="bt-title-cat-intro-eranews">
-              <span style="font-size:18px; margin:1rem 0;display:inline-block;"><i class="fas fa-tag" style="color:rgba(230,0,52,.9);"></i><span style="text-shadow: 1px 0 1px #e60034;">{{new.categories}}</span></span>
-              <a title="{{new.header}}" href="{{new.get_absolute_url}}"><h1>{{new.header}}</h1></a>
-              <div class="pictureNews-components">
-                <div class="bt-extra">
-                  {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                  <span><i class="fas fa-clock"></i>{{date}}</span>
-                  {% if new.city %}<span><i class="fas fa-globe"></i>{{new.city}}</span>{% endif %}
-                  <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
+            <article class="picture-first" role="article">
+              <a title="{{new.header}}" href="{{new.get_absolute_url}}">
+                <div class="load-lazy">
+                  <img loading="lazy" width="560" height="600" src="{{new.get_image_url}}" alt="{{new.header}}">
                 </div>
-                <div class="btn-share">
-                  <i class="fas fa-share-alt share-all"></i>
+                <div class="picture-wrap">
+                  <div class="picture-wrap-tag">
+                    <div class="picture-wrap-cat sidebar">
+                      <i class="fas fa-tag"></i>
+                      <span>{{new.categories}}</span>
+                    </div>
+                    <div class="picture-wrap-date">
+                      {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
+                      <span class="date">{{date}}
+                        <span class="views"><i class="fas fa-eye"></i>
+                          <span class="count-view">{% get_hit_count for new %}</span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <h1>{{new.header}}</h1>
+                  <p>{{new.sub_title}}</p>
+                  <!-- <div class="picture-share">
+                    <div class="btn-share">
+                      <i class="fas fa-share-alt share-all"></i>
+                    </div>
+                  </div> -->
                 </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
+              </a>
+            </article>
+            {% endfor %}
+            {% get_element_news 1 3 as new_posts %}
+            {% for new in new_posts %}
+            <article class="picture-last" role="last">
+              <a title="{{new.header}}" href="{{new.get_absolute_url}}">
+                <div class="load-lazy">
+                  <img loading="lazy" height="354" height="354" src="{{new.get_image_url}}" alt="{{new.header}}">
+                </div>
+                <div class="picture-wrap">
+                  <div class="picture-wrap-tag">
+                    <div class="picture-wrap-cat sidebar">
+                      <i class="fas fa-tag"></i>
+                      <span>{{new.categories}}</span>
+                    </div>
+                    <div class="picture-wrap-date">
+                      {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
+                      <span class="date">{{date}}
+                        <span class="views"><i class="fas fa-eye"></i>
+                          <span class="count-view">{% get_hit_count for new %}</span>
+                        </span>
+                      </span>
+                      <!-- {% if new.city %}<span><i class="fas fa-globe"></i>{{new.city}}</span>{% endif %} -->
+                    </div>
+                  </div>
+                  <h2>{{new.header}}</h2>
+                </div>
+              </a>
+            </article>
+            {%endfor%}
+          </section>
         </div>
       </div>
       <!-- Column last -->
-      <div class="col-lg-5 col p-0">
-        <div class="carousel-container display-n-carousel">
-          <div class="carousel-slider">
-            <div class="carousel-list">
-              <div class="carousel-element">
-                {% get_element_news 1 2 as new_posts %}
-                {% for new in new_posts %}
-                <div class="carousel__container-figure">
-                  <figure class="carousel-figure">
-                    <a href="{{new.get_absolute_url}}" style="text-decoration: none; color:inherit;">
-                      <div class="carousel__lazy-load">
-                        <img class="carousel-img" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
-                      </div>
-                      <div class="carousel__header-float">
-                        <!-- header font 13px color #eee opacity .7 box-shadow -->
-                        <h2>{{new.header}}</h2>
-                      </div>
-                      <figcaption class="carousel__container-figcaption">
-                        <div class="carousel-figcaption">
-                          <!-- view,date,category and categories -->
-                          <div class="carousel-components">
-                            <div class="extra">
-                              {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                              <span><i class="fas fa-clock"></i>{{date}}</span>
-                              <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </figcaption>
-                    </a>
-                  </figure>
-                </div>
-                {% endfor %}
-              </div>
-              <div class="carousel-element">
-                {% get_element_news 2 3 as new_posts %}
-                {% for new in new_posts %}
-                <div class="carousel__container-figure">
-                  <figure class="carousel-figure">
-                    <a href="{{new.get_absolute_url}}" style="text-decoration: none; color:inherit;">
-                      <div class="carousel__lazy-load">
-                        <img class="carousel-img" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
-                      </div>
-                      <div class="carousel__header-float">
-                        <!-- header font 13px color #eee opacity .7 box-shadow -->
-                        <h2>{{new.header}}</h2>
-                      </div>
-                      <figcaption class="carousel__container-figcaption">
-                        <div class="carousel-figcaption">
-                          <!-- view,date,category and categories -->
-                          <div class="carousel-components">
-                            <div class="extra">
-                              {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                              <span><i class="fas fa-clock"></i>{{date}}</span>
-                              <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </figcaption>
-                    </a>
-                  </figure>
-                </div>
-                {% endfor %}
-              </div>
-              <div class="carousel-element">
-                {% get_element_news 3 4 as new_posts %}
-                {% for new in new_posts %}
-                <div class="carousel__container-figure">
-                  <figure class="carousel-figure">
-                    <a href="{{new.get_absolute_url}}" style="text-decoration: none; color:inherit;">
-                      <div class="carousel__lazy-load">
-                        <img class="carousel-img" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
-                      </div>
-                      <div class="carousel__header-float">
-                        <!-- header font 13px color #eee opacity .7 box-shadow -->
-                        <h2>{{new.header}}</h2>
-                      </div>
-                      <figcaption class="carousel__container-figcaption">
-                        <div class="carousel-figcaption">
-                          <!-- view,date,category and categories -->
-                          <div class="carousel-components">
-                            <div class="extra">
-                              {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                              <span><i class="fas fa-clock"></i>{{date}}</span>
-                              <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </figcaption>
-                    </a>
-                  </figure>
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-          <div role="tablist" class="carousel-dots"></div>
+      <div class="col-lg-3">
+        <div class="head-destacado">
+          <h3><span>Colombia</span></h3>
         </div>
-        <div class="no-responsive line-left" align="left">
-          <div class="carousel-slider">
-            <div data-carousel="first" draggable="true" class="wrapper__pictureNews first">
-              <div class="pictureNews right">
-                <div class="boxroun">
-                  {% get_element_news 1 2 as new_posts %}
-                  {% for new in new_posts %}
-                  <img class="float-start" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
-                  <div class="overlay"></div>
-                  <div class="bt-title-cat-intro-eranews">
-                    <a title="{{new.header}}" href="{{new.get_absolute_url}}"><h5>{{new.header}}</h5></a>
-                    <div class="pictureNews-components">
-                      <div class="bt-extra">
-                        {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                        <span><i class="fas fa-clock"></i>{{date}}</span>
-                        <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
+        {% populares_hit 5 as popular %}
+        {% for destacado in popular %}
+        {# {% if destacado.category == 'Colombia' %} #}
+        <div class="wrapper-destacado">
+          <a title="{{destacado.header}}" href="{{destacado.get_absolute_url}}">
+            <figure class="destacado-figure">
+              <div class="lazy-load">
+                <img loading="lazy" width="400" height="240" src="{{destacado.get_image_url}}" alt="{{destacado.header}}">
               </div>
-            </div>
-            <div draggable="true" class="wrapper__pictureNews center">
-              <div class="pictureNews right">
-                <div class="boxroun">
-                  {% get_element_news 2 3 as new_posts %}
-                  {% for new in new_posts %}
-                  <img class="float-start" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
-                  <div class="overlay"></div>
-                  <div class="bt-title-cat-intro-eranews">
-                    <a title="{{new.header}}" href="{{new.get_absolute_url}}"><h5>{{new.header}}</h5></a>
-                    <div class="pictureNews-components">
-                      <div class="bt-extra">
-                        {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                        <span><i class="fas fa-clock"></i>{{date}}</span>
-                        <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
+              <figcaption class="destacado-figcaption last">
+                <div class="destacado-footer">
+                  <span class="destacado-cat">{{destacado.categories}}</span>
+                  {% check_date_time destacado.published|date:'d/m/Y H:m A' as date %}
+                  <span class="destacado-date">{{date}}</span>
                 </div>
-              </div>
-            </div>
-            <div draggable="true" data-carousel="last" class="wrapper__pictureNews last">
-              <div class="pictureNews right">
-                <div class="boxroun">
-                  {% get_element_news 3 4 as new_posts %}
-                  {% for new in new_posts %}
-                  <img class="float-start" width="490" height="150" src="{{new.get_image_url}}" alt="{{new.header}}">
-                  <div class="overlay"></div>
-                  <div class="bt-title-cat-intro-eranews">
-                    <a title="{{new.header}}" href="{{new.get_absolute_url}}"><h5>{{new.header}}</h5></a>
-                    <div class="pictureNews-components">
-                      <div class="bt-extra">
-                        {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
-                        <span><i class="fas fa-clock"></i>{{date}}</span>
-                        <span><i class="fas fa-eye"></i>{% get_hit_count for new %}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
+                <h2>{{destacado.header}}</h2>
+              </figcaption>
+            </figure>
+          </a>
         </div>
+        {#{% endif %}#}
+        {% endfor %}
       </div>
     </div>
   </div>

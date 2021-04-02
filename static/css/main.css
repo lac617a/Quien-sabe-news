@@ -2,24 +2,49 @@
                                             CUSTOM-MAIN-CSS
 ------------------------------------------------------------------------------------------------------*/
 body{
+  counter-reset: figcaption;
   font-family: 'Roboto', sans-serif;
 }
+.container-fluid{padding: 0 5rem !important;}
 ::-webkit-scrollbar{
   scrollbar-color:fuchsia;
   background-color: #F5F5F5;
   width: 8px;
 }
 ::-webkit-scrollbar-track{
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.9);
-  background-color: #F5F5F5;
+  /* box-shadow: inset 0 0 5px rgba(0,0,0,0.9); */
+  background-color: #da4040;
 }
-::-webkit-scrollbar-thumb{
-  border-radius: 10px;
-  background-color: #e60034;
-}
+::-webkit-scrollbar-thumb{background-color: #eee;}
 blockquote {
   border-left: 2px solid indianred;
   padding-left: 1rem;
+}
+.header-covid{
+  background-image: url(/static/img/background-covid.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 284px;
+  overflow: hidden;
+  width: 100%;
+  background-attachment: fixed;
+  border: 1px solid red;
+}
+.title-covid{
+  padding-left: 5rem;
+  padding-top: 1rem;
+  font-family: 'Zilla Slab Highlight', cursive;
+}
+.title-covid .font-larger{
+  font-size: 60px;
+}
+#app-covid{
+  width: 400px;
+  font-size: 12px;
+}
+#app-covid .list-group-item{
+  padding: .2rem 1rem;
 }
 #load{
   width: 100%;
@@ -67,7 +92,7 @@ blockquote {
   position: relative;
 }
 @keyframes spin{0%{background: transparent; transform: rotate(720deg);}}
-.wrapper{
+/* .wrapper{
   background-image: url(../img/background-main.jpg);
   background-repeat: no-repeat;
   background-position: top;
@@ -75,7 +100,7 @@ blockquote {
   background-attachment: fixed;
   background-color: #fff;
   display: none;
-}
+} */
 .wrapper.activate{
   transition: all .3s ease-in-out;
   display: block;
@@ -84,17 +109,17 @@ blockquote {
 .wrapper__main{
   padding-top: .5rem;
   padding-bottom: 1rem;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 .wrapper__main.bg-wrapper{background-color: #eee;}
 .wrapper__main a{
   text-decoration: none;
   cursor: pointer;
 }
-.wrapper__main a:hover{
+/* .wrapper__main a:hover{
   color: #e60034;
   transition: all 0.2s linear 0s;
-}
+} */
 .logo__img{
   transition: all .3s ease-in-out;
 }
@@ -387,6 +412,11 @@ h3 a{color: #3a3a3a;}
   height: 150px;
   background-color: grey
 }
+.ad.main{
+  height: 100%;
+  max-height: 150px;
+  min-height: 570px;
+}
 .logo .wrapper__pictureNews .ad{
   display: block;
   width: 100%;
@@ -398,6 +428,7 @@ h3 a{color: #3a3a3a;}
                                               RESPONSIVE
 ------------------------------------------------------------------------------------------------------*/
 @media only screen and (min-width:320px){
+  .container-fluid{padding:0 0 !important;}
   .image__container-sub-title{margin: .5rem 0;}
   ::-webkit-scrollbar {display: none;}
   .no-responsive{display: none;}
@@ -677,6 +708,7 @@ h3 a{color: #3a3a3a;}
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width:1200px){
+  .container-fluid{padding: 0 5rem !important;}
   .no-responsive{display: block;}
   /* BOOTSTAP */
   ::-webkit-scrollbar {display: block;}

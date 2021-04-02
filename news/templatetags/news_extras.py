@@ -39,7 +39,7 @@ def check_date_time(format_string):
   get_publication_day = publication_date.date().day
   get_publication_month = publication_date.date().month
   # COMBINATION OF RETURN
-  combination_date = datetime.strftime(publication_date.date(),'%d/%m/%Y')
+  combination_date = datetime.strftime(publication_date.date(),'%d/%m/%y')
   combination_time = publication_date.time().hour
   # Manejando datos semanales
   DAY = ('Ayer','Anteayer') # hace 3/4/5/6/ y publicado hace 1 semana

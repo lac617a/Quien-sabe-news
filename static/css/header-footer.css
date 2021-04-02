@@ -11,17 +11,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin-top: 3rem;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  /* margin-top: 3rem; */
   padding: 1rem;
 }
 .wrapper__header{
   background-image: url(/static/img/footer.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
   padding: 0 !important;
 }
 /* ------------------

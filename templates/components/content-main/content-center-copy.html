@@ -1,0 +1,103 @@
+<!-- pictureNews2 -->
+<div class="row">
+  <!-- PICTURE NEWS LEFT -->
+  {% load news_extras %}
+  {% load hitcount_tags %}
+  <div class="head-destacado">
+    <h3><span>Venezuela</span></h3>
+  </div>
+  <div class="col-lg-6">
+    <div class="wrapper-main">
+      <section role="main">
+        {% get_element_news 0 1 as new_posts %}
+        {% for new in new_posts %}
+        <article class="picture-first" role="article">
+          <a title="{{new.header}}" href="{{new.get_absolute_url}}">
+            <div class="load-lazy">
+              <img loading="lazy" width="560" height="500" src="{{new.get_image_url}}" alt="{{new.header}}">
+            </div>
+            <div class="picture-wrap">
+              <div class="picture-wrap-tag">
+                <div class="picture-wrap-cat sidebar">
+                  <i class="fas fa-tag"></i>
+                  <span>{{new.categories}}</span>
+                </div>
+                <div class="picture-wrap-date">
+                  {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
+                  <span class="date">{{date}}
+                    <span class="views"><i class="fas fa-eye"></i>
+                      <span class="count-view">{% get_hit_count for new %}</span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <h1>{{new.header}}</h1>
+              <p>{{new.sub_title}}</p>
+            </div>
+          </a>
+        </article>
+        {% endfor %}
+      </section>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    {% get_element_news 1 3 as new_posts %}
+    {% for new in new_posts %}
+    <div class="wrapper-destacado">
+      <a title="{{new.header}}" href="{{new.get_absolute_url}}">
+        <figure class="destacado-figure">
+          <div class="lazy-load">
+            <img loading="lazy" width="400" height="240" src="{{new.get_image_url}}" alt="{{new.header}}">
+          </div>
+          <figcaption class="destacado-figcaption padding-none">
+            <div class="destacado-footer">
+              <span class="destacado-cat">{{new.categories}}</span>
+              {% check_date_time new.published|date:'d/m/Y H:m A' as date %}
+              <span class="destacado-date">{{date}}</span>
+            </div>
+            <h2>{{new.header}}</h2>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
+    {%endfor%}
+  </div>
+    <!-- ESTADOS UNIDOS -->
+    <!-- width="560" height="400" -->
+  <!-- PICTURE NEWS BOTTOM -->
+  <div class="col-xs-6 col-lg-3 col-sm-12 mt-3 pt-1 line-left">
+    <!-- LO QUE PASA EN VENEZUELA -->
+    {% load news_extras %}
+    {% load hitcount_tags %}
+    {% get_categories 'Internacional' as venezuela %}
+    {% for sub_item in venezuela %}
+      {% if 'Venezuela' in sub_item.categories %}
+        <a href="{{sub_item.get_absolute_url}}" class="btn btn-danger mb-3" style="width: 100%;">
+          <i class="fas fa-globe-americas"></i>
+          <h5 class="fw-bold">¿Qué pasa en Venezuela?</h5>
+        </a>
+      {% endif %}
+    {% endfor %}
+    <div class="row">
+      {% get_categories_by_id 10 3 as venezuela %}
+      {% for item in venezuela %}
+      <div class="col-lg-12 col-sm-6">
+        <div class="information" {% if forloop.last %} style="border-bottom: 1px solid #1c1c1c;" {% endif %}>
+          <div class="categoria-noticia">
+            <span class="bullet-categoria-noticia" style="background-color: #9C1F42;"></span>
+            <a href="{{item.get_absolute_url}}" class="section"><i class="fas fa-tag"></i>{{item.categories}}</a>
+            {% check_date_time item.published|date:'d/m/Y H:m A' as date %}
+            <span class="update-date"><i class="fas fa-clock"></i>{{date}}</span>
+          </div>
+          <h3 class="title-sm">
+            <a href="{{item.get_absolute_url}}">{{item.header}}</a>
+          </h3>
+          <div class="lead">
+            <a href="{{item.get_absolute_url}}">{{item.sub_title|safe}}</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,271 @@
+/* text-shadow: 1px 0 1px #e60034; color: #ffff; */
+.wrapper-main{position: relative;}
+.wrapper-main .load-lazy img{
+  opacity: .9;
+  transition: opacity .2s ease-out;
+  width: 100%;
+}
+.wrapper-main .load-lazy:hover img{opacity: 1;}
+
+.wrapper-main .picture-first{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.wrapper-main .picture-last{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.wrapper-main .picture-last h2{
+  color: #fff;
+  float: left;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  margin-right: 30%;
+  width: 70%;
+}
+
+.wrapper-main a{color: #F5F5F5;}
+.wrapper-main .picture-wrap{padding: 100px 3.8% 20px;}
+.wrapper-main .picture-wrap{
+  background-image: -moz-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.6) 50%,rgba(0,0,0,.9) 100%);
+  background-image: -ms-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.6) 50%,rgba(0,0,0,.9) 100%);
+  background-image: -o-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.6) 50%,rgba(0,0,0,.9) 100%);
+  background-image: -webkit-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.6) 50%,rgba(0,0,0,.9) 100%);
+  background-image: -webkit-gradient(linear,center top,center bottom,from(rgba(0,0,0,0)),to(rgba(0,0,0,0.9)));
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.6) 50%,rgba(0,0,0,.9) 100%);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.wrapper-main .picture-wrap .picture-wrap-tag{
+  position: relative;
+  display: flex;
+  font-size: 12px;
+  font-family: inherit;
+  padding-bottom: .5rem;
+}
+.wrapper-main .picture-wrap .picture-wrap-cat span{
+  color: #e60034;
+  text-shadow: 0 0 0 #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wrapper-main .picture-wrap .picture-wrap-cat{
+  position: relative;
+  padding-right: .5rem;
+}
+.picture-wrap-date{padding: 0 .5rem;}
+.wrapper-main .picture-wrap-date .date{
+  background-color: #222;
+  padding: 5px;
+}
+.wrapper-main .picture-wrap-date .fa-eye{
+  position: relative;
+  background-color: #e60034;
+  border-radius: 50%;
+  box-shadow: 0 0 10px -1px rgba(255 255 255 / .2);
+  /* padding: .8rem;
+  font-size: 16px; */
+}
+.wrapper-main .picture-wrap-date .views{
+  position: relative;
+  /* background-color: #222; */
+  /* padding-right: .5rem;
+  padding-top:.2rem;
+  padding-bottom:.2rem;
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px; */
+}
+.wrapper-main .picture-wrap-date .views .count-view{padding: 5px;}
+
+.sidebar::after{
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 0;
+  height: 20px;
+  width: 1px;
+  background-color: #777;
+  transform: skewX(-15deg);
+}
+.wrapper-main .picture-wrap h1{
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-right: 0;
+  text-transform: none;
+}
+
+.wrapper-destacado{position: relative;}
+.wrapper-destacado a{text-decoration: none;}
+
+.destacado-figure{
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+.wrapper-destacado .destacado-figure .lazy-load{
+  position: relative;
+  overflow: hidden;
+  max-height: 145px;
+  width: 100%;
+  background-color: #000;
+  
+}
+.wrapper-destacado .destacado-figure .lazy-load img{
+  opacity: .9;
+  transition: all .3s linear;
+  max-width: 100%;
+  height: auto;
+}
+.wrapper-destacado .destacado-figure .lazy-load:hover img{opacity: 1;}
+
+.head-destacado{
+  float: left;
+  margin-bottom: 15px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.head-destacado::before{
+  content: '';
+  background: #555;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 50%;
+  width: 100%;
+  height: 1px;
+  z-index: 0;
+}
+.head-destacado span{
+  color: #fff;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 5px 13px;
+  position: relative;
+  text-transform: uppercase;
+  -webkit-transform: skewX(-15deg);
+  -moz-transform: skewX(-15deg);
+  -ms-transform: skewX(-15deg);
+  -o-transform: skewX(-15deg);
+  transform: skewX(-15deg);
+  z-index: 1;
+  background-color:#e60034;
+}
+.wrapper-destacado .destacado-figcaption{
+  padding: 15px 0 0 15%;
+  position: relative;
+  float: left;
+  display: block;
+  transition: all .2s linear;
+}
+.wrapper-destacado .destacado-figcaption.last::before{
+  counter-increment: figcaption;
+  content: counter(figcaption);
+  color: #e60034;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 32px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 13%;
+}
+.wrapper-destacado .destacado-figcaption h2{
+  color: #222;
+  float: left;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  opacity: 1;
+}
+.destacado-figcaption .destacado-footer{
+  margin-bottom: .2rem;
+}
+.wrapper-destacado .destacado-cat{
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wrapper-destacado .destacado-date{
+  font-weight: 400;
+  margin-left: 5px;
+}
+.wrapper-destacado .destacado-cat,.destacado-date{
+  position: relative;
+  color: #777;
+  display: inline-block;
+  /* float: left; */
+  font-size: .7rem;
+  line-height: 1;
+}
+.wrapper-destacado .destacado-cat::after{
+  content: '';
+  display: block;
+  position: absolute;
+  right: -6px;
+  top: -3px;
+  height: 15px;
+  width: 1px;
+  background-color: #777;
+  transform: skewX(-15deg);
+}
+.wrapper-destacado:hover .destacado-figcaption{opacity: .6;}
+
+.wrapper-destacado.first{
+  display: block;
+  height: 100px;
+  margin-bottom: 1.1rem;
+  clear: both;
+}
+.wrapper-destacado .destacado-figure .lazy-load.first img{
+  height: 100%;
+  width: 100%;
+}
+.first{
+  position: relative;
+  clear: both;
+  width: 100%;
+  height: 100%;
+}
+.destacado-figcaption.first .destacado-footer{
+  font-size: 9px;
+}
+.destacado-figcaption.first .destacado-cat{
+  font-size: inherit;
+}
+.destacado-figcaption.first .sidebar::after{
+  top: -5px;
+}
+.destacado-figcaption.first h2{
+  color: #222;
+  float: left;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  width: 100%;
+}
+.wrapper-destacado .destacado-figure.first{
+  display: flex;
+  width: 100%;
+}
+.wrapper-destacado .destacado-figure .lazy-load.first{display: inline;}
+
+.destacado-figcaption.first{padding: 0 0 0 .5rem;}
+
+.destacado-figcaption.padding-none{
+  padding: 0;
+}
